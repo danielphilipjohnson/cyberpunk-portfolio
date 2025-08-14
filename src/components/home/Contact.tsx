@@ -81,8 +81,8 @@ export default function CyberpunkContact() {
 			purple: type === 'text' ? 'text-purple-500' : type === 'border' ? 'border-purple-500' : 'bg-purple-500',
 			green: type === 'text' ? 'text-green-400' : type === 'border' ? 'border-green-400' : 'bg-green-400',
 			lime: type === 'text' ? 'text-lime-400' : type === 'border' ? 'border-lime-400' : 'bg-lime-400',
-		};
-		return colorMap[color] || colorMap.cyan;
+		} as const;
+		return colorMap[color as keyof typeof colorMap] || colorMap.cyan;
 	};
 
 	return (
@@ -125,9 +125,9 @@ export default function CyberpunkContact() {
 							<div className="text-purple-400 font-mono text-xs mb-2">MILITECH NEURAL INTERFACE v4.7.2</div>
 							<div className="text-pink-500 font-mono text-sm">Night City Corporate Plaza | Sector 7</div>
 							<div className="text-cyan-400 font-mono text-xs mt-1">Secure Channel: {contactChannel}</div>
-							<div className="absolute top-2 right-2 text-lime-400 font-mono text-xs" 
-								 onClick={triggerReboot} 
-								 className="cursor-pointer hover:text-lime-300 underline">[REBOOT]</div>
+							<div 
+								onClick={triggerReboot} 
+								className="absolute top-2 right-2 text-lime-400 font-mono text-xs cursor-pointer hover:text-lime-300 underline">[REBOOT]</div>
 						</div>
 
 						<div className="inline-block mb-4">

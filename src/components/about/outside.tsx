@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 export const CyberpunkOutsideProgramming = () => {
-	const [hoveredBook, setHoveredBook] = useState(null);
-	const [activeScanLine, setActiveScanLine] = useState(null);
-	const [pulseText, setPulseText] = useState(null);
+	const [hoveredBook, setHoveredBook] = useState<string | null>(null);
+	const [activeScanLine, setActiveScanLine] = useState<string | null>(null);
+	const [pulseText, setPulseText] = useState<number | null>(null);
 	const [glitchActive, setGlitchActive] = useState(false);
 	const [biometricLevel, setBiometricLevel] = useState(0);
 	const [personalityMatrix, setPersonalityMatrix] = useState(0);
@@ -173,7 +173,7 @@ export const CyberpunkOutsideProgramming = () => {
 						<div className="h-px bg-pink-500 flex-grow opacity-30"></div>
 					</div>
 					<div className="text-gray-400 font-mono text-sm mt-1">
-            // void_runtime_processes // neural_downtime_protocols // consciousness_expansion
+            		{'// void_runtime_processes // neural_downtime_protocols // consciousness_expansion'}
 					</div>
 				</div>
 

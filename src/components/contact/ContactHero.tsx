@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 export default function ContactHero() {
   const [connectionStatus, setConnectionStatus] = useState('INITIALIZING');
   const [dataStream, setDataStream] = useState(0);
-  const [neuralActivity, setNeuralActivity] = useState([]);
+  const [neuralActivity, setNeuralActivity] = useState<number[]>([]);
   const [securityLevel, setSecurityLevel] = useState(0);
 
   // Connection status simulation
@@ -171,7 +171,7 @@ export default function ContactHero() {
                 
                 <div className="bg-gray-800 border-l-4 border-cyan-400 p-4">
                   <div className="font-mono text-sm text-gray-300">
-                    <div className="text-cyan-400 font-bold mb-2">// CONNECTION_PROTOCOLS_AVAILABLE</div>
+                    <div className="text-cyan-400 font-bold mb-2">{'//'} CONNECTION_PROTOCOLS_AVAILABLE</div>
                     <div className="space-y-1 text-xs">
                       <div>• NEURAL_FORM_INTERFACE &nbsp;&nbsp;&nbsp; [SECURE]</div>
                       <div>• SOCIAL_MEDIA_CHANNELS &nbsp; [ENCRYPTED]</div>

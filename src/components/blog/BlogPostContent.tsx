@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect } from 'react';
+import React, { JSX, useEffect } from 'react';
 import CyberpunkSectionDecor from '../visuals/CyberpunkSectionDecor';
 
 // Import Prism for syntax highlighting

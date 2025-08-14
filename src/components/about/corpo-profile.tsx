@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 export const CyberpunkCorpoProfile = () => {
-  const [hoverStat, setHoverStat] = useState(null);
+  const [hoverStat, setHoverStat] = useState<number | null>(null);
   const [glitchActive, setGlitchActive] = useState(false);
-  const [scanningTarget, setScanningTarget] = useState(null);
+  const [scanningTarget, setScanningTarget] = useState<number | null>(null);
 
   // Corporate neural interface stats
   const neuralStats = [
@@ -80,7 +80,7 @@ export const CyberpunkCorpoProfile = () => {
                     <div className="text-2xl">👤</div>
                   </div>
                   <div>
-                    <h1 className="text-3xl font-mono font-bold text-cyan-400 mb-1">DANIEL "VOID" JOHNSON</h1>
+                    <h1 className="text-3xl font-mono font-bold text-cyan-400 mb-1">DANIEL &quot;VOID&quot; JOHNSON</h1>
                     <div className="text-sm font-mono text-gray-400">
                       CORPO_ID: <span className="text-cyan-400">NC-MLT-4487-VOID</span> | CLEARANCE: <span className="text-red-400">ALPHA-7</span>
                     </div>
@@ -130,9 +130,9 @@ export const CyberpunkCorpoProfile = () => {
                     </h3>
                     
                     <p className="text-gray-300 font-mono text-sm leading-relaxed mb-4">
-                      <span className="text-cyan-400 font-bold">Daniel "Void" Johnson</span> - Elite netrunner operative 
+                      <span className="text-cyan-400 font-bold">Daniel &quot;Void&quot; Johnson</span> - Elite netrunner operative 
                       specializing in <span className="text-purple-400">corporate neural interface architecture</span>. 
-                      Five years deep in Night City's financial sector, running ice-cold infiltration protocols 
+                      Five years deep in Night City&apos;s financial sector, running ice-cold infiltration protocols 
                       and behavioral modification systems.
                     </p>
                     

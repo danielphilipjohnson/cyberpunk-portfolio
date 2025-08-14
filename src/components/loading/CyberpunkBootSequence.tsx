@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 
 interface BootSequenceProps {
   onBootComplete: () => void;
@@ -14,7 +14,7 @@ export default function CyberpunkBootSequence({ onBootComplete }: BootSequencePr
   const [isComplete, setIsComplete] = useState(false);
 
   // Boot sequence steps with realistic netrunner startup messages
-  const bootSteps = [
+  const bootSteps = useMemo(() => [
     {
       lines: [
         "INITIALIZING NEURAL INTERFACE...",
@@ -72,7 +72,7 @@ export default function CyberpunkBootSequence({ onBootComplete }: BootSequencePr
       delay: 600,
       color: "text-cyan-400"
     }
-  ];
+  ], []);
 
   // Cursor blinking effect
   useEffect(() => {
@@ -143,7 +143,7 @@ export default function CyberpunkBootSequence({ onBootComplete }: BootSequencePr
     }, Math.random() * 30 + 20); // Variable typing speed for realism
 
     return () => clearInterval(typingInterval);
-  }, [currentStep, currentLine, onBootComplete]);
+  }, [currentStep, currentLine, onBootComplete, bootSteps]);
 
   // Get current step color
   const getCurrentColor = () => {

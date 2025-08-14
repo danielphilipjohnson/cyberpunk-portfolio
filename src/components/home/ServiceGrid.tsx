@@ -102,7 +102,7 @@ export default function EnhancedCyberpunkServiceGrid() {
 						>
 							<CyberpunkBorderCard
 								variant={i % 2 === 0 ? "bottom-right-cut" : "top-left-cut"}
-								colorScheme={color}
+								colorScheme={color as "cyan" | "blue" | "pink" | "purple" | "green" | "lime"}
 								borderWidth="medium"
 								glowEffect={hoveredService === i}
 								withAccent

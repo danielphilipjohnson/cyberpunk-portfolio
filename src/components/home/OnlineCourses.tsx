@@ -195,8 +195,8 @@ export default function CyberpunkOnlineCourses() {
 			purple: type === 'text' ? 'text-purple-500' : type === 'border' ? 'border-purple-500' : 'bg-purple-500',
 			green: type === 'text' ? 'text-green-400' : type === 'border' ? 'border-green-400' : 'bg-green-400',
 			lime: type === 'text' ? 'text-lime-400' : type === 'border' ? 'border-lime-400' : 'bg-lime-400',
-		};
-		return colorMap[color] || colorMap.cyan;
+		} as const;
+		return colorMap[color as keyof typeof colorMap] || colorMap.cyan;
 	};
 
 	return (
@@ -225,12 +225,12 @@ export default function CyberpunkOnlineCourses() {
 						</h2>
 
 						<div className="text-xs text-gray-400 font-mono bg-gray-800 px-2 py-1 border border-gray-700">
-							<span className="text-cyan-400">IMPLANT_CATALOG:</span> {courses.length}
+							<span className="text-cyan-400">{'// IMPLANT_CATALOG:'}</span> {courses.length}
 						</div>
 					</div>
 
 					<p className="text-gray-400 font-mono mt-2 text-sm">
-            // Classified corpo neural enhancement catalog - black market augmentations and corporate training modules
+            			Classified corpo neural enhancement catalog - black market augmentations and corporate training modules
 					</p>
 				</div>
 
@@ -265,10 +265,10 @@ export default function CyberpunkOnlineCourses() {
 							onMouseLeave={() => setHoveredCourse(null)}
 						>
 							<CyberpunkBorderCard
-								variant={course.id.endsWith('1') || course.id.endsWith('5') ? 'hex-corners' :
-									course.id.endsWith('2') || course.id.endsWith('6') ? 'top-left-cut' :
-										course.id.endsWith('3') || course.id.endsWith('7') ? 'bottom-right-cut' : 'tech-frame'}
-								colorScheme={course.color as any}
+								variant={course.id.endsWith('1') || course.id.endsWith('5') ? 'top-left-cut' :
+									course.id.endsWith('2') || course.id.endsWith('6') ? 'bottom-right-cut' :
+										course.id.endsWith('3') || course.id.endsWith('7') ? 'straight' : undefined}
+								colorScheme={course.color as "blue" | "cyan" | "pink" | "purple" | "green" | "lime"}
 								borderWidth="thin"
 								glowEffect={hoveredCourse === course.id}
 								className="h-full p-4"

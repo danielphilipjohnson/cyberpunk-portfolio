@@ -118,7 +118,7 @@ export const CyberpunkTheFuture = () => {
 						<div className="h-px bg-green-400 flex-grow opacity-30"></div>
 					</div>
 					<div className="text-gray-400 font-mono text-sm mt-1">
-            // forward_projections // collaboration_vectors // community_upgrades
+            {/* forward_projections // collaboration_vectors // community_upgrades */}
 					</div>
 				</div>
 

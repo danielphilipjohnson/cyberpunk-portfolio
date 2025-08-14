@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 export const CyberpunkValuesMission = () => {
 	const [activeGlow, setActiveGlow] = useState(false);
 	const [highlightLine, setHighlightLine] = useState(0);
-	const [activeScanLine, setActiveScanLine] = useState(null);
+	const [activeScanLine, setActiveScanLine] = useState<string | null>(null);
 	const [neuralState, setNeuralState] = useState('INITIALIZING');
 	const [glitchEffect, setGlitchEffect] = useState(false);
 
@@ -145,7 +145,7 @@ export const CyberpunkValuesMission = () => {
 					</div>
 					<div className="flex items-center justify-between mt-3">
 						<div className="text-gray-400 font-mono text-sm">
-							// neural_protocols // void_directives // quantum_ethics // v2.1.7
+							{'// neural_protocols // void_directives // quantum_ethics // v2.1.7'}
 						</div>
 						<div className="flex items-center space-x-4 text-xs font-mono">
 							<div className="text-gray-400">NEURAL_STATE: <span className={`font-bold ${

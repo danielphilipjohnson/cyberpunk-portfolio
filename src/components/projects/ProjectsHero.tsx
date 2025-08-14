@@ -8,7 +8,7 @@ export default function ProjectsHero() {
   const [projectCount, setProjectCount] = useState(0);
   const [activeProjects, setActiveProjects] = useState(0);
   const [completedProjects, setCompletedProjects] = useState(0);
-  const [neuralActivity, setNeuralActivity] = useState([]);
+  const [neuralActivity, setNeuralActivity] = useState<number[]>([]);
   const [uptime, setUptime] = useState(99.7);
 
   // System initialization sequence
@@ -192,13 +192,13 @@ export default function ProjectsHero() {
               <div className="space-y-4">
                 <p className="text-gray-300 font-mono text-lg leading-relaxed">
                   Access the neural project database containing cutting-edge digital architectures, 
-                  cybernetic enhancements, and quantum-secured applications developed in Night City's 
+                  cybernetic enhancements, and quantum-secured applications developed in Night City&apos;s 
                   underground tech scene.
                 </p>
                 
                 <div className="bg-gray-800 border-l-4 border-cyan-400 p-4">
                   <div className="font-mono text-sm text-gray-300">
-                    <div className="text-cyan-400 font-bold mb-2">// PROJECT_CATEGORIES_AVAILABLE</div>
+                    <div className="text-cyan-400 font-bold mb-2">{/* PROJECT_CATEGORIES_AVAILABLE */}</div>
                     <div className="space-y-1 text-xs grid grid-cols-2 gap-x-8">
                       <div>• WEB_APPLICATIONS &nbsp;&nbsp;&nbsp;&nbsp; [SECURE]</div>
                       <div>• MOBILE_INTERFACES &nbsp;&nbsp;&nbsp; [ENCRYPTED]</div>

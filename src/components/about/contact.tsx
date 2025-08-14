@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 
 export const CyberpunkContact = () => {
   const [activeSection, setActiveSection] = useState('main');
-  const [hoverTopic, setHoverTopic] = useState(null);
+  const [hoverTopic, setHoverTopic] = useState<string | null>(null);
   const [glitchEffect, setGlitchEffect] = useState(false);
-  const [activeScanLine, setActiveScanLine] = useState(null);
+  const [activeScanLine, setActiveScanLine] = useState<string | null>(null);
   const [commLinkStatus, setCommLinkStatus] = useState('STABLE');
   const [encryptionLevel, setEncryptionLevel] = useState(0);
   const [dataIntegrity, setDataIntegrity] = useState(100);
-  const [pulseText, setPulseText] = useState(null);
+  const [pulseText, setPulseText] = useState<number | null>(null);
   
   // Advanced neural scanning system
   useEffect(() => {
@@ -54,7 +54,10 @@ export const CyberpunkContact = () => {
   // Highlight different content sections periodically
   useEffect(() => {
     const pulseInterval = setInterval(() => {
-      setPulseText(prev => (prev === null ? 0 : (prev + 1) % 3));
+      setPulseText((prev: number | null): number => {
+        if (prev === null) return 0;
+        return (prev + 1) % 3;
+      });
     }, 5000);
 
     return () => clearInterval(pulseInterval);
@@ -149,7 +152,7 @@ export const CyberpunkContact = () => {
   ];
   
   // Get color class based on color name
-  const getColorClass = (color, type) => {
+  const getColorClass = (color: string, type: 'text' | 'border' | 'bg') => {
     const colorMap = {
       blue: type === 'text' ? 'text-blue-400' : type === 'border' ? 'border-blue-400' : 'bg-blue-400',
       cyan: type === 'text' ? 'text-cyan-400' : type === 'border' ? 'border-cyan-400' : 'bg-cyan-400',
@@ -157,8 +160,8 @@ export const CyberpunkContact = () => {
       purple: type === 'text' ? 'text-purple-500' : type === 'border' ? 'border-purple-500' : 'bg-purple-500',
       green: type === 'text' ? 'text-green-400' : type === 'border' ? 'border-green-400' : 'bg-green-400',
       yellow: type === 'text' ? 'text-yellow-400' : type === 'border' ? 'border-yellow-400' : 'bg-yellow-400'
-    };
-    return colorMap[color] || colorMap.cyan;
+    } as const;
+    return colorMap[color as keyof typeof colorMap] || colorMap.cyan;
   };
 
   return (
@@ -221,7 +224,7 @@ export const CyberpunkContact = () => {
           </div>
           <div className="flex items-center justify-between mt-3">
             <div className="text-gray-400 font-mono text-sm">
-              // secure_channel_request // communication_protocol // v1.7.2
+              {/* secure_channel_request // communication_protocol // v1.7.2 */}
             </div>
             <div className="flex items-center space-x-4 text-xs font-mono">
               <div className="text-gray-400">COMM_LINK: <span className={`font-bold ${

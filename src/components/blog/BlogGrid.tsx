@@ -121,7 +121,7 @@ export default function BlogGrid({ posts, showFeatured = true }: BlogGridProps) 
                 
                 <p className="text-gray-400 font-mono text-sm leading-relaxed">
                   No data transmissions found in the neural buffer. 
-                  The netrunner might be jack'd out or experiencing signal interference.
+                  The netrunner might be jack&apos;d out or experiencing signal interference.
                 </p>
               </div>
             </div>

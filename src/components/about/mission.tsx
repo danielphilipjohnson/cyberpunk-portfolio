@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 export const CyberpunkMissionStatement = () => {
-	const [activeScanLine, setActiveScanLine] = useState(null);
-	const [hoveredWord, setHoveredWord] = useState(null);
+	const [activeScanLine, setActiveScanLine] = useState<string | null>(null);
+	const [hoveredWord, setHoveredWord] = useState<number | null>(null);
 	const [glitchActive, setGlitchActive] = useState(false);
 	const [securityLevel, setSecurityLevel] = useState(0);
 	const [dataStreamActive, setDataStreamActive] = useState(false);
@@ -99,8 +99,8 @@ export const CyberpunkMissionStatement = () => {
 	const highlightWords = ["Full-Stack", "nuxt", "vue.js", "django-rest", "tailwind", "WordPress"];
 
 	// Function to highlight specific words
-	const highlightText = (text) => {
-		let result = [];
+	const highlightText = (text: string) => {
+		const result = [];
 		let lastIndex = 0;
 
 		// Find all occurrences of highlight words
@@ -286,7 +286,7 @@ export const CyberpunkMissionStatement = () => {
 					<div className="text-gray-400 font-mono text-sm bg-gray-800 bg-opacity-50 p-4 border border-gray-700">
 						<div className="flex items-center justify-between">
 							<div>
-								// accessing_mission_parameters // corporate_directive_analysis // neural_pathway_optimization
+								{'// accessing_mission_parameters // corporate_directive_analysis // neural_pathway_optimization'}
 							</div>
 							<div className="flex items-center space-x-2">
 								<span className="text-cyan-400">PROGRESS:</span>
@@ -312,8 +312,8 @@ export const CyberpunkMissionStatement = () => {
 						<div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-gray-600 opacity-60"></div>
 
 						<h3 className="text-xl font-mono text-pink-500 italic relative mb-2">
-							"Mission driven nuxt developer with a passion to create apps that allows
-							you to express your ideas."
+							&quot;Mission driven nuxt developer with a passion to create apps that allows
+							you to express your ideas.&quot;
 						</h3>
 
 						{/* Terminal cursor effect */}

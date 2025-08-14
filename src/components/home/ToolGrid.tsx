@@ -134,9 +134,9 @@ export default function CyberpunkToolsGrid() {
 			pink: type === 'text' ? 'text-pink-500' : type === 'border' ? 'border-pink-500' : 'bg-pink-500',
 			purple: type === 'text' ? 'text-purple-500' : type === 'border' ? 'border-purple-500' : 'bg-purple-500',
 			lime: type === 'text' ? 'text-lime-400' : type === 'border' ? 'border-lime-400' : 'bg-lime-400',
-		};
+		} as const;
 
-		return colorMap[color] || colorMap.blue; // Default to blue if color not found
+		return colorMap[color as keyof typeof colorMap] || colorMap.blue; // Default to blue if color not found
 	};
 
 	return (
@@ -164,7 +164,7 @@ export default function CyberpunkToolsGrid() {
 					</div>
 
 					<p className="text-gray-400 font-mono mt-2 text-sm">
-						// neural_enhancement_modules_for_net_operations // v3.7.1
+						{'//neural_enhancement_modules_for_net_operations'} v3.7.1
 					</p>
 				</div>
 
@@ -214,8 +214,8 @@ export default function CyberpunkToolsGrid() {
 								onMouseLeave={() => setHoveredTool(null)}
 							>
 								<CyberpunkBorderCard
-									variant={index % 3 === 0 ? "hex-corners" : index % 3 === 1 ? "tech-frame" : "top-left-cut"}
-									colorScheme={tool.color as any}
+									variant={index % 3 === 0 ? "top-left-cut" : index % 3 === 1 ? "bottom-right-cut" : "straight"}
+									colorScheme={tool.color as "blue" | "green" | "cyan" | "pink" | "purple" | "lime"}
 									glowEffect={hoveredTool === index}
 									borderWidth="thin"
 									className="h-full"

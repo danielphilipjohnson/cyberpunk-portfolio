@@ -155,7 +155,7 @@ export default function ContactPage() {
               <p className="text-gray-300 font-mono text-lg mb-6">
                 Ready to collaborate on your next cybernetic enhancement project? 
                 Whether you need neural interface development, quantum-secured applications, 
-                or advanced AI integration - let's jack into the net together.
+                or advanced AI integration - let&apos;s jack into the net together.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">

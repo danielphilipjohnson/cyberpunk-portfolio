@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Camera, Github, Linkedin, Twitter, Mail, MapPin, BookOpen, Code, Cpu, Terminal, Coffee } from 'lucide-react';
+import { Github, Linkedin, Twitter, Mail, MapPin, BookOpen, Code, Cpu, Terminal } from 'lucide-react';
+import Image from 'next/image';
 
 export const CyberpunkAbout = () => {
-	const [hoverStat, setHoverStat] = useState(null);
+	const [hoverStat, setHoverStat] = useState<number | null>(null);
 
 	// Personal stats with visual indicators
 	const personalStats = [
@@ -97,9 +98,11 @@ export const CyberpunkAbout = () => {
 									className="w-32 h-32 border-2 border-cyan-400 relative flex items-center justify-center bg-gray-900"
 									style={{ clipPath: "polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%)" }}
 								>
-									<img
+									<Image
 										src="/_nuxt/image/4a30fe.webp"
 										alt="Daniel Philip Johnson"
+										width={112}
+										height={112}
 										className="w-28 h-28 object-cover"
 									/>
 
@@ -121,7 +124,7 @@ export const CyberpunkAbout = () => {
 							<div className="flex-1">
 								<div className="flex items-center mb-3">
 									<h1 className="text-3xl md:text-4xl font-bold font-mono text-white mr-4">
-										DANIEL "VOID" JOHNSON
+										DANIEL &quot;VOID&quot; JOHNSON
 									</h1>
 									<div className="hidden md:flex items-center space-x-2">
 										<div className="text-xs px-3 py-1 text-red-400 border border-red-400 bg-red-900 bg-opacity-30 animate-pulse">
@@ -283,8 +286,8 @@ export const CyberpunkAbout = () => {
 								Bell iMedia x2414 with an enormous amount of Ram totalling 2GB.
 								It did not take too long for me to consider my options and use
 								Ubuntu 9.04 (Jaunty Jackalope). From, there I have used Linux
-								ever since and yes, I use KDE for my GUI "you know what they say
-								old habits die hard."
+								ever since and yes, I use KDE for my GUI &quot;you know what they say
+								old habits die hard.&quot;
 							</p>
 
 							{/* Tech corner accents */}

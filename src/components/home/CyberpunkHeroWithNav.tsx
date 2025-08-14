@@ -1,6 +1,8 @@
 "use client"
 
 import React from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import CyberpunkSectionDecor from '../visuals/CyberpunkSectionDecor';
 import ScanLines from '../visuals/ScanLines';
 import GlitchEffect from '../visuals/GlitchEffect';
@@ -8,6 +10,8 @@ import FloatingParticles from '../visuals/FloatingParticles';
 import TerminalIntro from '../visuals/TerminalIntro';
 
 export const CyberpunkHeroWithNav = () => {
+	const router = useRouter();
+
 	return (
 		<section
 			className="relative min-h-screen text-white font-mono overflow-hidden"
@@ -51,18 +55,18 @@ export const CyberpunkHeroWithNav = () => {
 
 						{/* Navigation links */}
 						<nav className="hidden md:flex items-center space-x-8">
-							<a href="/about" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
+							<Link href="/about" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
 								About
-							</a>
-							<a href="/projects" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
+							</Link>
+							<Link href="/projects" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
 								Projects
-							</a>
-							<a href="/blog" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
+							</Link>
+							<Link href="/blog" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
 								Blog
-							</a>
-							<a href="/contact" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
+							</Link>
+							<Link href="/contact" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
 								Contact
-							</a>
+							</Link>
 						</nav>
 
 						{/* CTA Button */}
@@ -163,17 +167,18 @@ export const CyberpunkHeroWithNav = () => {
 					{/* Simplified mission statement */}
 					<div className="max-w-3xl mx-auto mb-10">
 						<p className="text-white/90 text-lg font-mono leading-relaxed mb-4">
-							Specialized in <span className="text-teal-400 font-bold">neural interface architecture</span> - crafting seamless digital experiences that jack straight into the user's cortex. Zero-lag, zero-glitch, maximum bandwidth.
+							Specialized in <span className="text-teal-400 font-bold">neural interface architecture</span> - crafting seamless digital experiences that jack straight into the user&apos;s cortex. Zero-lag, zero-glitch, maximum bandwidth.
 						</p>
 						<p className="text-white/70 text-base font-mono leading-relaxed">
-							<span className="text-pink-500 font-bold">5+ years</span> deep in the corporate data streams of Night City's financial district. When the corpo needs clean code and the street needs results - I deliver both.
+							<span className="text-pink-500 font-bold">5+ years</span> deep in the corporate data streams of Night City&apos;s financial district. When the corpo needs clean code and the street needs results - I deliver both.
 						</p>
 					</div>
 
 					{/* CTA Buttons */}
 					<div className="flex flex-wrap justify-center gap-4">
 						<button
-							className="px-8 py-3 bg-teal-400 hover:bg-teal-300 text-gray-900 font-bold text-sm uppercase tracking-widest transition-all duration-300 hover:shadow-lg hover:shadow-teal-400/25"
+							onClick={() => router.push('/projects')}
+							className="px-8 py-3 bg-teal-400 hover:bg-teal-300 text-gray-900 font-bold text-sm uppercase tracking-widest transition-all duration-300 hover:shadow-lg hover:shadow-teal-400/25 cursor-pointer"
 							style={{
 								clipPath: 'polygon(0 0, 100% 0, 95% 100%, 0 100%)'
 							}}
@@ -181,7 +186,8 @@ export const CyberpunkHeroWithNav = () => {
 							[JACK_IN]
 						</button>
 						<button
-							className="px-8 py-3 bg-transparent border-2 border-pink-500 text-pink-500 hover:bg-pink-500 hover:text-gray-900 font-bold text-sm uppercase tracking-widest transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/25"
+							onClick={() => router.push('/contact')}
+							className="px-8 py-3 bg-transparent border-2 border-pink-500 text-pink-500 hover:bg-pink-500 hover:text-gray-900 font-bold text-sm uppercase tracking-widest transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/25 cursor-pointer"
 							style={{
 								clipPath: 'polygon(0 0, 100% 0, 95% 100%, 0 100%)'
 							}}

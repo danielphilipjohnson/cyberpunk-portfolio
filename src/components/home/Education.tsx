@@ -82,7 +82,7 @@ export default function CyberpunkEducation() {
 					<div
 						className="font-mono text-sm text-gray-400 border-l-4 border-purple-500 pl-4"
 					>
-            // Corpo-sponsored neural behavioral engineering degrees - classified psychological warfare training
+						{/* Corpo-sponsored neural behavioral engineering degrees - classified psychological warfare training */}
 					</div>
 				</div>
 
@@ -102,8 +102,8 @@ export default function CyberpunkEducation() {
 								{/* Content */}
 								<div className="ml-12 md:ml-20">
 									<CyberpunkBorderCard
-										variant="tech-frame"
-										colorScheme={edu.colorScheme as any}
+										variant="top-left-cut"
+										colorScheme={edu.colorScheme as 'purple' | 'blue'}
 										borderWidth="medium"
 										withAccent
 										glowEffect={expandedDegree === edu.id}

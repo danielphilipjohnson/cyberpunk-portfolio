@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import CyberpunkCorpoProfile from '@/components/about/corpo-profile';
 import CyberpunkDevJourney from '@/components/about/journey';
 import CyberpunkMissionStatement from '@/components/about/mission';
@@ -52,8 +53,8 @@ export default function AboutPage() {
       pink: isActive ? 'text-pink-500 border-pink-500 bg-pink-900' : 'text-gray-400 border-gray-700 hover:text-pink-500 hover:border-pink-500',
       purple: isActive ? 'text-purple-500 border-purple-500 bg-purple-900' : 'text-gray-400 border-gray-700 hover:text-purple-500 hover:border-purple-500',
       green: isActive ? 'text-green-400 border-green-400 bg-green-900' : 'text-gray-400 border-gray-700 hover:text-green-400 hover:border-green-400'
-    };
-    return colorMap[color] || colorMap.cyan;
+    } as const;
+    return colorMap[color as keyof typeof colorMap] || colorMap.cyan;
   };
 
   // Scroll to section
@@ -101,13 +102,13 @@ export default function AboutPage() {
               >
                 [ACCEPT_RISK]
               </button>
-              <a 
+              <Link 
                 href="/"
                 className="flex-1 bg-gray-700 text-red-400 font-mono font-bold py-2 px-4 hover:bg-gray-600 transition-colors text-center"
                 style={{ clipPath: "polygon(0 0, 100% 0, 95% 100%, 5% 100%)" }}
               >
                 [JACK_OUT]
-              </a>
+              </Link>
             </div>
             
             {/* Auto-dismiss countdown */}
@@ -137,28 +138,28 @@ export default function AboutPage() {
                 </svg>
               </div>
               <div>
-                <div className="text-teal-400 font-bold text-lg tracking-wider lowercase font-mono">void.dev</div>
+                <div className="text-teal-v0i.dev400 font-bold text-lg tracking-wider lowercase font-mono">void.dev</div>
                 <div className="text-gray-400 text-xs font-mono">[NETRUNNER.PORTFOLIO]</div>
               </div>
             </div>
 
             {/* Navigation links */}
             <nav className="hidden md:flex items-center space-x-8">
-              <a href="/" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
+              <Link href="/" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
                 Home
-              </a>
-              <a href="/about" className="text-teal-400 border-b border-teal-400 text-sm font-mono uppercase tracking-wider pb-1">
+              </Link>
+              <Link href="/about" className="text-teal-400 border-b border-teal-400 text-sm font-mono uppercase tracking-wider pb-1">
                 About
-              </a>
-              <a href="/projects" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
+              </Link>
+              <Link href="/projects" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
                 Projects
-              </a>
-              <a href="/blog" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
+              </Link>
+              <Link href="/blog" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
                 Blog
-              </a>
-              <a href="/contact" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
+              </Link>
+              <Link href="/contact" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
                 Contact
-              </a>
+              </Link>
             </nav>
 
             {/* CTA Button */}
@@ -175,7 +176,11 @@ export default function AboutPage() {
             </a>
 
             {/* Mobile menu button */}
-            <button className="md:hidden text-teal-400 hover:text-teal-300 transition-colors">
+            <button 
+              className="md:hidden text-teal-400 hover:text-teal-300 transition-colors"
+              aria-label="Toggle mobile menu"
+              title="Toggle mobile menu"
+            >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
@@ -190,7 +195,7 @@ export default function AboutPage() {
           <div className="flex items-center justify-between py-4">
             {/* Page title */}
             <div className="flex items-center">
-              <a href="/" className="flex items-center mr-6 group">
+              <Link href="/" className="flex items-center mr-6 group">
                 <div className="w-8 h-8 bg-cyan-900 bg-opacity-30 border border-cyan-400 flex items-center justify-center mr-2 group-hover:bg-cyan-400 group-hover:text-gray-900 transition-colors"
                      style={{ clipPath: "polygon(0 0, 100% 0, 90% 100%, 0 100%)" }}>
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -198,7 +203,7 @@ export default function AboutPage() {
                   </svg>
                 </div>
                 <span className="text-cyan-400 font-mono text-xs group-hover:text-cyan-300">[HOME]</span>
-              </a>
+              </Link>
               <div 
                 className="bg-cyan-900 bg-opacity-30 px-3 py-1 border-l-2 border-cyan-400 flex items-center mr-4"
                 style={{ clipPath: "polygon(0 0, 100% 0, 95% 100%, 0 100%)" }}

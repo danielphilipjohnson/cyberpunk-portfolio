@@ -104,7 +104,7 @@ export default function CyberpunkIntroduction() {
 								{/* Display full content after typing is complete */}
 								{!isTyping && (
 									<div className="mt-6 pb-2">
-										<div className="text-pink-500 font-mono text-sm">// MISSION STATEMENT:</div>
+										<div className="text-pink-500 font-mono text-sm">{'// MISSION STATEMENT:'}</div>
 										<div className="text-cyan-400 font-mono text-lg mt-2">
 											NETRUNNER.exe executing senior_clearance.protocol
 										</div>
@@ -158,11 +158,11 @@ export default function CyberpunkIntroduction() {
 							{/* Bio info with cyberpunk styling */}
 							<div className="prose prose-sm prose-cyan max-w-none font-mono text-gray-300">
 									<p>
-										Operating as a <span className="text-cyan-400 font-bold">NETRUNNER.ENGINEER</span> with <span className="text-cyan-400 font-bold">2+ cycles</span> in the digital matrix, I'm executing a protocol to achieve <span className="text-cyan-400 font-bold">SENIOR_OPERATIVE</span> clearance. My background in startup data-fortresses has honed my ability to architect rapid deployment systems that jack client visions directly into the Net.
+										Operating as a <span className="text-cyan-400 font-bold">NETRUNNER.ENGINEER</span> with <span className="text-cyan-400 font-bold">2+ cycles</span> in the digital matrix, I&apos;m executing a protocol to achieve <span className="text-cyan-400 font-bold">SENIOR_OPERATIVE</span> clearance. My background in startup data-fortresses has honed my ability to architect rapid deployment systems that jack client visions directly into the Net.
 									</p>
 
 									<p className="mt-4">
-										Currently running point on <span className="text-pink-500 font-bold">PROJECT_GENESIS</span> at <span className="text-pink-500 font-bold">Nexus_Dynamics</span>, deploying neural architecture via Nuxt.3, Node.js, BigCommerce APIs, and ELK surveillance stack for seamless cloud migration to Google's infrastructure backbone.
+										Currently running point on <span className="text-pink-500 font-bold">PROJECT_GENESIS</span> at <span className="text-pink-500 font-bold">Nexus_Dynamics</span>, deploying neural architecture via Nuxt.3, Node.js, BigCommerce APIs, and ELK surveillance stack for seamless cloud migration to Google&apos;s infrastructure backbone.
 									</p>
 
 									<p className="mt-4">

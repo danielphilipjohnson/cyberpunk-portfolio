@@ -13,7 +13,7 @@ export default function ContactForm() {
   const [scanLine, setScanLine] = useState(0);
   const [encryptionLevel, setEncryptionLevel] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   // Neural scanning animation
   useEffect(() => {
@@ -50,7 +50,7 @@ export default function ContactForm() {
   };
 
   const validateForm = () => {
-    const newErrors: any = {};
+    const newErrors: Record<string, string> = {};
     
     if (!formData.name.trim()) {
       newErrors.name = 'NEURAL_ID_REQUIRED';

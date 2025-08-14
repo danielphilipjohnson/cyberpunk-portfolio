@@ -1,16 +1,16 @@
 "use client"
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 
 export default function TerminalIntro() {
-  const introLines = [
+  const introLines = useMemo(() => [
     "<span class='text-cyan-400'>SYSTEM</span>: Initializing identity protocol...",
     "<span class='text-cyan-400'>SYSTEM</span>: Scanning neural patterns...",
     "<span class='text-cyan-400'>SYSTEM</span>: Identity confirmed ✓",
     "<span class='text-pink-500'>CODENAME</span>: Daniel Philip Johnson",
     "<span class='text-green-400'>STATUS</span>: Full-Stack Engineer [ACTIVE]",
     "<span class='text-lime-400'>LOCATION</span>: Cornwall [REMOTE UPLINK]",
-  ];
+  ], []);
 
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [typedText, setTypedText] = useState("");
@@ -38,7 +38,7 @@ export default function TerminalIntro() {
     } else {
       setIsTyping(false);
     }
-  }, [typedText, currentLineIndex, isTyping]);
+  }, [typedText, currentLineIndex, isTyping, introLines]);
 
   // Blinking cursor
   useEffect(() => {
@@ -87,7 +87,7 @@ export default function TerminalIntro() {
 
         {!isTyping && (
           <div className="mt-6 pb-2">
-            <div className="text-pink-500 font-mono text-sm">// MISSION STATEMENT:</div>
+            <div className="text-pink-500 font-mono text-sm">{'// MISSION STATEMENT:'}</div>
             <div className="text-cyan-400 font-mono text-lg mt-2">
               Full-Stack Engineer on mission to senior level
             </div>

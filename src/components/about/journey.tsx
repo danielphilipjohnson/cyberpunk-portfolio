@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 export const CyberpunkDevJourney = () => {
-	const [activeScanLine, setActiveScanLine] = useState(null);
-	const [activeLink, setActiveLink] = useState(null);
+	const [activeScanLine, setActiveScanLine] = useState<string | null>(null);
+	const [activeLink, setActiveLink] = useState<string | null>(null);
 	const [glitchActive, setGlitchActive] = useState(false);
 	const [neuralActivity, setNeuralActivity] = useState(0);
 
@@ -38,13 +38,13 @@ export const CyberpunkDevJourney = () => {
 	}, []);
 
 	// Enhanced neural tech links with ICE protocols
-	const renderNeuralLink = (url, text, id, threatLevel = 'low') => {
+	const renderNeuralLink = (url: string, text: string, id: string, threatLevel: 'low' | 'medium' | 'high' | 'critical' = 'low') => {
 		const threatColors = {
 			low: 'text-cyan-400 border-cyan-400',
 			medium: 'text-yellow-400 border-yellow-400', 
 			high: 'text-red-400 border-red-400',
 			critical: 'text-pink-500 border-pink-500'
-		};
+		} as const;
 		
 		return (
 			<span className="relative inline-block group">
@@ -52,7 +52,7 @@ export const CyberpunkDevJourney = () => {
 					href={url}
 					target="_blank"
 					rel="noopener noreferrer"
-					className={`relative ${threatColors[threatLevel]} hover:bg-gray-800 px-2 py-1 transition-all duration-300 font-mono text-sm border-b ${activeLink === id ? 'bg-gray-800 shadow-lg' : 'border-transparent hover:border-current'}`}
+					className={`relative ${threatColors[threatLevel as keyof typeof threatColors]} hover:bg-gray-800 px-2 py-1 transition-all duration-300 font-mono text-sm border-b ${activeLink === id ? 'bg-gray-800 shadow-lg' : 'border-transparent hover:border-current'}`}
 					onMouseEnter={() => setActiveLink(id)}
 					onMouseLeave={() => setActiveLink(null)}
 					style={{
@@ -78,7 +78,7 @@ export const CyberpunkDevJourney = () => {
 	};
 
 	// Neural pathway mapping for tech evolution
-	const neuralTechNodes = {
+	const neuralTechNodes: Record<string, { url: string; threat: 'low' | 'medium' | 'high' | 'critical' }> = {
 		// Early memory engrams
 		"CBM-64 Neural Interface": { url: "https://en.wikipedia.org/wiki/Commodore_64", threat: "low" },
 		"Blue Meanies Combat Protocol": { url: "https://www.retrogamer.net/retro_games80/blue-meanies-from-outer-space/", threat: "medium" },
@@ -209,7 +209,7 @@ export const CyberpunkDevJourney = () => {
 									</div>
 								</h2>
 								<div className="text-gray-400 font-mono text-sm">
-									Subject: DANIEL_"VOID"_JOHNSON // Clearance: ALPHA // Neural_ID: NC-4487
+									Subject: DANIEL_&quot;VOID&quot;_JOHNSON // Clearance: ALPHA // Neural_ID: NC-4487
 								</div>
 							</div>
 						</div>
@@ -235,7 +235,7 @@ export const CyberpunkDevJourney = () => {
 					<div className="text-gray-400 font-mono text-sm bg-gray-800 bg-opacity-50 p-4 border border-gray-700">
 						<div className="flex items-center justify-between">
 							<div>
-								// accessing_neural_engrams // chronological_data_reconstruction // memory_pathway_analysis
+								{'// accessing_neural_engrams // chronological_data_reconstruction // memory_pathway_analysis'}
 							</div>
 							<div className="flex items-center space-x-2">
 								<span className="text-cyan-400">SCAN_PROGRESS:</span>
@@ -361,12 +361,12 @@ export const CyberpunkDevJourney = () => {
 
 								<div className="mt-4 p-3 bg-red-900 bg-opacity-20 border border-red-400">
 									<div className="text-red-400 font-bold text-xs mb-1">[PARENTAL_FEEDBACK_LOG]</div>
-									<div className="text-gray-300 italic">"All that neural processing time for a simple space invaders clone..." 
+									<div className="text-gray-300 italic">&quot;All that neural processing time for a simple space invaders clone...&quot; 
 									- Parent_Unit complained about resource allocation inefficiency.</div>
 								</div>
 
 								<div className="mt-4 text-xs text-gray-500">
-									// first_dopamine_release // pattern_recognition_engaged // addiction_pathway_initialized
+									{'// first_dopamine_release // pattern_recognition_engaged // addiction_pathway_initialized'}
 								</div>
 							</div>
 
@@ -478,7 +478,7 @@ export const CyberpunkDevJourney = () => {
 								<div className="mt-4 text-center p-3 bg-cyan-900 bg-opacity-20 border border-cyan-400">
 									<div className="text-cyan-400 font-bold">NEURAL_PATHWAY_EVOLUTION: COMPLETE</div>
 									<div className="text-sm text-gray-400 mt-1">JavaScript + React.js = Primary_Wetware_Stack</div>
-									<div className="text-xs text-gray-500 mt-1">// full_stack_netrunner // web_development_addiction // endless_optimization</div>
+									<div className="text-xs text-gray-500 mt-1">{'// full_stack_netrunner // web_development_addiction // endless_optimization'}</div>
 								</div>
 							</div>
 

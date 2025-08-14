@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/home/Footer';
 import ProjectsHero from '@/components/projects/ProjectsHero';
@@ -145,13 +146,13 @@ export default function ProjectsPage() {
               </div>
 
               <div className="flex flex-wrap justify-center gap-4">
-                <a
+                <Link
                   href="/contact"
                   className="px-6 py-3 bg-cyan-400 bg-opacity-20 border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-gray-900 transition-all duration-300 font-mono font-bold"
                   style={{ clipPath: 'polygon(0 0, 100% 0, 95% 100%, 5% 100%)' }}
                 >
                   INITIATE_COLLABORATION
-                </a>
+                </Link>
                 <a
                   href="https://github.com/danielphilipjohnson"
                   target="_blank"
@@ -161,13 +162,13 @@ export default function ProjectsPage() {
                 >
                   ACCESS_SOURCE_CODE
                 </a>
-                <a
+                <Link
                   href="/blog"
                   className="px-6 py-3 bg-pink-400 bg-opacity-20 border border-pink-400 text-pink-400 hover:bg-pink-400 hover:text-gray-900 transition-all duration-300 font-mono font-bold"
                   style={{ clipPath: 'polygon(0 0, 100% 0, 95% 100%, 5% 100%)' }}
                 >
                   READ_NEURAL_LOGS
-                </a>
+                </Link>
               </div>
             </div>
           </div>

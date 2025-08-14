@@ -2,7 +2,7 @@
 
 import React from 'react';
 import BlogPostCard from './BlogPostCard';
-import { BlogPost, getPostsByCategory } from '@/data/blogPosts';
+import { BlogPost, getPostsByCategory, blogPosts } from '@/data/blogPosts';
 import CyberpunkSectionDecor from '../visuals/CyberpunkSectionDecor';
 
 interface RelatedPostsProps {
@@ -16,7 +16,7 @@ export default function RelatedPosts({ currentPost }: RelatedPostsProps) {
     .slice(0, 3); // Limit to 3 related posts
 
   // If we don't have enough posts from the same category, fill with recent posts
-  const allOtherPosts = require('@/data/blogPosts').blogPosts
+  const allOtherPosts = blogPosts
     .filter((post: BlogPost) => post.slug !== currentPost.slug);
   
   const relatedPosts = [...categoryPosts];
