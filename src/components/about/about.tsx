@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Github, Linkedin, Twitter, Mail, MapPin, BookOpen, Code, Cpu, Terminal } from 'lucide-react';
-import Image from 'next/image';
+
 
 export const CyberpunkAbout = () => {
 	const [hoverStat, setHoverStat] = useState<number | null>(null);
@@ -98,11 +98,9 @@ export const CyberpunkAbout = () => {
 									className="w-32 h-32 border-2 border-cyan-400 relative flex items-center justify-center bg-gray-900"
 									style={{ clipPath: "polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%)" }}
 								>
-									<Image
+									<img
 										src="/_nuxt/image/4a30fe.webp"
 										alt="Daniel Philip Johnson"
-										width={112}
-										height={112}
 										className="w-28 h-28 object-cover"
 									/>
 
