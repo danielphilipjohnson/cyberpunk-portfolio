@@ -2,9 +2,16 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useLoading } from '@/providers/LoadingProvider';
 
 export default function CyberpunkContact() {
 	const [hoverSocial, setHoverSocial] = useState<string | null>(null);
+	const { triggerReboot } = useLoading();
+
+	// Night City corporate contact channel
+	const contactChannel = "NEURAL_SYNC_CHANNEL_ALPHA";
+	const corporateAccess = "NETRUNNER_TIER_4_CLEARANCE";
+	const encryptionLevel = "MILITECH_QUANTUM_PROTOCOL";
 
 	// Social media data
 	const socialLinks = [
@@ -112,6 +119,17 @@ export default function CyberpunkContact() {
 				<div className="max-w-3xl mx-auto">
 					{/* Section Header */}
 					<div className="text-center mb-12">
+						{/* Corporate Identity Header */}
+						<div className="mb-8 p-4 bg-gray-800 border border-purple-900 relative" 
+							 style={{ clipPath: "polygon(0 0, 95% 0, 100% 10%, 100% 100%, 5% 100%, 0 90%)" }}>
+							<div className="text-purple-400 font-mono text-xs mb-2">MILITECH NEURAL INTERFACE v4.7.2</div>
+							<div className="text-pink-500 font-mono text-sm">Night City Corporate Plaza | Sector 7</div>
+							<div className="text-cyan-400 font-mono text-xs mt-1">Secure Channel: {contactChannel}</div>
+							<div className="absolute top-2 right-2 text-lime-400 font-mono text-xs" 
+								 onClick={triggerReboot} 
+								 className="cursor-pointer hover:text-lime-300 underline">[REBOOT]</div>
+						</div>
+
 						<div className="inline-block mb-4">
 							<div className="flex items-center">
 								<div
@@ -119,25 +137,28 @@ export default function CyberpunkContact() {
 									style={{ clipPath: "polygon(0 0, 100% 0, 95% 100%, 0 100%)" }}
 								>
 									<div className="w-2 h-2 bg-cyan-400 mr-2"></div>
-									<span className="text-cyan-400 font-mono text-xs">INITIATING_CONTACT_PROTOCOLS</span>
+									<span className="text-cyan-400 font-mono text-xs">NETRUNNER_ACCESS_GRANTED</span>
 								</div>
 								<div
 									className="bg-cyan-900 bg-opacity-20 px-3 py-1 border-r-2 border-cyan-400"
 									style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 5% 100%)" }}
 								>
-									<span className="text-cyan-400 font-mono text-xs">v.2.4.5</span>
+									<span className="text-cyan-400 font-mono text-xs">{encryptionLevel}</span>
 								</div>
 							</div>
 						</div>
 
 						<h2 className="text-3xl font-bold font-mono text-cyan-400 uppercase tracking-wide mb-2">
-							NEURAL LINK ESTABLISHED
+							CORPO CONNECTION ESTABLISHED
 						</h2>
 
-						<div className="w-24 h-1 bg-cyan-400 mx-auto mb-8 opacity-80"></div>
+						<div className="w-24 h-1 bg-cyan-400 mx-auto mb-4 opacity-80"></div>
 
-						<p className="text-xl text-gray-300 font-mono">
-							Secure channel ready for data transmission
+						<p className="text-gray-300 font-mono mb-4">
+							Welcome to the neural net, netrunner.
+						</p>
+						<p className="text-sm text-purple-400 font-mono">
+							Access Level: {corporateAccess} | Encryption: ACTIVE
 						</p>
 					</div>
 

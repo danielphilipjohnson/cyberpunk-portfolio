@@ -1,24 +1,98 @@
 import React, { useState, useEffect } from 'react';
 
 export const CyberpunkMissionStatement = () => {
-	const [scanLine, setScanLine] = useState(false);
+	const [activeScanLine, setActiveScanLine] = useState(null);
 	const [hoveredWord, setHoveredWord] = useState(null);
+	const [glitchActive, setGlitchActive] = useState(false);
+	const [securityLevel, setSecurityLevel] = useState(0);
+	const [dataStreamActive, setDataStreamActive] = useState(false);
+	const [systemStatus, setSystemStatus] = useState('OPERATIONAL');
+	const [threatLevel, setThreatLevel] = useState('MINIMAL');
 
-	// Toggle scan line effect periodically
+	// Advanced scanning system with multiple phases
 	useEffect(() => {
-		const interval = setInterval(() => {
-			setScanLine(prev => !prev);
-		}, 5000);
-		return () => clearInterval(interval);
+		const scanInterval = setInterval(() => {
+			setActiveScanLine(prev => {
+				if (prev === null) return 'header-scan';
+				if (prev === 'header-scan') return 'mission-scan';
+				if (prev === 'mission-scan') return 'profile-scan';
+				if (prev === 'profile-scan') return 'stack-scan';
+				return null;
+			});
+		}, 4000);
+
+		// Random glitch effects
+		const glitchInterval = setInterval(() => {
+			if (Math.random() > 0.75) {
+				setGlitchActive(true);
+				setTimeout(() => setGlitchActive(false), 400);
+			}
+		}, 12000);
+
+		// Security level simulation
+		const securityInterval = setInterval(() => {
+			setSecurityLevel(Math.floor(Math.random() * 100));
+			setThreatLevel(prev => {
+				const levels = ['MINIMAL', 'LOW', 'MEDIUM', 'HIGH', 'CRITICAL'];
+				return levels[Math.floor(Math.random() * levels.length)];
+			});
+		}, 3000);
+
+		// Data stream activation
+		const streamInterval = setInterval(() => {
+			setDataStreamActive(prev => !prev);
+		}, 8000);
+
+		return () => {
+			clearInterval(scanInterval);
+			clearInterval(glitchInterval);
+			clearInterval(securityInterval);
+			clearInterval(streamInterval);
+		};
 	}, []);
 
-	// Tech stack with visual representation
-	const techStack = [
-		{ name: "DJANGO-REST", color: "bg-green-400", width: "85%" },
-		{ name: "NUXT", color: "bg-cyan-400", width: "92%" },
-		{ name: "VUE", color: "bg-blue-400", width: "88%" },
-		{ name: "TAILWIND", color: "bg-pink-500", width: "95%" },
-		{ name: "WORDPRESS", color: "bg-purple-500", width: "75%" }
+	// Enhanced neural tech stack with threat assessment
+	const neuralTechStack = [
+		{ 
+			name: "DJANGO_REST.neural", 
+			color: "bg-green-400", 
+			width: "85%", 
+			threat: "LOW",
+			status: "OPERATIONAL",
+			ice: "MINIMAL" 
+		},
+		{ 
+			name: "NUXT_FRAMEWORK.js", 
+			color: "bg-cyan-400", 
+			width: "92%", 
+			threat: "SECURE",
+			status: "OPTIMAL",
+			ice: "HARDENED" 
+		},
+		{ 
+			name: "VUE_REACTIVE.core", 
+			color: "bg-blue-400", 
+			width: "88%", 
+			threat: "MINIMAL",
+			status: "ACTIVE",
+			ice: "PROTECTED" 
+		},
+		{ 
+			name: "TAILWIND_CSS.matrix", 
+			color: "bg-pink-500", 
+			width: "95%", 
+			threat: "ZERO",
+			status: "ENHANCED",
+			ice: "FORTIFIED" 
+		},
+		{ 
+			name: "WORDPRESS.legacy", 
+			color: "bg-purple-500", 
+			width: "75%", 
+			threat: "MEDIUM",
+			status: "MAINTAINED",
+			ice: "STANDARD" 
+		}
 	];
 
 	// Words to highlight in the mission paragraph
@@ -67,48 +141,164 @@ export const CyberpunkMissionStatement = () => {
 
 	return (
 		<section className="py-16 bg-gray-900 relative overflow-hidden">
-			{/* Tech background grid */}
-			<div className="absolute inset-0 opacity-5">
+			{/* Advanced neural network background matrix */}
+			<div className="absolute inset-0 opacity-10">
 				<div className="absolute inset-0" style={{
-					backgroundImage: "linear-gradient(to right, rgba(6, 182, 212, 0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(6, 182, 212, 0.1) 1px, transparent 1px)",
-					backgroundSize: "20px 20px"
+					backgroundImage: "linear-gradient(to right, rgba(6, 182, 212, 0.15) 1px, transparent 1px), linear-gradient(to bottom, rgba(6, 182, 212, 0.15) 1px, transparent 1px)",
+					backgroundSize: "25px 25px"
 				}}></div>
 				<div className="absolute inset-0" style={{
-					backgroundImage: "radial-gradient(circle, rgba(6, 182, 212, 0.1) 1px, transparent 1px)",
-					backgroundSize: "40px 40px"
+					backgroundImage: "radial-gradient(circle, rgba(236, 72, 153, 0.2) 2px, transparent 2px)",
+					backgroundSize: "60px 60px"
 				}}></div>
+				{/* Moving data streams */}
+				<div className="absolute top-0 left-1/5 w-px h-full bg-cyan-400 opacity-15 animate-pulse"></div>
+				<div className="absolute top-0 right-1/4 w-px h-full bg-pink-500 opacity-15" style={{ animationDelay: '1.5s' }}></div>
+				<div className="absolute top-0 left-3/5 w-px h-full bg-purple-500 opacity-15" style={{ animationDelay: '3s' }}></div>
 			</div>
 
-			{/* Animated scan line */}
-			{scanLine && (
-				<div
-					className="absolute inset-0 z-10 pointer-events-none"
-					style={{
-						background: "linear-gradient(to bottom, transparent, rgba(6, 182, 212, 0.15) 49%, rgba(6, 182, 212, 0.1) 50%, transparent 51%)",
-						backgroundSize: "100% 8px",
-						animation: "scanEffect 10s linear infinite",
-						opacity: 0.4
-					}}
-				></div>
+			{/* Glitch overlay effect */}
+			{glitchActive && (
+				<div className="absolute inset-0 z-20 pointer-events-none">
+					<div className="absolute inset-0 bg-cyan-400 opacity-10 animate-pulse"></div>
+					<div className="absolute top-1/3 left-0 right-0 h-1 bg-pink-500 opacity-60" style={{ animation: "glitchFlicker 0.1s linear infinite" }}></div>
+					<div className="absolute bottom-2/5 left-0 right-0 h-0.5 bg-cyan-400 opacity-50" style={{ animation: "glitchFlicker 0.15s linear infinite reverse" }}></div>
+				</div>
 			)}
 
-			<div className="max-w-4xl mx-auto px-6 relative z-10">
-				{/* Section header with tech styling */}
-				<div className="mb-8">
-					<div className="flex items-center">
-						<div
-							className="bg-blue-900 bg-opacity-30 text-cyan-400 font-mono px-3 py-1 mr-4 border border-cyan-400"
-							style={{ clipPath: "polygon(0 0, 100% 0, 90% 100%, 0 100%)" }}
-						>
-							SYS.ID:0xF32A
+			{/* Neural pathway circuit matrix */}
+			<div className="absolute inset-0 z-0 opacity-20">
+				<svg className="w-full h-full" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+					{/* Main neural pathways */}
+					<path d="M50,150 Q400,80 750,150 Q400,220 50,150" fill="none" stroke="#06b6d4" strokeWidth="1" opacity="0.7" />
+					<path d="M50,300 Q200,200 400,300 Q600,400 750,300" fill="none" stroke="#ec4899" strokeWidth="1" opacity="0.7" />
+					<path d="M50,450 Q400,350 750,450 Q400,550 50,450" fill="none" stroke="#8b5cf6" strokeWidth="1" opacity="0.7" />
+					
+					{/* Connection lines */}
+					<line x1="150" y1="150" x2="650" y2="300" stroke="#06b6d4" strokeWidth="0.5" opacity="0.4" />
+					<line x1="400" y1="100" x2="400" y2="500" stroke="#ec4899" strokeWidth="0.5" opacity="0.4" />
+					<line x1="650" y1="150" x2="150" y2="450" stroke="#8b5cf6" strokeWidth="0.5" opacity="0.4" />
+					
+					{/* Neural nodes with animations */}
+					<circle cx="150" cy="150" r="6" fill="none" stroke="#06b6d4" strokeWidth="2" opacity="0.9">
+						<animate attributeName="r" values="4;10;4" dur="2.5s" repeatCount="indefinite" />
+					</circle>
+					<circle cx="400" cy="300" r="8" fill="none" stroke="#ec4899" strokeWidth="2" opacity="0.9">
+						<animate attributeName="r" values="6;14;6" dur="3s" repeatCount="indefinite" />
+					</circle>
+					<circle cx="650" cy="450" r="5" fill="none" stroke="#8b5cf6" strokeWidth="2" opacity="0.9">
+						<animate attributeName="r" values="3;9;3" dur="2s" repeatCount="indefinite" />
+					</circle>
+					
+					{/* Data flow particles */}
+					<circle cx="50" cy="150" r="2" fill="#06b6d4" opacity="0.8">
+						<animateMotion dur="6s" repeatCount="indefinite">
+							<path d="M0,0 Q350,-70 700,0 Q350,70 0,0" />
+						</animateMotion>
+					</circle>
+					<circle cx="50" cy="300" r="2" fill="#ec4899" opacity="0.8">
+						<animateMotion dur="8s" repeatCount="indefinite">
+							<path d="M0,0 Q150,-100 300,0 Q450,100 600,0" />
+						</animateMotion>
+					</circle>
+				</svg>
+			</div>
+
+			<div className="max-w-6xl mx-auto px-6 relative z-10">
+				{/* Advanced neural interface header */}
+				<div className="mb-12">
+					<div className="bg-gray-800 border-l-4 border-cyan-400 p-6 mb-6 relative overflow-hidden"
+						style={{ clipPath: "polygon(0 0, 100% 0, 98% 100%, 0 100%)" }}>
+						
+						{/* Animated header scan lines */}
+						<div className="absolute inset-0 pointer-events-none">
+							{activeScanLine === 'header-scan' && (
+								<div className="absolute w-full h-0.5 bg-cyan-400 opacity-40" 
+									style={{ animation: "headerSweep 3s ease-in-out infinite" }}></div>
+							)}
 						</div>
-						<h2 className="text-2xl md:text-3xl font-mono font-bold text-cyan-400 uppercase tracking-wider">
-							MISSION_PROTOCOL
-						</h2>
-						<div className="h-px flex-grow bg-cyan-400 ml-4 opacity-30"></div>
+						
+						{/* Security status panel */}
+						<div className="absolute top-2 right-4 flex items-center space-x-4">
+							<div className="flex items-center space-x-2">
+								<div className={`w-2 h-2 rounded-full animate-pulse ${
+									threatLevel === 'MINIMAL' || threatLevel === 'LOW' ? 'bg-green-400' :
+									threatLevel === 'MEDIUM' ? 'bg-yellow-400' : 'bg-red-400'
+								}`}></div>
+								<span className="text-gray-400 font-mono text-xs">THREAT_LEVEL: </span>
+								<span className={`font-mono text-xs ${
+									threatLevel === 'MINIMAL' || threatLevel === 'LOW' ? 'text-green-400' :
+									threatLevel === 'MEDIUM' ? 'text-yellow-400' : 'text-red-400'
+								}`}>{threatLevel}</span>
+							</div>
+							<div className="flex items-center space-x-2">
+								<span className="text-cyan-400 font-mono text-xs">SECURITY: {securityLevel}%</span>
+								<div className="w-16 h-1 bg-gray-700 relative overflow-hidden">
+									<div className="absolute inset-0 bg-cyan-400" style={{ 
+										width: `${securityLevel}%`,
+										transition: 'width 3s ease'
+									}}></div>
+								</div>
+							</div>
+						</div>
+						
+						<div className="flex items-center gap-4">
+							{/* System identifier */}
+							<div className="bg-cyan-900 bg-opacity-40 px-4 py-2 border-l-2 border-cyan-400 flex items-center"
+								style={{ clipPath: "polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%)" }}>
+								<div className="w-3 h-3 bg-cyan-400 mr-3 animate-pulse"></div>
+								<span className="text-cyan-400 font-mono text-sm font-bold">CORP_DIRECTIVE.proto</span>
+							</div>
+							
+							{/* Main title */}
+							<div className="flex-1">
+								<h2 className="text-3xl md:text-4xl font-mono font-bold text-white uppercase tracking-wider flex items-center mb-2">
+									<span className="text-cyan-400 mr-3">⚡</span>
+									MISSION_PROTOCOL
+									<div className="ml-4 px-3 py-1 bg-pink-900 bg-opacity-30 border border-pink-500 text-pink-500 text-xs">
+										[PRIORITY_ALPHA]
+									</div>
+								</h2>
+								<div className="text-gray-400 font-mono text-sm">
+									Target: FULLSTACK_NETRUNNER // Clearance: BETA // Mission_ID: MP-2077
+								</div>
+							</div>
+						</div>
+						
+						{/* System status readout */}
+						<div className="absolute bottom-2 left-4 flex space-x-4 text-xs font-mono">
+							<div className="flex items-center text-green-400">
+								<div className="w-1 h-1 bg-green-400 rounded-full mr-1 animate-pulse"></div>
+								SYSTEM: {systemStatus}
+							</div>
+							<div className="flex items-center text-cyan-400">
+								<div className="w-1 h-1 bg-cyan-400 rounded-full mr-1 animate-pulse"></div>
+								DATA_STREAM: {dataStreamActive ? 'ACTIVE' : 'STANDBY'}
+							</div>
+							<div className="flex items-center text-purple-400">
+								<div className="w-1 h-1 bg-purple-400 rounded-full mr-1 animate-pulse"></div>
+								NEURAL_LINK: ESTABLISHED
+							</div>
+						</div>
 					</div>
-					<div className="text-gray-400 font-mono text-sm mt-1">
-            // primary_directive // system_purpose // v2.4.7
+					
+					{/* Mission briefing readout */}
+					<div className="text-gray-400 font-mono text-sm bg-gray-800 bg-opacity-50 p-4 border border-gray-700">
+						<div className="flex items-center justify-between">
+							<div>
+								// accessing_mission_parameters // corporate_directive_analysis // neural_pathway_optimization
+							</div>
+							<div className="flex items-center space-x-2">
+								<span className="text-cyan-400">PROGRESS:</span>
+								<div className="w-20 h-2 bg-gray-700 relative overflow-hidden">
+									<div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-pink-500" style={{ 
+										width: `${securityLevel}%`,
+										transition: 'width 3s ease'
+									}}></div>
+								</div>
+								<span className="text-cyan-400">{securityLevel}%</span>
+							</div>
+						</div>
 					</div>
 				</div>
 
@@ -168,49 +358,195 @@ export const CyberpunkMissionStatement = () => {
 						</div>
 					</div>
 
-					{/* Tech stack visualization */}
+					{/* Enhanced neural tech stack visualization */}
 					<div>
 						<div
-							className="bg-gray-800 p-6 h-full border-r-2 border-lime-400"
+							className={`bg-gray-800 p-6 h-full border-r-2 border-lime-400 relative ${activeScanLine === 'stack-scan' ? 'shadow-lg shadow-lime-400/20' : ''} transition-all duration-700`}
 							style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%)" }}
 						>
+							{/* Neural scan effect */}
+							{activeScanLine === 'stack-scan' && (
+								<div className="absolute inset-0 pointer-events-none z-20"
+									style={{
+										background: "linear-gradient(to bottom, transparent 30%, rgba(34, 197, 94, 0.3) 48%, rgba(34, 197, 94, 0.5) 50%, rgba(34, 197, 94, 0.3) 52%, transparent 70%)",
+										animation: "stackScan 3s linear infinite"
+									}}></div>
+							)}
+
 							<div className="flex items-center justify-between mb-4">
-								<h3 className="text-lg font-mono text-lime-400">TECH_STACK</h3>
-								<div className="text-xs font-mono text-gray-500">v3.2.1</div>
+								<div className="flex items-center">
+									<div className="w-1.5 h-6 bg-lime-400 mr-3"></div>
+									<h3 className="text-lg font-mono text-lime-400">NEURAL_TECH_STACK</h3>
+								</div>
+								<div className="text-xs font-mono text-gray-500 flex items-center">
+									<div className="w-2 h-2 bg-lime-400 rounded-full mr-2 animate-pulse"></div>
+									v4.0.1_neural
+								</div>
 							</div>
 
 							<div className="space-y-4">
-								{techStack.map((tech, index) => (
-									<div key={index} className="relative">
-										<div className="flex justify-between text-xs font-mono mb-1">
+								{neuralTechStack.map((tech, index) => (
+									<div key={index} className="relative group">
+										<div className="flex justify-between text-xs font-mono mb-2">
 											<span className="text-gray-400">{tech.name}</span>
-											<span className={`text-${tech.color.replace('bg-', '')}`}>{tech.width}</span>
+											<div className="flex items-center space-x-2">
+												<span className={`text-${tech.color.replace('bg-', '')} font-bold`}>{tech.width}</span>
+												<span className={`text-xs px-1 border ${
+													tech.threat === 'ZERO' || tech.threat === 'SECURE' || tech.threat === 'LOW' || tech.threat === 'MINIMAL' ? 'text-green-400 border-green-400' :
+													tech.threat === 'MEDIUM' ? 'text-yellow-400 border-yellow-400' : 'text-red-400 border-red-400'
+												}`}>
+													{tech.threat}
+												</span>
+											</div>
 										</div>
-										<div className="w-full h-1 bg-gray-700">
+										
+										{/* Enhanced progress bar with ICE protection indicator */}
+										<div className="w-full h-2 bg-gray-700 relative overflow-hidden border border-gray-600">
 											<div
-												className={`h-full ${tech.color}`}
-												style={{ width: tech.width }}
-											></div>
+												className={`h-full ${tech.color} relative`}
+												style={{ 
+													width: tech.width,
+													transition: 'width 2s ease, box-shadow 0.3s ease'
+												}}
+											>
+												{/* Glowing effect */}
+												<div className="absolute inset-0 opacity-50 animate-pulse"></div>
+											</div>
+											
+											{/* ICE protection indicator */}
+											<div className="absolute top-0 right-1 h-full w-1 bg-white opacity-30"></div>
 										</div>
+
+										{/* Status and ICE readout */}
+										<div className="flex justify-between text-xs font-mono mt-1 text-gray-500">
+											<span>STATUS: <span className="text-green-400">{tech.status}</span></span>
+											<span>ICE: <span className="text-cyan-400">{tech.ice}</span></span>
+										</div>
+
+										{/* Hover neural link effect */}
+										<div className="absolute -left-2 top-0 w-1 h-full bg-lime-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 									</div>
 								))}
 							</div>
 
-							{/* Tech corner accent */}
+							{/* System diagnostic panel */}
+							<div className="mt-6 pt-4 border-t border-lime-400">
+								<div className="grid grid-cols-2 gap-3 text-xs font-mono">
+									<div className="bg-gray-900 p-2 border border-green-400 relative">
+										<div className="absolute top-1 right-1 w-1 h-1 bg-green-400 rounded-full animate-pulse"></div>
+										<div className="text-gray-500 mb-1">NEURAL_OS</div>
+										<div className="text-green-400 font-bold">LINUX_MATRIX</div>
+									</div>
+									<div className="bg-gray-900 p-2 border border-cyan-400 relative">
+										<div className="absolute top-1 right-1 w-1 h-1 bg-cyan-400 rounded-full animate-pulse"></div>
+										<div className="text-gray-500 mb-1">PRIMARY_LANG</div>
+										<div className="text-cyan-400 font-bold">JS_NEURAL.exe</div>
+									</div>
+									<div className="bg-gray-900 p-2 border border-pink-500 relative">
+										<div className="absolute top-1 right-1 w-1 h-1 bg-pink-500 rounded-full animate-pulse"></div>
+										<div className="text-gray-500 mb-1">DB_CORE</div>
+										<div className="text-pink-500 font-bold">POSTGRES.sql</div>
+									</div>
+									<div className="bg-gray-900 p-2 border border-purple-500 relative">
+										<div className="absolute top-1 right-1 w-1 h-1 bg-purple-500 rounded-full animate-pulse"></div>
+										<div className="text-gray-500 mb-1">DEPLOY_NET</div>
+										<div className="text-purple-500 font-bold">CLOUD.matrix</div>
+									</div>
+								</div>
+							</div>
+
+							{/* Tech corner accents */}
 							<div className="absolute top-0 right-0 w-8 h-8 pointer-events-none opacity-30">
 								<div className="absolute top-0 right-0 w-8 h-px bg-lime-400"></div>
 								<div className="absolute top-0 right-0 w-px h-8 bg-lime-400"></div>
+							</div>
+							<div className="absolute bottom-0 left-0 w-8 h-8 pointer-events-none opacity-30">
+								<div className="absolute bottom-0 left-0 w-8 h-px bg-lime-400"></div>
+								<div className="absolute bottom-0 left-0 w-px h-8 bg-lime-400"></div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			{/* CSS animations */}
+			{/* Advanced cyberpunk CSS animations */}
 			<style jsx>{`
         @keyframes scanEffect {
           0% { transform: translateY(-100%); }
           100% { transform: translateY(100%); }
+        }
+
+        @keyframes headerSweep {
+          0% { transform: translateY(-100%) scaleX(0.8); opacity: 0; }
+          10% { opacity: 1; }
+          50% { transform: translateY(50%) scaleX(1.2); }
+          90% { opacity: 1; }
+          100% { transform: translateY(400%) scaleX(0.8); opacity: 0; }
+        }
+
+        @keyframes stackScan {
+          0% { transform: translateY(-100%) scaleX(0.9); opacity: 0; }
+          15% { opacity: 1; }
+          85% { opacity: 1; }
+          100% { transform: translateY(300%) scaleX(1.1); opacity: 0; }
+        }
+
+        @keyframes glitchFlicker {
+          0% { transform: translateX(0); }
+          10% { transform: translateX(-3px); }
+          20% { transform: translateX(3px); }
+          30% { transform: translateX(-2px); }
+          40% { transform: translateX(2px); }
+          50% { transform: translateX(-1px); }
+          60% { transform: translateX(1px); }
+          70% { transform: translateX(0); }
+          100% { transform: translateX(0); }
+        }
+
+        @keyframes neuralPulse {
+          0% { opacity: 0.7; transform: scale(1); box-shadow: 0 0 0 rgba(34, 197, 94, 0.4); }
+          50% { opacity: 1; transform: scale(1.05); box-shadow: 0 0 20px rgba(34, 197, 94, 0.7); }
+          100% { opacity: 0.7; transform: scale(1); box-shadow: 0 0 0 rgba(34, 197, 94, 0.4); }
+        }
+
+        @keyframes dataStream {
+          0% { transform: translateX(-100%); opacity: 0; }
+          50% { opacity: 1; }
+          100% { transform: translateX(100%); opacity: 0; }
+        }
+
+        @keyframes threatPulse {
+          0% { opacity: 0.6; }
+          50% { opacity: 1; }
+          100% { opacity: 0.6; }
+        }
+
+        /* Enhanced glow effects */
+        .border-cyan-400 {
+          box-shadow: 0 0 8px rgba(6, 182, 212, 0.4);
+        }
+
+        .border-lime-400 {
+          box-shadow: 0 0 8px rgba(163, 230, 53, 0.4);
+        }
+
+        .border-pink-500 {
+          box-shadow: 0 0 8px rgba(236, 72, 153, 0.4);
+        }
+
+        /* Hover intensification */
+        .group:hover .border-lime-400 {
+          box-shadow: 0 0 15px rgba(163, 230, 53, 0.6), 0 0 30px rgba(163, 230, 53, 0.3);
+        }
+
+        /* Neural link activation */
+        .neural-link-active {
+          animation: neuralPulse 2s ease-in-out infinite;
+        }
+
+        /* Data stream animation */
+        .data-stream {
+          animation: dataStream 4s linear infinite;
         }
       `}</style>
 		</section>

@@ -51,11 +51,45 @@ export const CyberpunkAbout = () => {
 			<div className="max-w-6xl mx-auto px-6 py-16 relative z-10">
 				{/* Profile section with neo-tech framing */}
 				<div className="relative mb-16">
-					{/* Profile header with angular cuts */}
+					{/* Profile header with enhanced cyberpunk animations */}
 					<div
-						className="bg-gray-800 border-l-2 border-cyan-400 relative overflow-hidden"
+						className="bg-gray-800 border-l-2 border-cyan-400 relative overflow-hidden group"
 						style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%)" }}
 					>
+						{/* Animated scanning lines */}
+						<div className="absolute inset-0 pointer-events-none">
+							{/* Horizontal scan line */}
+							<div className="absolute w-full h-0.5 bg-cyan-400 opacity-30"
+								 style={{ animation: "scanHorizontal 3s ease-in-out infinite" }}></div>
+							{/* Vertical scan line */}
+							<div className="absolute w-0.5 h-full bg-pink-500 opacity-30"
+								 style={{ animation: "scanVertical 4s ease-in-out infinite" }}></div>
+						</div>
+
+						{/* Glitch overlay effect */}
+						<div className="absolute inset-0 bg-cyan-400 opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none"
+							 style={{ animation: "glitchFlicker 8s infinite" }}></div>
+
+						{/* Corporate data streams */}
+						<div className="absolute top-2 right-4 flex space-x-1 opacity-60">
+							<div className="w-1 h-1 bg-red-400 animate-pulse"></div>
+							<div className="w-1 h-1 bg-yellow-400" style={{ animation: "pulse 1.5s infinite" }}></div>
+							<div className="w-1 h-1 bg-green-400" style={{ animation: "pulse 2s infinite" }}></div>
+						</div>
+
+						{/* Neural activity indicators */}
+						<div className="absolute top-4 left-2 text-xs font-mono text-cyan-400 opacity-50">
+							<div className="flex items-center space-x-1">
+								<span>NEURAL:</span>
+								<span className="animate-pulse">ACTIVE</span>
+							</div>
+						</div>
+
+						{/* Corner frame animations */}
+						<div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-cyan-400 opacity-60"
+							 style={{ animation: "cornerPulse 2s ease-in-out infinite" }}></div>
+						<div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-pink-500 opacity-60"
+							 style={{ animation: "cornerPulse 2s ease-in-out infinite 1s" }}></div>
 						<div className="flex flex-col md:flex-row items-start md:items-center p-6">
 							{/* Profile image with tech frame */}
 							<div className="relative mb-6 md:mb-0 md:mr-8">
@@ -83,20 +117,35 @@ export const CyberpunkAbout = () => {
 								</div>
 							</div>
 
-							{/* Name and title */}
+							{/* Corporate Identity Header */}
 							<div className="flex-1">
-								<h1 className="text-3xl md:text-4xl font-bold font-mono text-white mb-2 flex items-center">
-									Daniel Philip Johnson
-									<div className="ml-3 text-xs px-2 py-1 text-cyan-400 border border-cyan-400 hidden md:block">ID-X327</div>
-								</h1>
+								<div className="flex items-center mb-3">
+									<h1 className="text-3xl md:text-4xl font-bold font-mono text-white mr-4">
+										DANIEL "VOID" JOHNSON
+									</h1>
+									<div className="hidden md:flex items-center space-x-2">
+										<div className="text-xs px-3 py-1 text-red-400 border border-red-400 bg-red-900 bg-opacity-30 animate-pulse">
+											ID: NC-MLT-4487
+										</div>
+										<div className="text-xs px-3 py-1 text-yellow-400 border border-yellow-400 bg-yellow-900 bg-opacity-30">
+											CLEARANCE: ALPHA
+										</div>
+									</div>
+								</div>
 
 								<div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
 									<div>
-										<h2 className="text-2xl font-bold font-mono text-cyan-400">Full-stack developer</h2>
-										<h3 className="text-sm font-mono text-gray-400 flex items-center">
-											<span className="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>
-											I work remote 🏠 in Cornwall
-										</h3>
+										<h2 className="text-2xl font-bold font-mono text-cyan-400 mb-1">SENIOR NETRUNNER OPERATIVE</h2>
+										<div className="flex items-center space-x-4 mb-2">
+											<h3 className="text-sm font-mono text-purple-400 flex items-center">
+												<span className="w-2 h-2 bg-purple-400 rounded-full mr-2 animate-pulse"></span>
+												HIYIELD CORP - Neural Interface Division
+											</h3>
+										</div>
+										<div className="text-xs font-mono text-gray-400 flex items-center">
+											<span className="text-green-400 mr-2">▲</span>
+											LOCATION: NIGHT_CITY_REMOTE_NODE // Cornwall Sector
+										</div>
 									</div>
 
 									{/* Resume button with tech styling */}
@@ -115,15 +164,24 @@ export const CyberpunkAbout = () => {
 									</div>
 								</div>
 
-								{/* Social links */}
+								{/* Social links with enhanced animations */}
 								<div className="flex space-x-2 mb-2">
 									{socialLinks.map((link, index) => (
 										<a
 											key={index}
 											href={link.url}
-											className={`w-8 h-8 flex items-center justify-center border border-gray-700 bg-gray-900 ${link.color} transition-all duration-300`}
-											style={{ clipPath: "polygon(0 0, 100% 0, 100% 75%, 75% 100%, 0 100%)" }}
+											className={`w-8 h-8 flex items-center justify-center border border-gray-700 bg-gray-900 ${link.color} transition-all duration-300 hover:border-current hover:shadow-lg social-icon group`}
+											style={{ 
+												clipPath: "polygon(0 0, 100% 0, 100% 75%, 75% 100%, 0 100%)",
+												transform: `rotate(${index * 2}deg)`
+											}}
 										>
+											{/* Pulse overlay on hover */}
+											<div className="absolute inset-0 bg-current opacity-0 group-hover:opacity-10 transition-opacity duration-300" 
+												 style={{ 
+													clipPath: "polygon(0 0, 100% 0, 100% 75%, 75% 100%, 0 100%)",
+													animation: "socialGlow 2s ease-in-out infinite"
+												}}></div>
 											{link.icon}
 										</a>
 									))}
@@ -307,9 +365,97 @@ export const CyberpunkAbout = () => {
           100% { opacity: 1; transform: scale(1); }
         }
 
-        @keyframes scan {
-          0% { transform: translateY(-100%); }
-          100% { transform: translateY(100%); }
+        @keyframes scanHorizontal {
+          0% { transform: translateY(-100%) scaleX(0.8); opacity: 0; }
+          10% { opacity: 1; }
+          90% { opacity: 1; }
+          100% { transform: translateY(400%) scaleX(1.2); opacity: 0; }
+        }
+
+        @keyframes scanVertical {
+          0% { transform: translateX(-100%) scaleY(0.8); opacity: 0; }
+          10% { opacity: 1; }
+          90% { opacity: 1; }
+          100% { transform: translateX(400%) scaleY(1.2); opacity: 0; }
+        }
+
+        @keyframes glitchFlicker {
+          0%, 98% { opacity: 0; }
+          1% { opacity: 0.1; }
+          2% { opacity: 0; }
+          3% { opacity: 0.05; }
+          4%, 7% { opacity: 0; }
+          8% { opacity: 0.1; }
+          9% { opacity: 0; }
+          10% { opacity: 0.05; }
+          11%, 98% { opacity: 0; }
+          99% { opacity: 0.1; }
+          100% { opacity: 0; }
+        }
+
+        @keyframes cornerPulse {
+          0% { 
+            opacity: 0.6; 
+            transform: scale(1); 
+            box-shadow: 0 0 0 rgba(6, 182, 212, 0.5);
+          }
+          50% { 
+            opacity: 1; 
+            transform: scale(1.05); 
+            box-shadow: 0 0 10px rgba(6, 182, 212, 0.8);
+          }
+          100% { 
+            opacity: 0.6; 
+            transform: scale(1); 
+            box-shadow: 0 0 0 rgba(6, 182, 212, 0.5);
+          }
+        }
+
+        @keyframes socialGlow {
+          0% { opacity: 0; transform: scale(1); }
+          50% { opacity: 0.15; transform: scale(1.1); }
+          100% { opacity: 0; transform: scale(1); }
+        }
+
+        /* Enhanced neon glow effects */
+        .group:hover .border-cyan-400 {
+          box-shadow: 0 0 15px rgba(6, 182, 212, 0.6);
+        }
+
+        .group:hover .border-pink-500 {
+          box-shadow: 0 0 15px rgba(236, 72, 153, 0.6);
+        }
+
+        .social-icon:hover {
+          transform: rotate(0deg) scale(1.1) !important;
+          box-shadow: 0 0 20px currentColor;
+        }
+
+        /* Particle texture background animations */
+        .bg-gray-900::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-image: 
+            radial-gradient(1px 1px at 20px 30px, rgba(6, 182, 212, 0.15), transparent),
+            radial-gradient(1px 1px at 40px 70px, rgba(236, 72, 153, 0.1), transparent),
+            radial-gradient(1px 1px at 90px 40px, rgba(34, 197, 94, 0.1), transparent),
+            radial-gradient(1px 1px at 130px 80px, rgba(59, 130, 246, 0.1), transparent);
+          background-size: 200px 200px;
+          animation: particleFloat 20s linear infinite;
+          pointer-events: none;
+          z-index: 1;
+        }
+
+        @keyframes particleFloat {
+          0% { transform: translate(0px, 0px); }
+          25% { transform: translate(-10px, -10px); }
+          50% { transform: translate(10px, -5px); }
+          75% { transform: translate(-5px, 10px); }
+          100% { transform: translate(0px, 0px); }
         }
       `}</style>
 		</div>

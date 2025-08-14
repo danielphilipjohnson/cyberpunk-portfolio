@@ -2,9 +2,11 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useLoading } from '@/providers/LoadingProvider';
 
 export default function CyberpunkFooter() {
 	const [hoveredLink, setHoveredLink] = useState<string | null>(null);
+	const { triggerReboot } = useLoading();
 
 	// Internal navigation links
 	const internalLinks = [
@@ -439,6 +441,14 @@ export default function CyberpunkFooter() {
 						<div className="flex items-center">
 							<span className="text-cyan-400 font-mono mr-2">[SYS.INFO]</span>
 							<span className="text-gray-400">© 2020-{new Date().getFullYear()} • Developed by Daniel Philip Johnson</span>
+							{/* Hidden reboot easter egg */}
+							<button
+								onClick={triggerReboot}
+								className="ml-4 text-xs text-gray-600 hover:text-cyan-400 font-mono opacity-30 hover:opacity-100 transition-all"
+								title="Reboot neural system"
+							>
+								[REBOOT]
+							</button>
 						</div>
 					</div>
 
