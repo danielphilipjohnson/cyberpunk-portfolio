@@ -1,106 +1,88 @@
+"use client"
+
 import React from 'react';
+import GridLines from '../visuals/GridLines';
+import ScanLines from '../visuals/ScanLines';
+import GlitchEffect from '../visuals/GlitchEffect';
+import FloatingParticles from '../visuals/FloatingParticles';
+import TerminalIntro from '../visuals/TerminalIntro';
 
 export const CyberpunkHeroWithNav = () => {
 	return (
 		<section
-			className="relative min-h-screen bg-cover bg-center text-white font-mono overflow-hidden"
+			className="relative min-h-screen text-white font-mono overflow-hidden"
 			style={{
-				backgroundImage: 'url(/bg-purple.png)',
+				background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 25%, #0f3460 50%, #533483 75%, #7209b7 100%)',
 			}}
 		>
 			{/* Background overlay */}
 			<div className="absolute inset-0 bg-black/40 backdrop-blur-sm z-0" />
 
-			{/* Angular frame decoration - top */}
-			<div className="absolute top-0 left-0 right-0 h-24 z-10">
-				<div className="absolute top-0 left-0 w-1/3 h-full bg-teal-900/60"
-					style={{ clipPath: 'polygon(0 0, 100% 0, 85% 100%, 0 100%)' }} />
-				<div className="absolute top-0 right-0 w-1/3 h-full bg-teal-900/60"
-					style={{ clipPath: 'polygon(15% 0, 100% 0, 100% 100%, 0 100%)' }} />
-			</div>
+			{/* Cyberpunk Visual Effects */}
+			<GridLines />
+			<ScanLines />
+			<GlitchEffect />
+			<FloatingParticles />
 
-			{/* Navigation bar */}
-			<header className="relative z-20 px-6 md:px-16 py-4">
-				<div className="max-w-7xl mx-auto flex items-center justify-between">
-					{/* Logo */}
-					<div className="flex items-center">
-						<div
-							className="bg-teal-900/80 p-2 mr-2"
-							style={{ clipPath: 'polygon(0 0, 100% 0, 100% 70%, 90% 100%, 0 100%)' }}
+
+			{/* Enhanced Navigation bar */}
+			<header className="relative z-20 px-6 md:px-12 py-6">
+				<div className="max-w-7xl mx-auto">
+					{/* Main nav container */}
+					<div className="bg-gray-900/60 backdrop-blur-md border border-teal-400/20 p-4 flex items-center justify-between"
+						style={{ clipPath: 'polygon(0 0, 100% 0, 98% 100%, 0 100%)' }}>
+						
+						{/* Logo */}
+						<div className="flex items-center">
+							<div className="w-10 h-10 bg-teal-400/20 border border-teal-400 flex items-center justify-center mr-3"
+								style={{ clipPath: 'polygon(0 0, 100% 0, 100% 80%, 80% 100%, 0 100%)' }}>
+								<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M9.5 3A6.5 6.5 0 0 0 3 9.5v1A1.5 1.5 0 0 0 4.5 12H6a1.5 1.5 0 0 0 1.5-1.5v-1A3.5 3.5 0 0 1 11 6h1a3.5 3.5 0 0 1 3.5 3.5v1A1.5 1.5 0 0 0 17 12h1.5a1.5 1.5 0 0 0 1.5-1.5v-1A6.5 6.5 0 0 0 13.5 3h-4z" fill="#5eead4"/>
+									<path d="M4.5 15a1.5 1.5 0 0 0-1.5 1.5v2A4.5 4.5 0 0 0 7.5 23h9a4.5 4.5 0 0 0 4.5-4.5v-2a1.5 1.5 0 0 0-1.5-1.5h-15z" fill="#5eead4"/>
+								</svg>
+							</div>
+							<div>
+								<div className="text-teal-400 font-bold text-lg tracking-wider uppercase">Daniel P. Johnson</div>
+								<div className="text-gray-400 text-xs font-mono">[CYBERPUNK_PORTFOLIO]</div>
+							</div>
+						</div>
+
+						{/* Navigation links */}
+						<nav className="hidden md:flex items-center space-x-8">
+							<a href="/about" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
+								About
+							</a>
+							<a href="/projects" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
+								Projects
+							</a>
+							<a href="/blog" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
+								Blog
+							</a>
+							<a href="/contact" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
+								Contact
+							</a>
+						</nav>
+
+						{/* CTA Button */}
+						<a
+							href="/cv/Daniel_Philip_Johnson.pdf"
+							download
+							className="hidden md:flex items-center gap-2 px-4 py-2 bg-teal-400 text-gray-900 hover:bg-teal-300 transition-all duration-300 font-bold text-xs uppercase tracking-widest hover:shadow-lg hover:shadow-teal-400/25"
+							style={{ clipPath: 'polygon(0 0, 100% 0, 95% 100%, 0 100%)' }}
 						>
-							<svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM15 12L10 7.5V16.5L15 12Z" fill="#5eead4" />
+							<svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+								<path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
 							</svg>
-						</div>
-						<span className="text-2xl font-bold tracking-wider text-teal-400 uppercase">CyberJungle</span>
-					</div>
-
-					{/* Navigation links */}
-					<nav className="hidden md:flex items-center space-x-6">
-						<div className="group relative">
-							<a href="#" className="text-white hover:text-teal-400 px-2 py-1 flex items-center">
-								Boosting
-								<svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-								</svg>
-							</a>
-							<div className="absolute left-0 mt-2 w-48 hidden group-hover:block bg-gray-900/90 backdrop-blur-md border border-teal-900"
-								style={{ clipPath: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)' }}>
-								<a href="#" className="block px-4 py-2 text-sm hover:bg-teal-900/40 hover:text-teal-400">
-									Game Boosting
-								</a>
-								<a href="#" className="block px-4 py-2 text-sm hover:bg-teal-900/40 hover:text-teal-400">
-									Rank Boosts
-								</a>
-								<a href="#" className="block px-4 py-2 text-sm hover:bg-teal-900/40 hover:text-teal-400">
-									Power Leveling
-								</a>
-							</div>
-						</div>
-
-						<div className="group relative">
-							<a href="#" className="text-white hover:text-teal-400 px-2 py-1 flex items-center">
-								Accounts
-								<svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-								</svg>
-							</a>
-							<div className="absolute left-0 mt-2 w-48 hidden group-hover:block bg-gray-900/90 backdrop-blur-md border border-teal-900"
-								style={{ clipPath: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)' }}>
-								<a href="#" className="block px-4 py-2 text-sm hover:bg-teal-900/40 hover:text-teal-400">
-									Buy Accounts
-								</a>
-								<a href="#" className="block px-4 py-2 text-sm hover:bg-teal-900/40 hover:text-teal-400">
-									Sell Accounts
-								</a>
-								<a href="#" className="block px-4 py-2 text-sm hover:bg-teal-900/40 hover:text-teal-400">
-									Account Security
-								</a>
-							</div>
-						</div>
-
-						<a href="#" className="text-white hover:text-teal-400 px-2 py-1">
-							Coaching
+							Download CV
 						</a>
-					</nav>
 
-					{/* Client area button */}
-					<div
-						className="hidden md:flex items-center gap-2 px-4 py-2 bg-teal-400 text-gray-900 hover:bg-teal-300 transition-colors font-bold text-sm uppercase"
-						style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 10px 100%, 0 calc(100% - 10px))' }}
-					>
-						<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-							<path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-						</svg>
-						Client Area
+						{/* Mobile menu button */}
+						<button className="md:hidden text-teal-400 hover:text-teal-300 transition-colors">
+							<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+							</svg>
+						</button>
 					</div>
-
-					{/* Mobile menu button */}
-					<button className="md:hidden text-white hover:text-teal-400">
-						<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-						</svg>
-					</button>
 				</div>
 			</header>
 
@@ -146,37 +128,108 @@ export const CyberpunkHeroWithNav = () => {
 				</div>
 			</div>
 
-			<div className="relative z-10 px-6 md:px-16 pt-20 pb-32 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
-				{/* Main content area */}
-				<div className="flex flex-col justify-center space-y-6">
+			<div className="relative z-10 px-6 md:px-16 pt-12 pb-24 max-w-7xl mx-auto">
+				{/* Streamlined content area */}
+				<div className="max-w-4xl mx-auto text-center">
+					{/* Status indicator */}
+					<div className="flex items-center justify-center mb-6">
+						<div className="w-2 h-2 bg-teal-400 rounded-full animate-pulse mr-2"></div>
+						<div className="text-teal-400 text-sm font-mono tracking-wider">
+							[STATUS: ONLINE] • [NODE: ACTIVE]
+						</div>
+					</div>
+
 					{/* Main title */}
-					<h1 className="text-5xl sm:text-7xl font-black uppercase leading-tight tracking-wider text-white">
-						CYBER<span className="text-teal-400">JUNGLE</span>
+					<h1 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase leading-tight tracking-wider text-white mb-4">
+						FULLSTACK <span className="text-teal-400">ENGINEER</span>
 					</h1>
 
-					{/* Subtitle */}
-					<p className="text-white/80 text-lg">
-						We Provide High Quality Elo Boosting, For The Cheapest Price At The Highest Speed.
-					</p>
+					{/* Company affiliation */}
+					<div className="mb-8 flex justify-center">
+						<div className="inline-flex items-center bg-gray-800/60 border border-pink-500/30 px-4 py-2"
+							style={{ clipPath: 'polygon(0 0, 100% 0, 95% 100%, 0 100%)' }}>
+							<span className="text-pink-500 font-mono text-sm mr-2">[CORP_LINK]</span>
+							<span className="text-white font-bold tracking-wider">@ LOAN.CO.UK</span>
+						</div>
+					</div>
 
-					{/* CTA Button */}
-					<div className="mt-8">
+					{/* Condensed Terminal Introduction */}
+					<div className="max-w-2xl mx-auto mb-12">
+						<TerminalIntro />
+					</div>
+
+					{/* Simplified mission statement */}
+					<div className="max-w-3xl mx-auto mb-10">
+						<p className="text-white/90 text-lg font-mono leading-relaxed mb-4">
+							I architect <span className="text-teal-400 font-bold">frontend systems</span> that interface seamlessly, execute at lightspeed, and deploy with zero-failure protocols.
+						</p>
+						<p className="text-white/70 text-base font-mono leading-relaxed">
+							With <span className="text-pink-500 font-bold">5+ years</span> infiltrating fintech & e-commerce networks, translating complex product requirements into performant, accessible, and maintainable interface protocols.
+						</p>
+					</div>
+
+					{/* CTA Buttons */}
+					<div className="flex flex-wrap justify-center gap-4">
 						<button
-							className="px-8 py-3 bg-teal-400 hover:bg-teal-300 text-gray-900 font-bold text-sm uppercase tracking-widest"
+							className="px-8 py-3 bg-teal-400 hover:bg-teal-300 text-gray-900 font-bold text-sm uppercase tracking-widest transition-all duration-300 hover:shadow-lg hover:shadow-teal-400/25"
 							style={{
-								clipPath: 'polygon(0 0, 100% 0, 100% 70%, 90% 100%, 0 100%)'
+								clipPath: 'polygon(0 0, 100% 0, 95% 100%, 0 100%)'
 							}}
 						>
-							Learn More
+							[ACCESS_PROJECTS]
+						</button>
+						<button
+							className="px-8 py-3 bg-transparent border-2 border-pink-500 text-pink-500 hover:bg-pink-500 hover:text-gray-900 font-bold text-sm uppercase tracking-widest transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/25"
+							style={{
+								clipPath: 'polygon(0 0, 100% 0, 95% 100%, 0 100%)'
+							}}
+						>
+							[INIT_CONTACT]
 						</button>
 					</div>
 				</div>
 
-				{/* This area intentionally left empty to match your reference image with the monkey graphic */}
-				<div className="flex justify-center lg:justify-end items-center">
-					{/* This is where your main graphic would go */}
+				{/* Single streamlined tech display */}
+				<div className="mt-20 max-w-4xl mx-auto">
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+						{/* System stats cards */}
+						<div className="bg-gray-900/40 backdrop-blur-sm border border-teal-400/20 p-4 text-center"
+							style={{ clipPath: 'polygon(0 0, 100% 0, 95% 100%, 0 100%)' }}>
+							<div className="text-teal-400 text-sm font-mono mb-1">UPTIME</div>
+							<div className="text-white font-bold text-xl">99.9%</div>
+						</div>
+						<div className="bg-gray-900/40 backdrop-blur-sm border border-pink-500/20 p-4 text-center"
+							style={{ clipPath: 'polygon(0 0, 100% 0, 95% 100%, 0 100%)' }}>
+							<div className="text-pink-500 text-sm font-mono mb-1">EXPERIENCE</div>
+							<div className="text-white font-bold text-xl">5+ YRS</div>
+						</div>
+						<div className="bg-gray-900/40 backdrop-blur-sm border border-cyan-400/20 p-4 text-center md:col-span-2 lg:col-span-1"
+							style={{ clipPath: 'polygon(0 0, 100% 0, 95% 100%, 0 100%)' }}>
+							<div className="text-cyan-400 text-sm font-mono mb-1">PROJECTS</div>
+							<div className="text-white font-bold text-xl">∞</div>
+						</div>
+					</div>
 				</div>
 			</div>
+
+			{/* CSS Animations */}
+			<style jsx>{`
+				@keyframes dataFlow {
+					0% { transform: translateX(-100%); opacity: 0; }
+					50% { opacity: 1; }
+					100% { transform: translateX(100%); opacity: 0; }
+				}
+
+				@keyframes pulse {
+					0%, 100% { opacity: 1; transform: scale(1); }
+					50% { opacity: 0.6; transform: scale(1.1); }
+				}
+
+				@keyframes glow {
+					0%, 100% { box-shadow: 0 0 5px rgba(6, 182, 212, 0.5); }
+					50% { box-shadow: 0 0 20px rgba(6, 182, 212, 0.8), 0 0 30px rgba(6, 182, 212, 0.4); }
+				}
+			`}</style>
 		</section>
 	);
 };
