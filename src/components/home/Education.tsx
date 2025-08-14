@@ -3,27 +3,27 @@
 import React, { useState } from 'react';
 import CyberpunkBorderCard from './CyberpunkBorderCard';
 
-// Education data
+// Neural Science & Behavioral Modification Degrees - Corpo Educational Programs
 const education = [
 	{
-		degree: "BSc Psychology",
-		institution: "University of Plymouth",
+		degree: "BSc Neural Behavioral Engineering",
+		institution: "Arasaka Technical Institute",
 		logo: "https://img2.storyblok.com/72x72/filters:format(webp):quality(80)/f/136938/200x200/9e525f77f5/plymouth.png",
-		date: "May 2014",
-		url: "https://www.plymouth.ac.uk/courses/undergraduate/bsc-psychology",
-		description: "In this course, I studied the following topics Individual Differences, human development, Social, Developmental, Cognition, and Biological Psychology. I chose the following four current topics:",
+		date: "2077.05",
+		url: "https://arasaka.corp/neural-behavioral-engineering",
+		description: "Advanced neural interface design and behavioral modification protocols. Specialized training in cortex manipulation, consciousness mapping, and psychological warfare applications. Elite-level clearance required for classified research modules:",
 		topics: [
 			{
-				title: "Neurobiology and crime",
-				details: "Researched how lies are formed in the brain and what leads to body cues."
+				title: "Neurocriminology & Detection Protocols",
+				details: "Neural pathway analysis for deception detection. Cortical lie-response mapping and biometric behavioral pattern recognition in corporate espionage scenarios."
 			},
 			{
-				title: "Neuroscience",
-				details: "The role of mental imagery and mental health. The embodied brain and memory"
+				title: "Neural Interface Architecture",
+				details: "Direct brain-computer interface engineering. Memory palace construction, mental imagery enhancement protocols, and consciousness transfer mechanisms."
 			},
 			{
-				title: "Mental disorders and Pharmaceuticalogy",
-				details: "Investigated Alzheimers and the role of beta-amyloid plaques The role of anxiety in PTSD"
+				title: "Psychochemical Warfare & Neural Conditioning",
+				details: "Corporate loyalty enhancement drugs. Neural disorder weaponization, beta-amyloid manipulation for memory suppression, and PTSD-based compliance programming."
 			}
 		],
 		colorScheme: "purple",
@@ -31,16 +31,16 @@ const education = [
 		status: "COMPLETED"
 	},
 	{
-		degree: "HND Applied Psychology",
-		institution: "University of Plymouth",
+		degree: "HND Applied Behavioral Control Systems",
+		institution: "Arasaka Technical Institute",
 		logo: "https://img2.storyblok.com/72x72/filters:format(webp):quality(80)/f/136938/200x200/1aaf67c08f/plymouth.png",
-		date: "May 2012",
-		url: "https://www.plymouth.ac.uk/courses/undergraduate/bsc-psychology",
-		description: "In this course, I learned about behaviour, and its origins, from theoretical and practical perspectives.",
+		date: "2075.05",
+		url: "https://arasaka.corp/behavioral-control-systems",
+		description: "Foundational training in human behavioral manipulation and control systems. Corporate-sponsored program focusing on mass population psychology and individual neural compliance protocols.",
 		topics: [
 			{
-				title: "Course Topics",
-				details: "I studied the following topics: Education Psychology, Communication, Applied Cognition, Environmental Psychology, Health Psychology and Performance Psychology."
+				title: "Behavioral Control Specializations",
+				details: "Neural Education Conditioning, Corporate Communication Protocols, Cognitive Compliance Systems, Environmental Psychology for Urban Control, Health Psychology Manipulation, and Performance Enhancement through Neural Conditioning."
 			}
 		],
 		colorScheme: "blue",
@@ -71,10 +71,10 @@ export default function CyberpunkEducation() {
 							className="bg-purple-900 bg-opacity-30 text-purple-500 font-mono px-3 py-1 mr-4 border border-purple-500"
 							style={{ clipPath: "polygon(0 0, 100% 0, 85% 100%, 0 100%)" }}
 						>
-							SYS.ID:0x4544
+						EDUCATION.STATUS // NEURAL_ACADEMY_DATABASE.LOG
 						</div>
 						<h2 className="text-3xl font-mono font-bold text-purple-500 uppercase tracking-wider">
-							NEURAL IMPLANTS
+							NEURAL EDUCATION
 						</h2>
 						<div className="h-px flex-grow bg-purple-500 ml-4 opacity-30"></div>
 					</div>
@@ -82,7 +82,7 @@ export default function CyberpunkEducation() {
 					<div
 						className="font-mono text-sm text-gray-400 border-l-4 border-purple-500 pl-4"
 					>
-            // Educational enhancements and knowledge repositories integrated into neural cortex
+            // Corpo-sponsored neural behavioral engineering degrees - classified psychological warfare training
 					</div>
 				</div>
 

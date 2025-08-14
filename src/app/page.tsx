@@ -9,30 +9,46 @@ import Footer from '@/components/home/Footer';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gray-900">
-      {/* Hero Section with Navigation */}
-      <CyberpunkHeroWithNav />
+    <main className="min-h-screen">
+      {/* Hero Section with Navigation - Dark with grid */}
+      <div className="bg-gray-900">
+        <CyberpunkHeroWithNav />
+      </div>
       
-      {/* Introduction Section */}
-      <Introduction />
+      {/* Introduction Section - Dark with grid */}
+      <div className="bg-gray-900">
+        <Introduction />
+      </div>
       
-      {/* Services Section */}
-      <ServiceGrid />
+      {/* Services Section - Slightly lighter, solid */}
+      <div className="bg-gray-800">
+        <ServiceGrid />
+      </div>
       
-      {/* Tools & Technologies Section */}
-      <ToolGrid />
+      {/* Tools & Technologies Section - Back to dark with grid */}
+      <div className="bg-gray-900">
+        <ToolGrid />
+      </div>
       
-      {/* Education Section */}
-      <Education />
+      {/* Education Section - Lighter, solid */}
+      <div className="bg-gray-800">
+        <Education />
+      </div>
       
-      {/* Online Courses Section */}
-      <OnlineCourses />
+      {/* Online Courses Section - Dark with grid */}
+      <div className="bg-gray-900">
+        <OnlineCourses />
+      </div>
       
-      {/* Contact Section */}
-      <Contact />
+      {/* Contact Section - Lighter, solid */}
+      <div className="bg-gray-800">
+        <Contact />
+      </div>
       
-      {/* Footer */}
-      <Footer />
+      {/* Footer - Darkest */}
+      <div className="bg-gray-950">
+        <Footer />
+      </div>
     </main>
   );
 }

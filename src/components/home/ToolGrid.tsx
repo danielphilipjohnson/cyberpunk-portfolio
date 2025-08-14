@@ -2,112 +2,113 @@
 
 import React, { useState } from 'react';
 import CyberpunkBorderCard from './CyberpunkBorderCard';
+import CyberpunkSectionDecor from '../visuals/CyberpunkSectionDecor';
 
 // Tool data with only valid colorScheme values: "blue", "pink", "green", "purple", "cyan", "lime"
 const tools = [
 	{
-		name: "JavaScript",
-		experience: "3+ Years Active",
-		description: "With over 3 years experience using JavaScript I have built websites, React and Vue webapps.",
+		name: "Neural_JS.dll",
+		experience: "3+ Cycles Online",
+		description: "Core neural interface protocol for dynamic web matrix interactions. Essential for frontend data-streaming and DOM manipulation.",
 		imageUrl: "https://img2.storyblok.com/64x64/filters:format(webp):quality(80)/f/136938/630x630/a46190d058/javascript.png",
-		color: "cyan", // Changed from yellow to cyan
+		color: "cyan",
 		status: "PRIMARY",
-		code: "JS-001"
+		code: "NEU-001"
 	},
 	{
-		name: "Python",
-		experience: "3+ Years Active",
-		description: "Backend protocol handler. Used for APIs, scripting and data automation.",
+		name: "Serpent.exe",
+		experience: "3+ Cycles Online",
+		description: "Advanced backend neural processing unit. Specialized for API data-mining, autonomous scripts, and server-side data fortresses.",
 		imageUrl: "https://img2.storyblok.com/64x64/filters:format(webp):quality(80)/f/136938/5000x4981/4d54b5e6e7/python.png",
 		color: "blue",
 		status: "PRIMARY",
-		code: "PY-002"
+		code: "SER-002"
 	},
 	{
-		name: "Prismic",
-		experience: "2+ Years Active",
-		description: "Built marketing sites and online stores for clients.",
+		name: "PrismNet.CMS",
+		experience: "2+ Cycles Online",
+		description: "Content distribution network for corpo marketing campaigns. Streamlined data-flow for commercial net-presence operations.",
 		imageUrl: "https://img2.storyblok.com/64x64/filters:format(webp):quality(80)/f/136938/300x300/3c20858151/prismic-logo.png",
 		color: "purple",
 		status: "SECONDARY",
-		code: "PRC-003"
+		code: "PRI-003"
 	},
 	{
-		name: "Nuxt",
-		experience: "2+ Years Active",
-		description: "Built marketing sites and online stores for clients.",
+		name: "Nuxt_Matrix.3",
+		experience: "2+ Cycles Online",
+		description: "Vue-based neural framework for rapid corporate site deployment. Server-side rendering for maximum Net penetration efficiency.",
 		imageUrl: "https://img2.storyblok.com/64x64/filters:format(webp):quality(80)/f/136938/288x178/1fec9bc2ef/nuxt.png",
 		color: "green",
 		status: "PRIMARY",
-		code: "NXT-004"
+		code: "NUX-004"
 	},
 	{
-		name: "React",
-		experience: "2+ Years Active",
-		description: "With 2 years experience building with React both freelance and at a startup building a hiring system.",
+		name: "React_Core.jsx",
+		experience: "2+ Cycles Online",
+		description: "Component-based neural interface builder. Utilized for freelance operations and startup hiring-system architecture deployment.",
 		imageUrl: "https://img2.storyblok.com/64x64/filters:format(webp):quality(80)/f/136938/70x70/4f6a6bc0f9/react.png",
 		color: "cyan",
 		status: "PRIMARY",
-		code: "RCT-005"
+		code: "REA-005"
 	},
 	{
-		name: "Django Rest",
-		experience: "3+ Years Active",
-		description: "Maintain monolith legacy backend apis and slowly migrate endpoints to the new stack.",
+		name: "Django_Fortress.API",
+		experience: "3+ Cycles Online",
+		description: "Legacy data-fortress maintenance protocol. Specialized in monolith backend security and gradual endpoint migration procedures.",
 		imageUrl: "https://img2.storyblok.com/64x64/filters:format(webp):quality(80)/f/136938/550x550/9f34fc566e/django-rest.png",
 		color: "green",
 		status: "SECONDARY",
-		code: "DRF-006"
+		code: "DJA-006"
 	},
 	{
-		name: "Postgres",
-		experience: "3+ Years Active",
-		description: "When the project requires working with database I use Postgres.",
+		name: "Postgres_Vault.db",
+		experience: "3+ Cycles Online",
+		description: "Advanced relational data-storage matrix. Primary database neural-link for secure data operations and complex query processing.",
 		imageUrl: "https://img2.storyblok.com/64x64/filters:format(webp):quality(80)/f/136938/1200x1238/fdcd9b9aaf/postgres.png",
 		color: "blue",
 		status: "SECONDARY",
-		code: "PSG-007"
+		code: "POS-007"
 	},
 	{
-		name: "GraphQL",
-		experience: "1+ Year Active",
-		description: "In my first job I slowly moved from redux to GraphQL. I use this as query language for some API's.",
+		name: "GraphNet_QL.query",
+		experience: "1+ Cycle Online",
+		description: "Experimental query-language interface replacing legacy Redux protocols. Streamlined data-fetching for API neural-networks.",
 		imageUrl: "https://img2.storyblok.com/64x64/filters:format(webp):quality(80)/f/136938/400x400/e55ba19986/graphql.png",
 		color: "pink",
 		status: "TERTIARY",
-		code: "GQL-008"
+		code: "GRA-008"
 	},
 	{
-		name: "Docker",
-		experience: "2+ Years Active",
-		description: "Building images so projects can be moved to google cloud run. Creating github action hooks to deploy to google cloud.",
+		name: "DockerNet.container",
+		experience: "2+ Cycles Online",
+		description: "Containerization protocol for cloud migration ops. Automated deployment pipelines via GitHub neural-hooks to Google infrastructure.",
 		imageUrl: "https://img2.storyblok.com/64x64/filters:format(webp):quality(80)/f/136938/4416x2841/4f7db46cb3/docker.png",
 		color: "blue",
 		status: "PRIMARY",
-		code: "DCK-009"
+		code: "DOC-009"
 	},
 	{
-		name: "Kubernetes",
-		experience: "1+ Year Active",
-		description: "Moved a django-rest as part of a lift and shift to google kubernetes engine to scale a slow system.",
+		name: "K8s_Orchestrator.yaml",
+		experience: "1+ Cycle Online",
+		description: "Container orchestration neural-mesh for scaling operations. Executed Django lift-and-shift protocol to Google's cluster infrastructure.",
 		imageUrl: "https://img2.storyblok.com/64x64/filters:format(webp):quality(80)/f/136938/3600x3493/076113f0ed/kubernetes.png",
 		color: "blue",
 		status: "SECONDARY",
 		code: "K8S-010"
 	},
 	{
-		name: "Google Cloud",
-		experience: "2+ Years Active",
-		description: "Migrating legacy django-rest web applications with lift and shift and remove and replace. Using cloud functions and pub-sub events.",
+		name: "Google_Cloud.net",
+		experience: "2+ Cycles Online",
+		description: "Corporate cloud infrastructure backbone. Handles legacy system migration, serverless functions, and pub-sub neural event processing.",
 		imageUrl: "https://img2.storyblok.com/64x64/filters:format(webp):quality(80)/f/136938/1200x630/b423251df3/social-icon-google-cloud-1200-630.png",
-		color: "cyan",  // Changed from blue to cyan to add variety
+		color: "cyan",
 		status: "PRIMARY",
 		code: "GCP-011"
 	},
 	{
-		name: "Vue",
-		experience: "2+ Years Active",
-		description: "Focuses mainly on vue 3 with composition API. Built internal libraries.",
+		name: "Vue_Neural.3",
+		experience: "2+ Cycles Online",
+		description: "Advanced composition-API neural interface. Specialized for internal library development and reactive component architecture.",
 		imageUrl: "",
 		color: "green",
 		status: "PRIMARY",
@@ -139,18 +140,10 @@ export default function CyberpunkToolsGrid() {
 	};
 
 	return (
-		<section className="py-16 bg-gray-900 relative overflow-hidden">
-			{/* Tech grid background */}
-			<div className="absolute inset-0 opacity-10">
-				<div className="absolute inset-0" style={{
-					backgroundImage: "radial-gradient(circle, rgba(156, 163, 175, 0.1) 1px, transparent 1px)",
-					backgroundSize: "40px 40px"
-				}}></div>
-				{/* Scanlines effect */}
-				<div className="absolute inset-0" style={{
-					backgroundImage: "linear-gradient(0deg, transparent 24%, rgba(156, 163, 175, 0.05) 25%, rgba(156, 163, 175, 0.05) 26%, transparent 27%, transparent 74%, rgba(156, 163, 175, 0.05) 75%, rgba(156, 163, 175, 0.05) 76%, transparent 77%, transparent)",
-					backgroundSize: "100px 100px"
-				}}></div>
+		<section className="py-16 relative overflow-hidden">
+			{/* Tech background elements - using grid variant */}
+			<div className="absolute inset-0 z-0">
+				<CyberpunkSectionDecor variant="grid" intensity="high" />
 			</div>
 
 			<div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -160,18 +153,18 @@ export default function CyberpunkToolsGrid() {
 						className="inline-block bg-gray-800 px-4 py-1 border-l-4 border-cyan-400 font-mono text-xs text-gray-400 mb-2"
 						style={{ clipPath: "polygon(0 0, 100% 0, 98% 100%, 0 100%)" }}
 					>
-						SYSTEM.STATUS // TOOLKIT.ARRAY
+						SYSTEM.STATUS // CYBERWARE.ARRAY
 					</div>
 
 					<div className="flex items-center gap-4">
 						<h2 className="text-3xl font-bold font-mono text-cyan-400 uppercase">
-							TOOLKIT_UPLINK
+							CYBERWARE_MATRIX
 						</h2>
 						<div className="h-px bg-cyan-400 flex-grow opacity-30"></div>
 					</div>
 
 					<p className="text-gray-400 font-mono mt-2 text-sm">
-            // specialized_tools_for_digital_ops // v2.4.2
+						// neural_enhancement_modules_for_net_operations // v3.7.1
 					</p>
 				</div>
 
@@ -182,35 +175,38 @@ export default function CyberpunkToolsGrid() {
 						className={`px-3 py-1 font-mono text-xs border ${activeCategory === "ALL" ? "bg-cyan-900 bg-opacity-30 text-cyan-400 border-cyan-400" : "border-gray-700 text-gray-400 hover:border-cyan-400 hover:text-cyan-400"}`}
 						style={{ clipPath: "polygon(0 0, 100% 0, 95% 100%, 0 100%)" }}
 					>
-						ALL TOOLS
+						ALL MODULES
 					</button>
 					<button
-						onClick={() => setActiveCategory("PRIMARY")}
-						className={`px-3 py-1 font-mono text-xs border ${activeCategory === "PRIMARY" ? "bg-green-900 bg-opacity-30 text-green-400 border-green-400" : "border-gray-700 text-gray-400 hover:border-green-400 hover:text-green-400"}`}
+						onClick={() => setActiveCategory("CORE_IMPLANTS")}
+						className={`px-3 py-1 font-mono text-xs border ${activeCategory === "CORE_IMPLANTS" ? "bg-green-900 bg-opacity-30 text-green-400 border-green-400" : "border-gray-700 text-gray-400 hover:border-green-400 hover:text-green-400"}`}
 						style={{ clipPath: "polygon(0 0, 100% 0, 95% 100%, 0 100%)" }}
 					>
-						PRIMARY
+								CORE_IMPLANTS
 					</button>
 					<button
-						onClick={() => setActiveCategory("SECONDARY")}
-						className={`px-3 py-1 font-mono text-xs border ${activeCategory === "SECONDARY" ? "bg-blue-900 bg-opacity-30 text-blue-400 border-blue-400" : "border-gray-700 text-gray-400 hover:border-blue-400 hover:text-blue-400"}`}
+						onClick={() => setActiveCategory("SUPPORT_WARE")}
+						className={`px-3 py-1 font-mono text-xs border ${activeCategory === "SUPPORT_WARE" ? "bg-blue-900 bg-opacity-30 text-blue-400 border-blue-400" : "border-gray-700 text-gray-400 hover:border-blue-400 hover:text-blue-400"}`}
 						style={{ clipPath: "polygon(0 0, 100% 0, 95% 100%, 0 100%)" }}
 					>
-						SECONDARY
+								SUPPORT_WARE
 					</button>
 					<button
-						onClick={() => setActiveCategory("TERTIARY")}
-						className={`px-3 py-1 font-mono text-xs border ${activeCategory === "TERTIARY" ? "bg-pink-900 bg-opacity-30 text-pink-500 border-pink-500" : "border-gray-700 text-gray-400 hover:border-pink-500 hover:text-pink-500"}`}
+						onClick={() => setActiveCategory("EXPERIMENTAL")}
+						className={`px-3 py-1 font-mono text-xs border ${activeCategory === "EXPERIMENTAL" ? "bg-pink-900 bg-opacity-30 text-pink-500 border-pink-500" : "border-gray-700 text-gray-400 hover:border-pink-500 hover:text-pink-500"}`}
 						style={{ clipPath: "polygon(0 0, 100% 0, 95% 100%, 0 100%)" }}
 					>
-						TERTIARY
+								EXPERIMENTAL
 					</button>
 				</div>
 
 				{/* Tool Cards Grid */}
 				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 					{tools
-						.filter(tool => activeCategory === "ALL" || tool.status === activeCategory)
+						.filter(tool => activeCategory === "ALL" || activeCategory === "ALL MODULES" || 
+							(activeCategory === "CORE_IMPLANTS" && tool.status === "PRIMARY") ||
+							(activeCategory === "SUPPORT_WARE" && tool.status === "SECONDARY") ||
+							(activeCategory === "EXPERIMENTAL" && tool.status === "TERTIARY"))
 						.map((tool, index) => (
 							<div
 								key={index}
@@ -275,7 +271,7 @@ export default function CyberpunkToolsGrid() {
 										<div className="mb-4">
 											<p className="text-gray-300 text-sm font-mono mb-2">{tool.description}</p>
 											<div className="flex items-center text-xs">
-												<span className="text-gray-500 font-mono mr-2">STATUS:</span>
+															<span className="text-gray-500 font-mono mr-2">UPTIME:</span>
 												<span className={`${getColorClass(tool.color, 'text')} font-mono`}>{tool.experience}</span>
 											</div>
 										</div>
@@ -283,7 +279,7 @@ export default function CyberpunkToolsGrid() {
 										{/* Compatibility meter */}
 										<div className="mt-4">
 											<div className="flex justify-between text-xs font-mono mb-1">
-												<span className="text-gray-500">COMPATIBILITY</span>
+															<span className="text-gray-500">INTEGRATION</span>
 												<span className={`${getColorClass(tool.color, 'text')}`}>{getCompatibility()}%</span>
 											</div>
 											<div className="w-full h-1 bg-gray-800">

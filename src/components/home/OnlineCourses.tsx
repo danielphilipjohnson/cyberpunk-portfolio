@@ -2,168 +2,169 @@
 
 import React, { useState } from 'react';
 import CyberpunkBorderCard from './CyberpunkBorderCard';
+import CyberpunkSectionDecor from '../visuals/CyberpunkSectionDecor';
 
-// Online courses data
+// Corporate neural implant training modules - Night City classified programs
 const courses = [
 	{
-		title: "JavaScript: The Advanced Concepts (2021)",
-		provider: "Udemy",
-		date: "March 2021",
-		certificate: "https://www.udemy.com/certificate/UC-1c64e855-6643-4565-9a57-abcb8876bcf0/",
+		title: "CORTEX.JACK_v4.2: Direct Neural Interface Protocol",
+		provider: "Arasaka Biotech Division",
+		date: "2077.03",
+		certificate: "https://arasaka.corp/neural-cert/CX-4A7B-9F2E",
 		logo: "https://img2.storyblok.com/75x75/filters:format(webp):quality(80)/f/136938/100x100/284ab63ec7/udemy.jpeg",
 		color: "cyan",
-		id: "CRS-001",
-		category: "JAVASCRIPT"
+		id: "IMP-001",
+		category: "BRAIN_DANCE"
 	},
 	{
-		title: "JavaScript: Understanding the Weird Parts",
-		provider: "Udemy",
-		date: "February 2021",
-		certificate: "https://www.udemy.com/certificate/UC-464c8109-c194-43ca-b9db-1dbf80a2220b/",
+		title: "KIROSHI.OPTICS: Visual Data Stream Enhancement",
+		provider: "Kiroshi Corporation",
+		date: "2077.02",
+		certificate: "https://kiroshi.net/cert/KO-5571-VISUAL",
 		logo: "https://img2.storyblok.com/75x75/filters:format(webp):quality(80)/f/136938/100x100/284ab63ec7/udemy.jpeg",
-		color: "cyan",
-		id: "CRS-002",
-		category: "JAVASCRIPT"
-	},
-	{
-		title: "React Front To Back",
-		provider: "Udemy",
-		date: "December 2020",
-		certificate: "https://www.udemy.com/certificate/UC-f096e0de-844c-4b76-a402-24c369743fec/",
-		logo: "https://img2.storyblok.com/75x75/filters:format(webp):quality(80)/f/136938/100x100/284ab63ec7/udemy.jpeg",
-		color: "cyan",
-		id: "CRS-003",
-		category: "FRAMEWORKS"
-	},
-	{
-		title: "Work Smarter, Not Harder: Time Management for Personal & Professional Productivity",
-		provider: "University of California",
-		date: "November 2020",
-		certificate: "https://www.coursera.org/account/accomplishments/certificate/VL7FXE8FKVNR",
-		logo: "https://img2.storyblok.com/75x75/filters:format(webp):quality(80)/f/136938/160x160/4ff46f54ea/uci.webp",
 		color: "purple",
-		id: "CRS-004",
-		category: "PRODUCTIVITY"
+		id: "IMP-002",
+		category: "OPTICS"
 	},
 	{
-		title: "Project Management: The Basics for Success",
-		provider: "University of California",
-		date: "October 2020",
-		certificate: "https://www.coursera.org/account/accomplishments/specialization/certificate/WKJ9ETHJFF7S",
+		title: "ZETATECH.RAM: Memory Palace Architecture",
+		provider: "Zetatech Neural Labs",
+		date: "2077.01",
+		certificate: "https://zetatech.corp/neural/ZT-RAM-8834",
 		logo: "https://img2.storyblok.com/75x75/filters:format(webp):quality(80)/f/136938/160x160/4ff46f54ea/uci.webp",
-		color: "purple",
-		id: "CRS-005",
-		category: "PRODUCTIVITY"
+		color: "blue",
+		id: "IMP-003",
+		category: "MEMORY_WARE"
 	},
 	{
-		title: "Full-Stack Web Development with React",
-		provider: "University of Hong Kong",
-		date: "Aug 2020",
-		certificate: "https://www.coursera.org/account/accomplishments/specialization/certificate/WKJ9ETHJFF7S",
+		title: "MILITECH.TARGETING: Combat Reflex Augmentation",
+		provider: "Militech Defense Systems",
+		date: "2076.12",
+		certificate: "https://militech.net/combat-cert/MT-TRG-9912",
 		logo: "https://img2.storyblok.com/75x75/filters:format(webp):quality(80)/f/136938/200x200/3eebbdb5cb/hong.png",
-		color: "blue",
-		id: "CRS-006",
-		category: "FRAMEWORKS"
-	},
-	{
-		title: "Web Applications for Everybody",
-		provider: "University of Michigan",
-		date: "June 2020",
-		certificate: "https://www.coursera.org/account/accomplishments/specialization/certificate/EWWJFR4LJM7J",
-		logo: "https://img2.storyblok.com/75x75/filters:format(webp):quality(80)/f/136938/160x160/4ff46f54ea/uci.webp",
-		color: "blue",
-		id: "CRS-007",
-		category: "WEB"
-	},
-	{
-		title: "Version Control with Git",
-		provider: "Atlassian",
-		date: "March 2020",
-		certificate: "https://www.coursera.org/account/accomplishments/certificate/WCMWFJX9QAXV",
-		logo: "https://img2.storyblok.com/75x75/filters:format(webp):quality(80)/f/136938/160x160/903befb722/atlassian.webp",
-		color: "blue",
-		id: "CRS-008",
-		category: "DEVOPS"
-	},
-	{
-		title: "Google IT Automation with Python Specialization",
-		provider: "Google",
-		date: "March 2020",
-		certificate: "https://www.coursera.org/account/accomplishments/specialization/certificate/EEGGHB96R3KQ",
-		logo: "https://img2.storyblok.com/75x75/filters:format(webp):quality(80)/f/136938/100x100/18aa79bc65/google.png",
 		color: "green",
-		id: "CRS-009",
-		category: "PYTHON"
+		id: "IMP-004",
+		category: "COMBAT_WARE"
 	},
 	{
-		title: "APIs and Microservices",
-		provider: "freeCodeCamp",
-		date: "May 2019",
-		certificate: "https://www.freecodecamp.org/certification/daniel-philip-johnson/apis-and-microservices",
-		logo: "https://img2.storyblok.com/75x75/filters:format(webp):quality(80)/f/136938/100x100/7c6c454b95/freecodecamp.jpeg",
+		title: "BIOTECHNICA.SYNTH: Artificial Neuron Cultivation",
+		provider: "Biotechnica Research",
+		date: "2076.11",
+		certificate: "https://biotechnica.corp/synth/BT-NEU-4471",
+		logo: "https://img2.storyblok.com/75x75/filters:format(webp):quality(80)/f/136938/160x160/4ff46f54ea/uci.webp",
 		color: "lime",
-		id: "CRS-010",
-		category: "BACKEND"
+		id: "IMP-005",
+		category: "BIO_MODS"
 	},
 	{
-		title: "Data Visualization",
-		provider: "freeCodeCamp",
-		date: "May 2019",
-		certificate: "https://www.freecodecamp.org/certification/daniel-philip-johnson/data-visualization",
-		logo: "https://img2.storyblok.com/75x75/filters:format(webp):quality(80)/f/136938/100x100/7c6c454b95/freecodecamp.jpeg",
-		color: "lime",
-		id: "CRS-011",
-		category: "DATA"
+		title: "NETWATCH.DAEMON: ICE Breaker Neural Protocols",
+		provider: "NetWatch Authority",
+		date: "2076.10",
+		certificate: "https://netwatch.gov/daemon-cert/NW-ICE-7788",
+		logo: "https://img2.storyblok.com/75x75/filters:format(webp):quality(80)/f/136938/160x160/903befb722/atlassian.webp",
+		color: "cyan",
+		id: "IMP-006",
+		category: "NET_RUNNER"
 	},
 	{
-		title: "Front End Libraries",
-		provider: "freeCodeCamp",
-		date: "May 2019",
-		certificate: "https://www.freecodecamp.org/certification/daniel-philip-johnson/front-end-libraries",
-		logo: "https://img2.storyblok.com/75x75/filters:format(webp):quality(80)/f/136938/100x100/7c6c454b95/freecodecamp.jpeg",
-		color: "lime",
-		id: "CRS-012",
-		category: "FRAMEWORKS"
+		title: "RAVEN.MICRO: Stealth Protocol Neural Mesh",
+		provider: "Raven Microcybernetics",
+		date: "2076.09",
+		certificate: "https://raven.tech/stealth/RV-MESH-5533",
+		logo: "https://img2.storyblok.com/75x75/filters:format(webp):quality(80)/f/136938/100x100/18aa79bc65/google.png",
+		color: "purple",
+		id: "IMP-007",
+		category: "STEALTH_TECH"
 	},
 	{
-		title: "JavaScript Algorithms and Data Structures",
-		provider: "freeCodeCamp",
-		date: "February 2019",
-		certificate: "https://www.freecodecamp.org/certification/daniel-philip-johnson/javascript-algorithms-and-data-structures",
+		title: "SCAV.TECH: Black Market Implant Extraction",
+		provider: "Underground Clinic Network",
+		date: "2076.08",
+		certificate: "https://darknet.scav/extract/SC-EXT-1134",
 		logo: "https://img2.storyblok.com/75x75/filters:format(webp):quality(80)/f/136938/100x100/7c6c454b95/freecodecamp.jpeg",
-		color: "lime",
-		id: "CRS-013",
-		category: "JAVASCRIPT"
+		color: "pink",
+		id: "IMP-008",
+		category: "BLACK_MARKET"
 	},
 	{
-		title: "Responsive Web Design",
-		provider: "freeCodeCamp",
-		date: "February 2019",
-		certificate: "https://www.freecodecamp.org/certification/daniel-philip-johnson/responsive-web-design",
+		title: "TRAUMA.TEAM: Emergency Neural Stabilization",
+		provider: "Trauma Team International",
+		date: "2076.07",
+		certificate: "https://trauma.team/cert/TT-STAB-9966",
 		logo: "https://img2.storyblok.com/75x75/filters:format(webp):quality(80)/f/136938/100x100/7c6c454b95/freecodecamp.jpeg",
-		color: "lime",
-		id: "CRS-014",
-		category: "WEB"
+		color: "green",
+		id: "IMP-009",
+		category: "MEDTECH"
 	},
 	{
-		title: "Legacy Back End",
-		provider: "freeCodeCamp",
-		date: "November 2017",
-		certificate: "https://freecodecamp.org/certification/daniel-philip-johnson/legacy-back-end",
+		title: "KANG.TAO: AI-Neural Interface Harmony",
+		provider: "Kang Tao Cybernetics",
+		date: "2076.06",
+		certificate: "https://kangtao.asia/ai-cert/KT-HAR-3344",
 		logo: "https://img2.storyblok.com/75x75/filters:format(webp):quality(80)/f/136938/100x100/7c6c454b95/freecodecamp.jpeg",
-		color: "lime",
-		id: "CRS-015",
-		category: "BACKEND"
+		color: "blue",
+		id: "IMP-010",
+		category: "AI_SYNC"
 	},
 	{
-		title: "Legacy Data Visualization",
-		provider: "freeCodeCamp",
-		date: "November 2017",
-		certificate: "https://freecodecamp.org/certification/daniel-philip-johnson/legacy-data-visualization",
+		title: "CORPO.LOYALTY: Executive Neural Conditioning",
+		provider: "Arasaka HR Division",
+		date: "2076.05",
+		certificate: "https://arasaka.corp/loyalty/AR-LOY-7722",
+		logo: "https://img2.storyblok.com/75x75/filters:format(webp):quality(80)/f/136938/100x100/7c6c454b95/freecodecamp.jpeg",
+		color: "cyan",
+		id: "IMP-011",
+		category: "CORPO_MODS"
+	},
+	{
+		title: "NIGHT.CITY_SURVIVAL: Street Smart Neural Upgrades",
+		provider: "Valentino Street Clinic",
+		date: "2076.04",
+		certificate: "https://streetclinic.val/survival/VAL-SUR-2211",
 		logo: "https://img2.storyblok.com/75x75/filters:format(webp):quality(80)/f/136938/100x100/7c6c454b95/freecodecamp.jpeg",
 		color: "lime",
-		id: "CRS-016",
-		category: "DATA"
+		id: "IMP-012",
+		category: "STREET_SMART"
+	},
+	{
+		title: "MAELSTROM.RAGE: Combat Stim Neural Integration",
+		provider: "Maelstrom Gang Tech",
+		date: "2076.03",
+		certificate: "https://maelstrom.gang/rage/MS-RAGE-8855",
+		logo: "https://img2.storyblok.com/75x75/filters:format(webp):quality(80)/f/136938/100x100/7c6c454b95/freecodecamp.jpeg",
+		color: "purple",
+		id: "IMP-013",
+		category: "GANG_TECH"
+	},
+	{
+		title: "CORPO.ESPIONAGE: Corporate Intelligence Implants",
+		provider: "Night Corp Black Ops",
+		date: "2076.02",
+		certificate: "https://nightcorp.shadow/esp/NC-ESP-4466",
+		logo: "https://img2.storyblok.com/75x75/filters:format(webp):quality(80)/f/136938/100x100/7c6c454b95/freecodecamp.jpeg",
+		color: "pink",
+		id: "IMP-014",
+		category: "BLACK_OPS"
+	},
+	{
+		title: "VOODOO.BOYS: Net Architecture Invasion Protocols",
+		provider: "Voodoo Boys Collective",
+		date: "2076.01",
+		certificate: "https://voodoo.net/invasion/VB-INV-1177",
+		logo: "https://img2.storyblok.com/75x75/filters:format(webp):quality(80)/f/136938/100x100/7c6c454b95/freecodecamp.jpeg",
+		color: "green",
+		id: "IMP-015",
+		category: "NET_RUNNER"
+	},
+	{
+		title: "RELIC.GHOST: Consciousness Transfer Protocols",
+		provider: "Arasaka Soul Killer Division",
+		date: "2075.12",
+		certificate: "https://arasaka.corp/relic/AR-SOUL-9999",
+		logo: "https://img2.storyblok.com/75x75/filters:format(webp):quality(80)/f/136938/100x100/7c6c454b95/freecodecamp.jpeg",
+		color: "cyan",
+		id: "IMP-016",
+		category: "CONSCIOUSNESS"
 	}
 ];
 
@@ -199,11 +200,10 @@ export default function CyberpunkOnlineCourses() {
 	};
 
 	return (
-		<section className="py-16 bg-gray-900 relative overflow-hidden">
-			{/* Tech grid background */}
-			<div className="absolute inset-0 opacity-5">
-				<div className="absolute inset-0 bg-grid-pattern"></div>
-				<div className="absolute inset-0 bg-circuit-pattern"></div>
+		<section className="py-16 relative overflow-hidden">
+			{/* Tech background elements - using grid variant */}
+			<div className="absolute inset-0 z-0">
+				<CyberpunkSectionDecor variant="grid" intensity="high" />
 			</div>
 
 			<div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -214,23 +214,23 @@ export default function CyberpunkOnlineCourses() {
 							className="px-3 py-1 bg-gray-800 border-l-4 border-cyan-400 font-mono text-xs text-gray-400"
 							style={{ clipPath: "polygon(0 0, 100% 0, 95% 100%, 0 100%)" }}
 						>
-							UPLOAD.STATUS // CORTEX_ENHANCEMENT.LOG
+						IMPLANT.STATUS // CORPO_NEURAL_DATABASE.LOG
 						</div>
 						<div className="h-px bg-cyan-400 flex-grow opacity-30"></div>
 					</div>
 
 					<div className="flex items-center justify-between">
 						<h2 className="text-3xl font-bold font-mono text-cyan-400 uppercase tracking-wider">
-							SKILL UPLOADS <span className="text-sm opacity-70">[v2.0.25]</span>
+							NEURAL IMPLANTS <span className="text-sm opacity-70">[CORPO.v2077]</span>
 						</h2>
 
 						<div className="text-xs text-gray-400 font-mono bg-gray-800 px-2 py-1 border border-gray-700">
-							<span className="text-cyan-400">TOTAL_COUNT:</span> {courses.length}
+							<span className="text-cyan-400">IMPLANT_CATALOG:</span> {courses.length}
 						</div>
 					</div>
 
 					<p className="text-gray-400 font-mono mt-2 text-sm">
-            // Neural interface modules for direct knowledge transfer and skill assimilation
+            // Classified corpo neural enhancement catalog - black market augmentations and corporate training modules
 					</p>
 				</div>
 
@@ -331,7 +331,7 @@ export default function CyberpunkOnlineCourses() {
 												<svg className="w-3 h-3" fill="currentColor" viewBox="0 0 640 512">
 													<path d="M622.34 153.2L343.4 67.5c-15.2-4.67-31.6-4.67-46.79 0L17.66 153.2c-23.54 7.23-23.54 38.36 0 45.59l48.63 14.94c-10.67 13.19-17.23 29.28-17.88 46.9C38.78 266.15 32 276.11 32 288c0 10.78 5.68 19.85 13.86 25.65L20.33 428.53C18.11 438.52 25.71 448 35.94 448h56.11c10.24 0 17.84-9.48 15.62-19.47L82.14 313.65C90.32 307.85 96 298.78 96 288c0-11.57-6.47-21.25-15.66-26.87.76-15.02 8.44-28.3 20.69-36.72L296.6 284.5c9.06 2.78 26.44 6.25 46.79 0l278.95-85.7c23.55-7.24 23.55-38.36 0-45.6zM352.79 315.09c-28.53 8.76-52.84 3.92-65.59 0l-145.02-44.55L128 384c0 35.35 85.96 64 192 64s192-28.65 192-64l-14.18-113.47-145.03 44.56z" />
 												</svg>
-												CERTIFICATE
+									VERIFY.HASH
 											</a>
 										</div>
 
@@ -364,7 +364,7 @@ export default function CyberpunkOnlineCourses() {
 								clipPath: "polygon(0 0, 100% 0, 100% 70%, 90% 100%, 0 100%)"
 							}}
 						>
-							LOAD MORE MODULES ({courses.length - 8})
+						INSTALL_ADDITIONAL.IMPLANTS ({courses.length - 8})
 						</button>
 					</div>
 				)}

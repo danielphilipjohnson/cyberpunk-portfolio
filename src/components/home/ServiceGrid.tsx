@@ -3,54 +3,55 @@
 import React, { useState } from "react";
 import { Pencil, BookOpen, Code2, MonitorSmartphone, Paintbrush, Hammer } from "lucide-react";
 import CyberpunkBorderCard from "./CyberpunkBorderCard";
+import CyberpunkSectionDecor from '../visuals/CyberpunkSectionDecor';
 
 const services = [
 	{
-		icon: <Pencil className="w-6 h-6" />,
-		title: "TECHNICAL_WRITING.exe",
-		description: "Writing tutorials about my favourite technologies, APIs with Node.js and contributing to open source.",
-		color: "blue",
-		id: "SRV-001",
-		status: "ACTIVE",
-	},
-	{
 		icon: <Code2 className="w-6 h-6" />,
-		title: "CODE_DEVELOPMENT.sys",
-		description: "Need help adding to your codebase or an open source project? I can use Javascript, React and Nuxt.",
-		color: "green",
-		id: "SRV-002",
-		status: "ACTIVE",
-	},
-	{
-		icon: <BookOpen className="w-6 h-6" />,
-		title: "DOCUMENTATION.dll",
-		description: "Currently writing a book about Tailwind CSS and JavaScript blog content.",
-		color: "pink",
-		id: "SRV-003",
+		title: "NEURAL_INTERFACE.exe",
+		description: "Direct cortex-to-digital interface development. Seamless user experiences that bypass conscious processing for maximum bandwidth.",
+		color: "cyan",
+		id: "CORP-001",
 		status: "ACTIVE",
 	},
 	{
 		icon: <MonitorSmartphone className="w-6 h-6" />,
-		title: "APP_DEPLOYMENT.bin",
-		description: "Building fast, responsive and engaging apps to bring your ideas to life.",
-		color: "purple",
-		id: "SRV-004",
+		title: "BREACH_PROTOCOL.sys",
+		description: "Security penetration testing and vulnerability assessment. Finding the weak points before your competitors do.",
+		color: "green",
+		id: "CORP-002",
 		status: "ACTIVE",
 	},
 	{
 		icon: <Paintbrush className="w-6 h-6" />,
-		title: "RESPONSIVE_DESIGN.cfg",
-		description: "Making sure your designs work no matter what device a user views it.",
-		color: "cyan",
-		id: "SRV-005",
+		title: "CORPO_FRONTEND.dll",
+		description: "High-end corporate web presence with neon aesthetics. Making your brand glow in the digital wasteland.",
+		color: "pink",
+		id: "CORP-003",
 		status: "ACTIVE",
 	},
 	{
 		icon: <Hammer className="w-6 h-6" />,
-		title: "CODE_REFACTOR.bat",
-		description: "Helping refactor codebases, implement new features, and improve performance.",
+		title: "DATA_FORTRESS.bin",
+		description: "Secure backend architecture that keeps corpo secrets locked down. Military-grade encryption for sensitive operations.",
+		color: "purple",
+		id: "CORP-004",
+		status: "ACTIVE",
+	},
+	{
+		icon: <BookOpen className="w-6 h-6" />,
+		title: "QUICKHACK.cfg",
+		description: "Rapid deployment solutions and emergency fixes. When the corpo needs it done yesterday, we deliver.",
+		color: "blue",
+		id: "CORP-005",
+		status: "ACTIVE",
+	},
+	{
+		icon: <Pencil className="w-6 h-6" />,
+		title: "NET_ARCHITECTURE.bat",
+		description: "Full-stack system design for Night City's digital infrastructure. From street-level apps to corpo mainframes.",
 		color: "lime",
-		id: "SRV-006",
+		id: "CORP-006",
 		status: "ACTIVE",
 	}
 ];
@@ -63,12 +64,11 @@ export default function EnhancedCyberpunkServiceGrid() {
 	};
 
 	return (
-		<section className="relative py-16 overflow-hidden bg-gray-900">
-			{/* Tech background grid lines */}
-			<div className="absolute inset-0 z-0" style={{
-				backgroundImage: "linear-gradient(to right, #1f2937 1px, transparent 1px), linear-gradient(to bottom, #1f2937 1px, transparent 1px)",
-				backgroundSize: "40px 40px"
-			}}></div>
+		<section className="relative py-16 overflow-hidden">
+			{/* Tech background elements - using solid variant */}
+			<div className="absolute inset-0 z-0">
+				<CyberpunkSectionDecor variant="solid" intensity="low" />
+			</div>
 
 			{/* Section Header */}
 			<div className="relative z-10 max-w-7xl mx-auto px-4 mb-12">
@@ -85,9 +85,9 @@ export default function EnhancedCyberpunkServiceGrid() {
 				>
 					<div className="flex items-center text-gray-300 font-mono mb-2">
 						<span className="text-blue-400 mr-2">$</span>
-						<span className="typing-effect">initializing_service_modules...</span>
+								<span className="typing-effect">scanning_available_services...</span>
 					</div>
-					<p className="text-gray-400 font-mono text-sm">Select a service module to view specifications and request access.</p>
+					<p className="text-gray-400 font-mono text-sm">Choose your service package. All operations executed with corpo-level discretion.</p>
 				</div>
 			</div>
 
@@ -178,7 +178,7 @@ export default function EnhancedCyberpunkServiceGrid() {
 										className={`text-xs font-mono px-3 py-1 bg-gray-800 border border-${color === 'pink' ? 'pink-500' : `${color}-400`} text-${color === 'pink' ? 'pink-500' : `${color}-400`} hover:bg-${color === 'pink' ? 'pink-900' : `${color}-900`} hover:bg-opacity-30 transition-colors`}
 										style={{ clipPath: "polygon(0 0, 100% 0, 100% 70%, 90% 100%, 0 100%)" }}
 									>
-										REQUEST ACCESS &gt;
+										INITIATE CONTACT {'>'}
 									</button>
 								</div>
 

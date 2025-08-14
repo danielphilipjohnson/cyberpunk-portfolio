@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react';
-import GridLines from '../visuals/GridLines';
+import CyberpunkSectionDecor from '../visuals/CyberpunkSectionDecor';
 import ScanLines from '../visuals/ScanLines';
 import GlitchEffect from '../visuals/GlitchEffect';
 import FloatingParticles from '../visuals/FloatingParticles';
@@ -18,8 +18,10 @@ export const CyberpunkHeroWithNav = () => {
 			{/* Background overlay */}
 			<div className="absolute inset-0 bg-black/40 backdrop-blur-sm z-0" />
 
-			{/* Cyberpunk Visual Effects */}
-			<GridLines />
+			{/* Cyberpunk Visual Effects - no grid lines */}
+			<div className="absolute inset-0 z-0">
+				<CyberpunkSectionDecor variant="solid" intensity="low" />
+			</div>
 			<ScanLines />
 			<GlitchEffect />
 			<FloatingParticles />
@@ -42,8 +44,8 @@ export const CyberpunkHeroWithNav = () => {
 								</svg>
 							</div>
 							<div>
-								<div className="text-teal-400 font-bold text-lg tracking-wider uppercase">Daniel P. Johnson</div>
-								<div className="text-gray-400 text-xs font-mono">[CYBERPUNK_PORTFOLIO]</div>
+						<div className="text-teal-400 font-bold text-lg tracking-wider lowercase font-mono">void.dev</div>
+						<div className="text-gray-400 text-xs font-mono">[NETRUNNER.PORTFOLIO]</div>
 							</div>
 						</div>
 
@@ -90,7 +92,7 @@ export const CyberpunkHeroWithNav = () => {
 			<div className="absolute bottom-0 left-0 right-0 h-24 z-10">
 				<div className="h-full flex items-center justify-center text-center">
 					<div className="flex flex-col items-center">
-						<span className="text-teal-400 uppercase tracking-widest text-sm mb-2">Scroll to explore</span>
+					<span className="text-teal-400 uppercase tracking-widest text-sm mb-2">Dive deeper choom</span>
 						<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-teal-400 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
 						</svg>
@@ -135,21 +137,21 @@ export const CyberpunkHeroWithNav = () => {
 					<div className="flex items-center justify-center mb-6">
 						<div className="w-2 h-2 bg-teal-400 rounded-full animate-pulse mr-2"></div>
 						<div className="text-teal-400 text-sm font-mono tracking-wider">
-							[STATUS: ONLINE] • [NODE: ACTIVE]
+							[NETRUNNER: ONLINE] • [BREACH_PROTOCOL: READY]
 						</div>
 					</div>
 
 					{/* Main title */}
 					<h1 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase leading-tight tracking-wider text-white mb-4">
-						FULLSTACK <span className="text-teal-400">ENGINEER</span>
+						NETRUNNER <span className="text-teal-400">OPERATIVE</span>
 					</h1>
 
 					{/* Company affiliation */}
 					<div className="mb-8 flex justify-center">
 						<div className="inline-flex items-center bg-gray-800/60 border border-pink-500/30 px-4 py-2"
 							style={{ clipPath: 'polygon(0 0, 100% 0, 95% 100%, 0 100%)' }}>
-							<span className="text-pink-500 font-mono text-sm mr-2">[CORP_LINK]</span>
-							<span className="text-white font-bold tracking-wider">@ LOAN.CO.UK</span>
+							<span className="text-pink-500 font-mono text-sm mr-2">[CORPO_LINK]</span>
+							<span className="text-white font-bold tracking-wider">HIYIELD CORP</span>
 						</div>
 					</div>
 
@@ -161,10 +163,10 @@ export const CyberpunkHeroWithNav = () => {
 					{/* Simplified mission statement */}
 					<div className="max-w-3xl mx-auto mb-10">
 						<p className="text-white/90 text-lg font-mono leading-relaxed mb-4">
-							I architect <span className="text-teal-400 font-bold">frontend systems</span> that interface seamlessly, execute at lightspeed, and deploy with zero-failure protocols.
+							Specialized in <span className="text-teal-400 font-bold">neural interface architecture</span> - crafting seamless digital experiences that jack straight into the user's cortex. Zero-lag, zero-glitch, maximum bandwidth.
 						</p>
 						<p className="text-white/70 text-base font-mono leading-relaxed">
-							With <span className="text-pink-500 font-bold">5+ years</span> infiltrating fintech & e-commerce networks, translating complex product requirements into performant, accessible, and maintainable interface protocols.
+							<span className="text-pink-500 font-bold">5+ years</span> deep in the corporate data streams of Night City's financial district. When the corpo needs clean code and the street needs results - I deliver both.
 						</p>
 					</div>
 
@@ -176,7 +178,7 @@ export const CyberpunkHeroWithNav = () => {
 								clipPath: 'polygon(0 0, 100% 0, 95% 100%, 0 100%)'
 							}}
 						>
-							[ACCESS_PROJECTS]
+							[JACK_IN]
 						</button>
 						<button
 							className="px-8 py-3 bg-transparent border-2 border-pink-500 text-pink-500 hover:bg-pink-500 hover:text-gray-900 font-bold text-sm uppercase tracking-widest transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/25"
@@ -184,7 +186,7 @@ export const CyberpunkHeroWithNav = () => {
 								clipPath: 'polygon(0 0, 100% 0, 95% 100%, 0 100%)'
 							}}
 						>
-							[INIT_CONTACT]
+							[SEND_MESSAGE]
 						</button>
 					</div>
 				</div>
@@ -196,16 +198,16 @@ export const CyberpunkHeroWithNav = () => {
 						<div className="bg-gray-900/40 backdrop-blur-sm border border-teal-400/20 p-4 text-center"
 							style={{ clipPath: 'polygon(0 0, 100% 0, 95% 100%, 0 100%)' }}>
 							<div className="text-teal-400 text-sm font-mono mb-1">UPTIME</div>
-							<div className="text-white font-bold text-xl">99.9%</div>
+							<div className="text-white font-bold text-xl">99.7%</div>
 						</div>
 						<div className="bg-gray-900/40 backdrop-blur-sm border border-pink-500/20 p-4 text-center"
 							style={{ clipPath: 'polygon(0 0, 100% 0, 95% 100%, 0 100%)' }}>
-							<div className="text-pink-500 text-sm font-mono mb-1">EXPERIENCE</div>
-							<div className="text-white font-bold text-xl">5+ YRS</div>
+							<div className="text-pink-500 text-sm font-mono mb-1">STREET CRED</div>
+							<div className="text-white font-bold text-xl">LVL 47</div>
 						</div>
 						<div className="bg-gray-900/40 backdrop-blur-sm border border-cyan-400/20 p-4 text-center md:col-span-2 lg:col-span-1"
 							style={{ clipPath: 'polygon(0 0, 100% 0, 95% 100%, 0 100%)' }}>
-							<div className="text-cyan-400 text-sm font-mono mb-1">PROJECTS</div>
+							<div className="text-cyan-400 text-sm font-mono mb-1">GIGS</div>
 							<div className="text-white font-bold text-xl">∞</div>
 						</div>
 					</div>
