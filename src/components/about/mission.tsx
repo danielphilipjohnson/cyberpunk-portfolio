@@ -219,21 +219,21 @@ export const CyberpunkMissionStatement = () => {
 						</div>
 						
 						{/* Security status panel */}
-						<div className="absolute top-2 right-4 flex items-center space-x-4">
-							<div className="flex items-center space-x-2">
-								<div className={`w-2 h-2 rounded-full animate-pulse ${
+						<div className="absolute top-2 right-2 sm:right-4 hidden sm:flex items-center space-x-2 lg:space-x-4">
+							<div className="flex items-center space-x-1 sm:space-x-2">
+								<div className={`w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full animate-pulse ${
 									threatLevel === 'MINIMAL' || threatLevel === 'LOW' ? 'bg-green-400' :
 									threatLevel === 'MEDIUM' ? 'bg-yellow-400' : 'bg-red-400'
 								}`}></div>
-								<span className="text-gray-400 font-mono text-xs">THREAT_LEVEL: </span>
+								<span className="text-gray-400 font-mono text-xs hidden lg:inline">THREAT: </span>
 								<span className={`font-mono text-xs ${
 									threatLevel === 'MINIMAL' || threatLevel === 'LOW' ? 'text-green-400' :
 									threatLevel === 'MEDIUM' ? 'text-yellow-400' : 'text-red-400'
 								}`}>{threatLevel}</span>
 							</div>
-							<div className="flex items-center space-x-2">
-								<span className="text-cyan-400 font-mono text-xs">SECURITY: {securityLevel}%</span>
-								<div className="w-16 h-1 bg-gray-700 relative overflow-hidden">
+							<div className="flex items-center space-x-1 sm:space-x-2">
+								<span className="text-cyan-400 font-mono text-xs">{securityLevel}%</span>
+								<div className="w-8 sm:w-12 lg:w-16 h-1 bg-gray-700 relative overflow-hidden">
 									<div className="absolute inset-0 bg-cyan-400" style={{ 
 										width: `${securityLevel}%`,
 										transition: 'width 3s ease'
@@ -242,24 +242,24 @@ export const CyberpunkMissionStatement = () => {
 							</div>
 						</div>
 						
-						<div className="flex items-center gap-4">
+						<div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
 							{/* System identifier */}
-							<div className="bg-cyan-900 bg-opacity-40 px-4 py-2 border-l-2 border-cyan-400 flex items-center"
+							<div className="bg-cyan-900 bg-opacity-40 px-3 sm:px-4 py-1 sm:py-2 border-l-2 border-cyan-400 flex items-center shrink-0 mb-2 sm:mb-0"
 								style={{ clipPath: "polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%)" }}>
-								<div className="w-3 h-3 bg-cyan-400 mr-3 animate-pulse"></div>
-								<span className="text-cyan-400 font-mono text-sm font-bold">CORP_DIRECTIVE.proto</span>
+								<div className="w-2 sm:w-3 h-2 sm:h-3 bg-cyan-400 mr-2 sm:mr-3 animate-pulse"></div>
+								<span className="text-cyan-400 font-mono text-xs sm:text-sm font-bold">CORP_DIRECTIVE.proto</span>
 							</div>
 							
 							{/* Main title */}
-							<div className="flex-1">
-								<h2 className="text-3xl md:text-4xl font-mono font-bold text-white uppercase tracking-wider flex items-center mb-2">
-									<span className="text-cyan-400 mr-3">⚡</span>
-									MISSION_PROTOCOL
-									<div className="ml-4 px-3 py-1 bg-pink-900 bg-opacity-30 border border-pink-500 text-pink-500 text-xs">
+							<div className="flex-1 min-w-0">
+								<h2 className="text-xl sm:text-2xl md:text-4xl font-mono font-bold text-white uppercase tracking-wider flex flex-wrap items-center mb-2 gap-2">
+									<span className="text-cyan-400 mr-1 sm:mr-3">⚡</span>
+									<span className="break-words">MISSION_PROTOCOL</span>
+									<div className="mt-1 sm:mt-0 sm:ml-2 px-2 sm:px-3 py-1 bg-pink-900 bg-opacity-30 border border-pink-500 text-pink-500 text-xs shrink-0">
 										[PRIORITY_ALPHA]
 									</div>
 								</h2>
-								<div className="text-gray-400 font-mono text-sm">
+								<div className="text-gray-400 font-mono text-xs sm:text-sm break-words">
 									Target: FULLSTACK_NETRUNNER // Clearance: BETA // Mission_ID: MP-2077
 								</div>
 							</div>
@@ -305,63 +305,65 @@ export const CyberpunkMissionStatement = () => {
 				{/* Mission quote in tech frame */}
 				<div className="mb-8">
 					<div
-						className="bg-gray-800 border-l-2 border-pink-500 p-6 relative"
+						className="bg-gray-800 border-l-2 border-pink-500 p-4 sm:p-6 relative"
 						style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%)" }}
 					>
 						<div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-pink-500 opacity-60"></div>
 						<div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-gray-600 opacity-60"></div>
 
-						<h3 className="text-xl font-mono text-pink-500 italic relative mb-2">
+						<h3 className="text-base sm:text-lg md:text-xl font-mono text-pink-500 italic relative mb-2 break-words leading-relaxed">
 							&quot;Mission driven nuxt developer with a passion to create apps that allows
 							you to express your ideas.&quot;
 						</h3>
 
 						{/* Terminal cursor effect */}
-						<div className="h-4 w-2 bg-pink-500 opacity-75 inline-block ml-1 animate-pulse absolute"></div>
+						<div className="h-3 sm:h-4 w-1 sm:w-2 bg-pink-500 opacity-75 inline-block ml-1 animate-pulse absolute"></div>
 
 						{/* Technical ID */}
-						<div className="absolute -bottom-3 -right-3 bg-gray-900 text-xs font-mono text-gray-500 px-2 py-1">
+						<div className="absolute -bottom-2 sm:-bottom-3 -right-2 sm:-right-3 bg-gray-900 text-xs font-mono text-gray-500 px-1 sm:px-2 py-1">
 							DIRECTIVE.0x1
 						</div>
 					</div>
 				</div>
 
 				{/* Main content with dual panel layout */}
-				<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+				<div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
 					{/* Main paragraph with highlighted tech words */}
-					<div className="md:col-span-2">
+					<div className="lg:col-span-2 order-2 lg:order-1">
 						<div
-							className="bg-gray-800 p-6 h-full relative"
+							className="bg-gray-800 p-4 sm:p-6 h-full relative"
 							style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 15px 100%, 0 calc(100% - 15px))" }}
 						>
-							<div className="flex items-center mb-4">
-								<div className="w-1.5 h-6 bg-cyan-400 mr-3"></div>
-								<h3 className="text-lg font-mono text-cyan-400">DEVELOPER_PROFILE</h3>
+							<div className="flex items-center mb-3 sm:mb-4">
+								<div className="w-1 sm:w-1.5 h-4 sm:h-6 bg-cyan-400 mr-2 sm:mr-3"></div>
+								<h3 className="text-base sm:text-lg font-mono text-cyan-400">DEVELOPER_PROFILE</h3>
 							</div>
 
-							<p className="text-gray-300 font-mono leading-relaxed text-sm mb-4">
+							<p className="text-gray-300 font-mono leading-relaxed text-xs sm:text-sm mb-3 sm:mb-4 break-words">
 								{highlightText("Enthusiastic programmer who is expanding his skills at hiyield. He currently works as a Full-Stack python developer. I have a Theoretical knowledge of the fundamentals HTML, CSS and JS. Formely specialised in react development, until switching to nuxt and vue.js. My tech stack is django-rest, nuxt, vue and tailwind for styling as well as contributing with the WordPress team.")}
 							</p>
 
 							{/* Status indicator */}
-							<div className="flex items-center text-xs font-mono text-gray-400 mt-6">
-								<div className="w-2 h-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></div>
-								<span>SYSTEM OPERATIONAL</span>
-								<span className="ml-2 text-cyan-400">UPTIME: 765d:12h:43m</span>
+							<div className="flex flex-wrap items-center text-xs font-mono text-gray-400 mt-4 sm:mt-6 gap-2">
+								<div className="flex items-center">
+									<div className="w-2 h-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></div>
+									<span className="whitespace-nowrap">SYSTEM OPERATIONAL</span>
+								</div>
+								<span className="text-cyan-400 whitespace-nowrap">UPTIME: 765d:12h:43m</span>
 							</div>
 
 							{/* Tech corner accents */}
-							<div className="absolute bottom-0 left-0 w-8 h-8 pointer-events-none opacity-30">
-								<div className="absolute bottom-0 left-0 w-8 h-px bg-cyan-400"></div>
-								<div className="absolute bottom-0 left-0 w-px h-8 bg-cyan-400"></div>
+							<div className="absolute bottom-0 left-0 w-6 sm:w-8 h-6 sm:h-8 pointer-events-none opacity-30">
+								<div className="absolute bottom-0 left-0 w-6 sm:w-8 h-px bg-cyan-400"></div>
+								<div className="absolute bottom-0 left-0 w-px h-6 sm:h-8 bg-cyan-400"></div>
 							</div>
 						</div>
 					</div>
 
 					{/* Enhanced neural tech stack visualization */}
-					<div>
+					<div className="order-1 lg:order-2">
 						<div
-							className={`bg-gray-800 p-6 h-full border-r-2 border-lime-400 relative ${activeScanLine === 'stack-scan' ? 'shadow-lg shadow-lime-400/20' : ''} transition-all duration-700`}
+							className={`bg-gray-800 p-4 sm:p-6 h-full border-r-2 lg:border-r-2 border-b-2 lg:border-b-0 border-lime-400 relative ${activeScanLine === 'stack-scan' ? 'shadow-lg shadow-lime-400/20' : ''} transition-all duration-700`}
 							style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%)" }}
 						>
 							{/* Neural scan effect */}
@@ -373,13 +375,13 @@ export const CyberpunkMissionStatement = () => {
 									}}></div>
 							)}
 
-							<div className="flex items-center justify-between mb-4">
+							<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 sm:mb-4 gap-2">
 								<div className="flex items-center">
-									<div className="w-1.5 h-6 bg-lime-400 mr-3"></div>
-									<h3 className="text-lg font-mono text-lime-400">NEURAL_TECH_STACK</h3>
+									<div className="w-1 sm:w-1.5 h-4 sm:h-6 bg-lime-400 mr-2 sm:mr-3"></div>
+									<h3 className="text-base sm:text-lg font-mono text-lime-400">NEURAL_TECH_STACK</h3>
 								</div>
 								<div className="text-xs font-mono text-gray-500 flex items-center">
-									<div className="w-2 h-2 bg-lime-400 rounded-full mr-2 animate-pulse"></div>
+									<div className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-lime-400 rounded-full mr-1 sm:mr-2 animate-pulse"></div>
 									v4.0.1_neural
 								</div>
 							</div>

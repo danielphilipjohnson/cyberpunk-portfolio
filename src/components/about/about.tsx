@@ -99,8 +99,8 @@ export const CyberpunkAbout = () => {
 									style={{ clipPath: "polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%)" }}
 								>
 									<img
-										src="/_nuxt/image/4a30fe.webp"
-										alt="Daniel Philip Johnson"
+										src=""
+										alt="Mira Dossan"
 										className="w-28 h-28 object-cover"
 									/>
 
@@ -121,8 +121,8 @@ export const CyberpunkAbout = () => {
 							{/* Corporate Identity Header */}
 							<div className="flex-1">
 								<div className="flex items-center mb-3">
-									<h1 className="text-3xl md:text-4xl font-bold font-mono text-white mr-4">
-										DANIEL &quot;VOID&quot; JOHNSON
+									<h1 className="text-3xl md:text-4xl font-bold font-mono text-white mr-4 uppercase">
+										Mira  &quot;VOID&quot; Dossan
 									</h1>
 									<div className="hidden md:flex items-center space-x-2">
 										<div className="text-xs px-3 py-1 text-red-400 border border-red-400 bg-red-900 bg-opacity-30 animate-pulse">
@@ -152,7 +152,7 @@ export const CyberpunkAbout = () => {
 									{/* Resume button with tech styling */}
 									<div className="mt-4 md:mt-0">
 										<a
-											href="/static/Daniel_Philip_Johnson_Front_End_Engineer-afc8e0c1b966394ae65c1dbd9697fd63.pdf"
+											href=""
 											download
 											className="inline-flex items-center px-4 py-2 bg-gray-900 text-cyan-400 border border-cyan-400 hover:bg-cyan-900 hover:bg-opacity-20 transition-all duration-300 text-sm font-mono"
 											style={{ clipPath: "polygon(0 0, 100% 0, 100% 70%, 90% 100%, 0 100%)" }}

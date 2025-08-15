@@ -19,7 +19,7 @@ export default function ProjectCard({ project, onViewDetails }: ProjectCardProps
       purple: { text: 'text-purple-400', border: 'border-purple-400', bg: 'bg-purple-400' },
       pink: { text: 'text-pink-400', border: 'border-pink-400', bg: 'bg-pink-400' },
       green: { text: 'text-green-400', border: 'border-green-400', bg: 'bg-green-400' },
-      yellow: { text: 'text-yellow-400', border: 'border-yellow-400', bg: 'bg-yellow-400' },
+      yellow: { text: 'text-white', border: 'border-yellow-400', bg: 'bg-yellow-400' },
       blue: { text: 'text-blue-400', border: 'border-blue-400', bg: 'bg-blue-400' },
       red: { text: 'text-red-400', border: 'border-red-400', bg: 'bg-red-400' },
       orange: { text: 'text-orange-400', border: 'border-orange-400', bg: 'bg-orange-400' }
@@ -31,7 +31,7 @@ export default function ProjectCard({ project, onViewDetails }: ProjectCardProps
     switch (project.status) {
       case 'active': return 'text-green-400';
       case 'completed': return 'text-cyan-400';
-      case 'in-development': return 'text-yellow-400';
+      case 'in-development': return 'text-amber-300';
       case 'archived': return 'text-gray-400';
       default: return 'text-gray-400';
     }
@@ -40,7 +40,7 @@ export default function ProjectCard({ project, onViewDetails }: ProjectCardProps
   const getThreatColor = () => {
     switch (project.threatLevel) {
       case 'LOW': return 'text-green-400';
-      case 'MEDIUM': return 'text-yellow-400';
+      case 'MEDIUM': return 'text-amber-300';
       case 'HIGH': return 'text-orange-400';
       case 'CRITICAL': return 'text-red-400';
       default: return 'text-gray-400';
@@ -99,27 +99,27 @@ export default function ProjectCard({ project, onViewDetails }: ProjectCardProps
       )}
 
       {/* Header */}
-      <div className="bg-gray-800 border-b border-gray-700 p-4">
+      <div className="bg-gray-800 border-b border-gray-700 p-3 sm:p-4">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center space-x-2">
-            <div className="w-6 h-6 bg-cyan-900 border border-cyan-400 flex items-center justify-center"
+            <div className="w-5 h-5 sm:w-6 sm:h-6 bg-cyan-900 border border-cyan-400 flex items-center justify-center"
                  style={{ clipPath: 'polygon(0 0, 100% 0, 100% 80%, 80% 100%, 0 100%)' }}>
-              <div className="w-2 h-2 bg-cyan-400 animate-pulse" />
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-cyan-400 animate-pulse" />
             </div>
-            <span className="text-cyan-400 font-mono text-xs font-bold">
+            <span className="text-cyan-400 font-mono text-xs font-bold truncate">
               {project.category.toUpperCase()}_PROJECT
             </span>
           </div>
           
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-1 sm:space-x-2">
             <span className="text-xs">{getStatusIcon()}</span>
-            <span className={`font-mono text-xs ${getStatusColor()}`}>
+            <span className={`font-mono text-xs ${getStatusColor()} hidden sm:inline`}>
               {project.status.toUpperCase()}
             </span>
           </div>
         </div>
         
-        <h3 className="text-white font-mono font-bold text-lg mb-1">
+        <h3 className="text-white font-mono font-bold text-base sm:text-lg mb-1 leading-tight">
           {project.title}
         </h3>
         <div className="text-gray-400 font-mono text-xs">
@@ -128,7 +128,7 @@ export default function ProjectCard({ project, onViewDetails }: ProjectCardProps
       </div>
 
       {/* Content */}
-      <div className="p-6 space-y-4">
+      <div className="p-4 sm:p-6 space-y-4">
         {/* Description */}
         <p className="text-gray-300 font-mono text-sm leading-relaxed">
           {project.description}
@@ -137,7 +137,7 @@ export default function ProjectCard({ project, onViewDetails }: ProjectCardProps
         {/* Technologies */}
         <div className="space-y-2">
           <div className="text-purple-400 font-mono text-xs font-bold">NEURAL_STACK:</div>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2">
             {project.technologies.slice(0, 4).map((tech, index) => (
               <span
                 key={index}
@@ -156,14 +156,14 @@ export default function ProjectCard({ project, onViewDetails }: ProjectCardProps
         </div>
 
         {/* Metrics */}
-        <div className="grid grid-cols-2 gap-4">
-          <div className="bg-gray-800 border border-gray-600 p-3 text-center">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+          <div className="bg-gray-800 border border-gray-600 p-2.5 sm:p-3 text-center">
             <div className="text-gray-400 font-mono text-xs">COMPLEXITY</div>
             <div className="flex justify-center mt-1">
               {[...Array(5)].map((_, i) => (
                 <div
                   key={i}
-                  className={`w-2 h-2 mx-0.5 ${
+                  className={`w-1.5 h-1.5 sm:w-2 sm:h-2 mx-0.5 ${
                     i < project.complexity ? 'bg-cyan-400' : 'bg-gray-600'
                   }`}
                 />
@@ -171,7 +171,7 @@ export default function ProjectCard({ project, onViewDetails }: ProjectCardProps
             </div>
           </div>
           
-          <div className="bg-gray-800 border border-gray-600 p-3 text-center">
+          <div className="bg-gray-800 border border-gray-600 p-2.5 sm:p-3 text-center">
             <div className="text-gray-400 font-mono text-xs">THREAT_LVL</div>
             <div className={`font-mono text-sm font-bold ${getThreatColor()}`}>
               {project.threatLevel}
@@ -184,9 +184,9 @@ export default function ProjectCard({ project, onViewDetails }: ProjectCardProps
           <div className="text-pink-400 font-mono text-xs font-bold">KEY_FEATURES:</div>
           <div className="space-y-1">
             {project.features.slice(0, 3).map((feature, index) => (
-              <div key={index} className="flex items-center text-gray-300 font-mono text-xs">
-                <div className="w-1 h-1 bg-cyan-400 mr-2" />
-                {feature}
+              <div key={index} className="flex items-start text-gray-300 font-mono text-xs">
+                <div className="w-1 h-1 bg-cyan-400 mr-2 mt-1.5 flex-shrink-0" />
+                <span className="leading-relaxed">{feature}</span>
               </div>
             ))}
             {project.features.length > 3 && (
@@ -199,10 +199,10 @@ export default function ProjectCard({ project, onViewDetails }: ProjectCardProps
       </div>
 
       {/* Footer */}
-      <div className="border-t border-gray-700 p-4">
-        <div className="flex items-center justify-between">
+      <div className="border-t border-gray-700 p-3 sm:p-4">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           {/* Links */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center justify-center sm:justify-start space-x-3">
             {project.githubUrl && (
               <a
                 href={project.githubUrl}
@@ -211,7 +211,7 @@ export default function ProjectCard({ project, onViewDetails }: ProjectCardProps
                 className="text-purple-400 hover:text-purple-300 transition-colors"
                 title="View Source Code"
               >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                 </svg>
               </a>
@@ -225,7 +225,7 @@ export default function ProjectCard({ project, onViewDetails }: ProjectCardProps
                 className="text-green-400 hover:text-green-300 transition-colors"
                 title="View Live Project"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
               </a>
@@ -239,7 +239,7 @@ export default function ProjectCard({ project, onViewDetails }: ProjectCardProps
                 className="text-cyan-400 hover:text-cyan-300 transition-colors"
                 title="View Demo"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                 </svg>
               </a>
@@ -249,7 +249,7 @@ export default function ProjectCard({ project, onViewDetails }: ProjectCardProps
           {/* View Details Button */}
           <button
             onClick={() => onViewDetails?.(project)}
-            className="px-4 py-2 bg-cyan-400 bg-opacity-20 border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-gray-900 transition-all duration-300 font-mono text-xs font-bold"
+            className="w-full sm:w-auto px-3 py-2 sm:px-4 bg-cyan-400 bg-opacity-20 border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-gray-900 transition-all duration-300 font-mono text-xs font-bold"
             style={{ clipPath: 'polygon(0 0, 100% 0, 95% 100%, 5% 100%)' }}
           >
             SCAN_PROJECT

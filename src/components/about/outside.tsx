@@ -156,23 +156,23 @@ export const CyberpunkOutsideProgramming = () => {
 			<div className="absolute left-2/3 w-1.5 h-1.5 bg-cyan-400 rounded-full" style={{ animation: "dataStream 10s linear infinite", top: "25%" }}></div>
 
 			<div className="max-w-5xl mx-auto px-6 relative z-10">
-				{/* Section header with tech styling */}
+			{/* Section header with tech styling */}
 				<div className="mb-10">
-					<div className="flex items-center gap-4">
+					<div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
 						<div
-							className="bg-pink-900 bg-opacity-30 px-3 py-1 border-l-2 border-pink-500 flex items-center"
+							className="bg-pink-900 bg-opacity-30 px-2 sm:px-3 py-1 border-l-2 border-pink-500 flex items-center shrink-0"
 							style={{ clipPath: "polygon(0 0, 100% 0, 95% 100%, 0 100%)" }}
 						>
-							<div className="w-2 h-2 bg-pink-500 mr-2"></div>
+							<div className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-pink-500 mr-1 sm:mr-2 animate-pulse"></div>
 							<span className="text-pink-500 font-mono text-xs">VOID_RUNTIME.exe</span>
 						</div>
-						<h2 className="text-2xl md:text-3xl font-mono font-bold text-pink-500 uppercase tracking-wider flex items-center">
-							<span role="img" aria-label="thunder" className="mr-2">⚡</span>
-							RUNTIME_ACTIVITIES
+						<h2 className="text-xl sm:text-2xl md:text-3xl font-mono font-bold text-pink-500 uppercase tracking-wider flex items-center break-words">
+							<span role="img" aria-label="thunder" className="mr-2 text-base sm:text-xl">⚡</span>
+							<span className="break-all">RUNTIME_ACTIVITIES</span>
 						</h2>
-						<div className="h-px bg-pink-500 flex-grow opacity-30"></div>
+						<div className="hidden sm:block h-px bg-pink-500 flex-grow opacity-30"></div>
 					</div>
-					<div className="text-gray-400 font-mono text-sm mt-1">
+					<div className="text-gray-400 font-mono text-xs sm:text-sm mt-1 break-words">
             		{'// void_runtime_processes // neural_downtime_protocols // consciousness_expansion'}
 					</div>
 				</div>
@@ -373,25 +373,25 @@ export const CyberpunkOutsideProgramming = () => {
 							)}
 
 							{/* Biometric header */}
-							<div className="flex items-center justify-between mb-6">
+							<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-3 sm:gap-0">
 								<div className="flex items-center">
-									<div className="w-2 h-6 bg-pink-500 mr-3 animate-pulse"></div>
-									<span className="text-pink-500 font-mono font-bold text-lg">BIOMETRIC_ANALYSIS.sys</span>
+									<div className="w-2 h-4 sm:h-6 bg-pink-500 mr-2 sm:mr-3 animate-pulse"></div>
+									<span className="text-pink-500 font-mono font-bold text-base sm:text-lg break-words">BIOMETRIC_ANALYSIS.sys</span>
 								</div>
-								<div className="flex items-center space-x-4 text-xs font-mono">
-									<div className="text-gray-400">NEURAL_LINK: <span className={`font-bold ${
+								<div className="flex flex-col xs:flex-row xs:items-center xs:space-x-2 sm:space-x-4 gap-1 xs:gap-0 text-xs font-mono">
+									<div className="text-gray-400 whitespace-nowrap">NEURAL_LINK: <span className={`font-bold ${
 										neuralLinkStatus === 'STABLE' ? 'text-green-400' :
 										neuralLinkStatus === 'OPTIMAL' ? 'text-cyan-400' :
 										neuralLinkStatus === 'ENHANCED' ? 'text-purple-400' : 'text-pink-400'
 									}`}>{neuralLinkStatus}</span></div>
-									<div className="text-gray-400">PERSONALITY: <span className="text-yellow-400">{personalityMatrix}%</span></div>
+									<div className="text-gray-400 whitespace-nowrap">PERSONALITY: <span className="text-yellow-400">{personalityMatrix}%</span></div>
 								</div>
 							</div>
 
 							{/* Enhanced metrics grid */}
-							<div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+							<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
 								{neuralActivities.map((metric, index) => (
-									<div key={index} className="bg-gray-900 p-4 border-2 border-gray-700 hover:border-pink-500 transition-all duration-300 relative group"
+									<div key={index} className="bg-gray-900 p-3 sm:p-4 border-2 border-gray-700 hover:border-pink-500 transition-all duration-300 relative group"
 										style={{ clipPath: "polygon(0 0, 100% 0, 95% 100%, 0 100%)" }}>
 										
 										{/* Metric scan lines */}
@@ -400,7 +400,7 @@ export const CyberpunkOutsideProgramming = () => {
 										
 										{/* Status indicator */}
 										<div className="absolute top-2 right-2 flex items-center">
-											<div className={`w-2 h-2 rounded-full animate-pulse ${
+											<div className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full animate-pulse ${
 												metric.status === 'ACTIVE' ? 'bg-green-400' :
 												metric.status === 'SYNCHRONIZED' ? 'bg-cyan-400' :
 												metric.status === 'PENDING' ? 'bg-yellow-400' :
@@ -408,9 +408,9 @@ export const CyberpunkOutsideProgramming = () => {
 											}`}></div>
 										</div>
 										
-										<div className="text-xs text-gray-500 font-mono mb-2 uppercase">{metric.label}</div>
-										<div className={`${metric.color} font-mono text-sm font-bold mb-1`}>{metric.value}</div>
-										<div className={`text-xs font-mono ${
+										<div className="text-xs text-gray-500 font-mono mb-2 uppercase break-words">{metric.label}</div>
+										<div className={`${metric.color} font-mono text-sm font-bold mb-1 break-words`}>{metric.value}</div>
+										<div className={`text-xs font-mono break-words ${
 											metric.status === 'ACTIVE' ? 'text-green-400' :
 											metric.status === 'SYNCHRONIZED' ? 'text-cyan-400' :
 											metric.status === 'PENDING' ? 'text-yellow-400' :

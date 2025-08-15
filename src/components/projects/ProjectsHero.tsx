@@ -79,7 +79,7 @@ export default function ProjectsHero() {
 
   const getStatusColor = () => {
     switch (systemStatus) {
-      case 'INITIALIZING': return 'text-yellow-400';
+      case 'INITIALIZING': return 'text-amber-300';
       case 'SCANNING_PROJECTS': return 'text-orange-400';
       case 'ANALYZING_DATA': return 'text-purple-400';
       case 'SYSTEMS_ONLINE': return 'text-green-400';
@@ -142,26 +142,26 @@ export default function ProjectsHero() {
              style={{ animation: 'projectFloat 9s ease-in-out infinite' }} />
       </div>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left column - Content */}
-          <div className="space-y-8">
+          <div className="space-y-6 lg:space-y-8">
             {/* System status header */}
-            <div className="bg-gray-800 border border-gray-700 p-4" 
+            <div className="bg-gray-800 border border-gray-700 p-3 sm:p-4" 
                  style={{ clipPath: 'polygon(0 0, 100% 0, 95% 100%, 5% 100%)' }}>
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
                 <div className="flex items-center">
-                  <div className="w-8 h-8 bg-cyan-900 border border-cyan-400 flex items-center justify-center mr-3"
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-cyan-900 border border-cyan-400 flex items-center justify-center mr-3"
                        style={{ clipPath: 'polygon(0 0, 100% 0, 100% 80%, 80% 100%, 0 100%)' }}>
-                    <span className="text-cyan-400 text-sm">{getStatusIcon()}</span>
+                    <span className="text-cyan-400 text-xs sm:text-sm">{getStatusIcon()}</span>
                   </div>
                   <div>
-                    <div className="text-cyan-400 font-mono text-sm font-bold">PROJECT_DATABASE_INTERFACE</div>
+                    <div className="text-cyan-400 font-mono text-xs sm:text-sm font-bold">PROJECT_DATABASE_INTERFACE</div>
                     <div className="text-gray-400 font-mono text-xs">neural_portfolio_system_v4.1.3</div>
                   </div>
                 </div>
-                <div className="text-right">
-                  <div className={`font-mono text-sm font-bold ${getStatusColor()}`}>
+                <div className="text-left sm:text-right">
+                  <div className={`font-mono text-xs sm:text-sm font-bold ${getStatusColor()}`}>
                     {systemStatus}
                   </div>
                   <div className="text-gray-400 font-mono text-xs">
@@ -172,16 +172,16 @@ export default function ProjectsHero() {
             </div>
 
             {/* Main content */}
-            <div className="space-y-6">
-              <div className="flex items-center space-x-4">
+            <div className="space-y-4 sm:space-y-6">
+              <div className="flex items-center space-x-2 sm:space-x-4">
                 <div className="h-px bg-cyan-400 flex-grow opacity-60" />
-                <div className="text-cyan-400 font-mono text-xs px-3 py-1 border border-cyan-400 bg-cyan-900/20">
+                <div className="text-cyan-400 font-mono text-xs px-2 sm:px-3 py-1 border border-cyan-400 bg-cyan-900/20">
                   NEURAL_PROJECT_ARCHIVE
                 </div>
                 <div className="h-px bg-cyan-400 flex-grow opacity-60" />
               </div>
 
-              <h1 className="text-4xl md:text-6xl font-mono font-bold text-white leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-6xl font-mono font-bold text-white leading-tight">
                 PROJECT
                 <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-500">
@@ -190,37 +190,37 @@ export default function ProjectsHero() {
               </h1>
 
               <div className="space-y-4">
-                <p className="text-gray-300 font-mono text-lg leading-relaxed">
+                <p className="text-gray-300 font-mono text-sm sm:text-base lg:text-lg leading-relaxed">
                   Access the neural project database containing cutting-edge digital architectures, 
                   cybernetic enhancements, and quantum-secured applications developed in Night City&apos;s 
                   underground tech scene.
                 </p>
                 
-                <div className="bg-gray-800 border-l-4 border-cyan-400 p-4">
+                <div className="bg-gray-800 border-l-4 border-cyan-400 p-3 sm:p-4">
                   <div className="font-mono text-sm text-gray-300">
-                    <div className="text-cyan-400 font-bold mb-2">{/* PROJECT_CATEGORIES_AVAILABLE */}</div>
-                    <div className="space-y-1 text-xs grid grid-cols-2 gap-x-8">
-                      <div>• WEB_APPLICATIONS &nbsp;&nbsp;&nbsp;&nbsp; [SECURE]</div>
-                      <div>• MOBILE_INTERFACES &nbsp;&nbsp;&nbsp; [ENCRYPTED]</div>
-                      <div>• AI_NEURAL_NETWORKS &nbsp;&nbsp; [CLASSIFIED]</div>
-                      <div>• BLOCKCHAIN_PROTOCOLS &nbsp; [QUANTUM]</div>
-                      <div>• API_GATEWAYS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [DEFENDED]</div>
-                      <div>• DEVELOPMENT_TOOLS &nbsp;&nbsp; [OPTIMIZED]</div>
+                    <div className="text-cyan-400 font-bold mb-2 hidden sm:block">{/* PROJECT_CATEGORIES_AVAILABLE */}</div>
+                    <div className="space-y-1 text-xs grid grid-cols-1 sm:grid-cols-2 gap-x-4 sm:gap-x-8">
+                      <div>• WEB_APPLICATIONS [SECURE]</div>
+                      <div>• MOBILE_INTERFACES [ENCRYPTED]</div>
+                      <div>• AI_NEURAL_NETWORKS [CLASSIFIED]</div>
+                      <div>• BLOCKCHAIN_PROTOCOLS [QUANTUM]</div>
+                      <div>• API_GATEWAYS [DEFENDED]</div>
+                      <div>• DEVELOPMENT_TOOLS [OPTIMIZED]</div>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex flex-wrap gap-4 pt-4">
-                  <div className="flex items-center space-x-2 text-sm font-mono">
-                    <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse" />
+                <div className="flex flex-wrap gap-3 sm:gap-4 pt-4">
+                  <div className="flex items-center space-x-2 text-xs sm:text-sm font-mono">
+                    <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-400 rounded-full animate-pulse" />
                     <span className="text-green-400">DATABASE_ONLINE</span>
                   </div>
-                  <div className="flex items-center space-x-2 text-sm font-mono">
-                    <div className="w-3 h-3 bg-cyan-400 rounded-full animate-pulse" />
+                  <div className="flex items-center space-x-2 text-xs sm:text-sm font-mono">
+                    <div className="w-2 h-2 sm:w-3 sm:h-3 bg-cyan-400 rounded-full animate-pulse" />
                     <span className="text-cyan-400">PROJECTS_INDEXED</span>
                   </div>
-                  <div className="flex items-center space-x-2 text-sm font-mono">
-                    <div className="w-3 h-3 bg-purple-400 rounded-full animate-pulse" />
+                  <div className="flex items-center space-x-2 text-xs sm:text-sm font-mono">
+                    <div className="w-2 h-2 sm:w-3 sm:h-3 bg-purple-400 rounded-full animate-pulse" />
                     <span className="text-purple-400">NEURAL_ENHANCED</span>
                   </div>
                 </div>
@@ -229,54 +229,54 @@ export default function ProjectsHero() {
           </div>
 
           {/* Right column - Project metrics and neural activity */}
-          <div className="space-y-6">
+          <div className="space-y-4 lg:space-y-6">
             {/* Project statistics */}
-            <div className="bg-gray-800 border border-gray-700 p-6" 
+            <div className="bg-gray-800 border border-gray-700 p-4 sm:p-6" 
                  style={{ clipPath: 'polygon(0 0, 100% 0, 98% 100%, 2% 100%)' }}>
-              <div className="flex items-center justify-between mb-6">
-                <h3 className="text-cyan-400 font-mono font-bold text-lg">PROJECT_METRICS</h3>
+              <div className="flex items-center justify-between mb-4 sm:mb-6">
+                <h3 className="text-cyan-400 font-mono font-bold text-base sm:text-lg">PROJECT_METRICS</h3>
                 <div className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
                   <span className="text-green-400 font-mono text-xs">LIVE</span>
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-2 gap-4 sm:gap-6">
                 <div className="text-center">
-                  <div className="text-3xl font-mono font-bold text-cyan-400 mb-2">
+                  <div className="text-2xl sm:text-3xl font-mono font-bold text-cyan-400 mb-2">
                     {projectCount.toString().padStart(2, '0')}
                   </div>
-                  <div className="text-gray-400 font-mono text-sm">TOTAL_PROJECTS</div>
+                  <div className="text-gray-400 font-mono text-xs sm:text-sm">TOTAL_PROJECTS</div>
                   <div className="w-full h-1 bg-gray-700 mt-2">
                     <div className="h-full bg-cyan-400" style={{ width: '100%' }} />
                   </div>
                 </div>
 
                 <div className="text-center">
-                  <div className="text-3xl font-mono font-bold text-green-400 mb-2">
+                  <div className="text-2xl sm:text-3xl font-mono font-bold text-green-400 mb-2">
                     {activeProjects.toString().padStart(2, '0')}
                   </div>
-                  <div className="text-gray-400 font-mono text-sm">ACTIVE_STATUS</div>
+                  <div className="text-gray-400 font-mono text-xs sm:text-sm">ACTIVE_STATUS</div>
                   <div className="w-full h-1 bg-gray-700 mt-2">
                     <div className="h-full bg-green-400" style={{ width: `${(activeProjects/projectCount)*100}%` }} />
                   </div>
                 </div>
 
                 <div className="text-center">
-                  <div className="text-3xl font-mono font-bold text-purple-400 mb-2">
+                  <div className="text-2xl sm:text-3xl font-mono font-bold text-purple-400 mb-2">
                     {completedProjects.toString().padStart(2, '0')}
                   </div>
-                  <div className="text-gray-400 font-mono text-sm">COMPLETED</div>
+                  <div className="text-gray-400 font-mono text-xs sm:text-sm">COMPLETED</div>
                   <div className="w-full h-1 bg-gray-700 mt-2">
                     <div className="h-full bg-purple-400" style={{ width: `${(completedProjects/projectCount)*100}%` }} />
                   </div>
                 </div>
 
                 <div className="text-center">
-                  <div className="text-3xl font-mono font-bold text-pink-400 mb-2">
+                  <div className="text-2xl sm:text-3xl font-mono font-bold text-pink-400 mb-2">
                     A+
                   </div>
-                  <div className="text-gray-400 font-mono text-sm">QUALITY_RATING</div>
+                  <div className="text-gray-400 font-mono text-xs sm:text-sm">QUALITY_RATING</div>
                   <div className="w-full h-1 bg-gray-700 mt-2">
                     <div className="h-full bg-pink-400" style={{ width: '95%' }} />
                   </div>
@@ -285,10 +285,10 @@ export default function ProjectsHero() {
             </div>
 
             {/* Neural activity monitor */}
-            <div className="bg-gray-800 border border-gray-700 p-6">
-              <h4 className="text-purple-400 font-mono font-bold mb-4">NEURAL_ACTIVITY</h4>
+            <div className="bg-gray-800 border border-gray-700 p-4 sm:p-6">
+              <h4 className="text-purple-400 font-mono font-bold mb-4 text-sm sm:text-base">NEURAL_ACTIVITY</h4>
               
-              <div className="h-32 bg-gray-900 border border-gray-600 relative overflow-hidden mb-4">
+              <div className="h-24 sm:h-32 bg-gray-900 border border-gray-600 relative overflow-hidden mb-4">
                 <div className="absolute inset-0 flex items-end justify-around p-2">
                   {neuralActivity.slice(-20).map((activity, index) => (
                     <div
@@ -308,7 +308,7 @@ export default function ProjectsHero() {
                 />
               </div>
 
-              <div className="grid grid-cols-3 gap-4 text-xs font-mono">
+              <div className="grid grid-cols-3 gap-2 sm:gap-4 text-xs font-mono">
                 <div className="text-center">
                   <div className="text-gray-400">CPU_LOAD</div>
                   <div className="text-cyan-400 font-bold">67%</div>
@@ -325,17 +325,17 @@ export default function ProjectsHero() {
             </div>
 
             {/* System info */}
-            <div className="bg-gray-800 border border-gray-700 p-4">
+            <div className="bg-gray-800 border border-gray-700 p-3 sm:p-4">
               <div className="space-y-2 text-xs font-mono">
-                <div className="flex justify-between">
+                <div className="flex justify-between items-center">
                   <span className="text-gray-400">LAST_SCAN:</span>
-                  <span className="text-cyan-400">2024.08.14_19:15:23</span>
+                  <span className="text-cyan-400 text-right">2024.08.14_19:15:23</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between items-center">
                   <span className="text-gray-400">SECURITY:</span>
                   <span className="text-green-400">QUANTUM_ENCRYPTED</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between items-center">
                   <span className="text-gray-400">PROJECTS_INDEXED:</span>
                   <span className="text-purple-400">{projectCount}_ENTRIES</span>
                 </div>

@@ -116,9 +116,9 @@ export const CyberpunkValuesMission = () => {
 				</div>
 			)}
 
-			<div className="max-w-5xl mx-auto px-6 relative z-10">
-				{/* Enhanced neural interface header with scanning effects */}
-				<div className={`mb-10 relative ${activeScanLine === 'header-scan' ? 'bg-purple-900 bg-opacity-5' : ''} transition-all duration-700`}>
+		<div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+			{/* Enhanced neural interface header with scanning effects */}
+			<div className={`mb-6 sm:mb-10 relative ${activeScanLine === 'header-scan' ? 'bg-purple-900 bg-opacity-5' : ''} transition-all duration-700`}>
 					{/* Header scan effect */}
 					{activeScanLine === 'header-scan' && (
 						<div className="absolute inset-0 pointer-events-none z-20"
@@ -129,37 +129,37 @@ export const CyberpunkValuesMission = () => {
 						></div>
 					)}
 
-					<div className="flex items-center gap-4">
+					<div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
 						<div
-							className="bg-purple-900 bg-opacity-30 px-3 py-1 border-l-2 border-purple-500 flex items-center"
+							className="bg-purple-900 bg-opacity-30 px-2 sm:px-3 py-1 border-l-2 border-purple-500 flex items-center shrink-0"
 							style={{ clipPath: "polygon(0 0, 100% 0, 95% 100%, 0 100%)" }}
 						>
 							<div className="w-2 h-2 bg-purple-500 mr-2 animate-pulse"></div>
 							<span className="text-purple-500 font-mono text-xs">NEURAL_ETHICS.sys</span>
 						</div>
-						<h2 className="text-2xl md:text-3xl font-mono font-bold text-purple-500 uppercase tracking-wider flex items-center">
-							<span role="img" aria-label="brain" className="mr-2">🧠</span>
-							VALUES_AND_DIRECTIVES
+						<h2 className="text-xl sm:text-2xl md:text-3xl font-mono font-bold text-purple-500 uppercase tracking-wide sm:tracking-wider flex items-center min-w-0">
+							<span role="img" aria-label="brain" className="mr-1 sm:mr-2 text-lg sm:text-xl md:text-2xl">🧠</span>
+							<span className="break-all sm:break-normal">VALUES_AND_DIRECTIVES</span>
 						</h2>
-						<div className="h-px bg-purple-500 flex-grow opacity-30"></div>
+						<div className="hidden sm:block h-px bg-purple-500 flex-grow opacity-30"></div>
 					</div>
-					<div className="flex items-center justify-between mt-3">
-						<div className="text-gray-400 font-mono text-sm">
+					<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-3 gap-2">
+						<div className="text-gray-400 font-mono text-xs sm:text-sm break-all sm:break-normal">
 							{'// neural_protocols // void_directives // quantum_ethics // v2.1.7'}
 						</div>
-						<div className="flex items-center space-x-4 text-xs font-mono">
-							<div className="text-gray-400">NEURAL_STATE: <span className={`font-bold ${
+						<div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 text-xs font-mono gap-1 sm:gap-0">
+							<div className="text-gray-400 whitespace-nowrap">NEURAL_STATE: <span className={`font-bold ${
 								neuralState === 'INITIALIZING' ? 'text-yellow-400' :
 								neuralState === 'ACTIVE' ? 'text-green-400' :
 								neuralState === 'PROCESSING' ? 'text-cyan-400' : 'text-purple-400'
 							}`}>{neuralState}</span></div>
-							<div className="text-gray-400">VOID_PROTOCOL: <span className="text-purple-500">ENABLED</span></div>
+							<div className="text-gray-400 whitespace-nowrap">VOID_PROTOCOL: <span className="text-purple-500">ENABLED</span></div>
 						</div>
 					</div>
 				</div>
 
 				{/* Enhanced two-column layout with neural scanning */}
-				<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+				<div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
 					{/* Enhanced neural memory text column */}
 					<div className="md:col-span-2 relative">
 						<div

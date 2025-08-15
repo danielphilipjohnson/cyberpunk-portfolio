@@ -113,7 +113,7 @@ export const CyberpunkHeroWithNav = () => {
 
 						{/* CTA Button */}
 						<a
-							href="/cv/Daniel_Philip_Johnson.pdf"
+							href="/cv/mira_dossan_resume.pdf"
 							download
 							className="hidden md:flex items-center gap-2 px-4 py-2 bg-teal-400 text-gray-900 hover:bg-teal-300 transition-all duration-300 font-bold text-xs uppercase tracking-widest hover:shadow-lg hover:shadow-teal-400/25"
 							style={{ clipPath: 'polygon(0 0, 100% 0, 95% 100%, 0 100%)' }}
@@ -383,7 +383,7 @@ export const CyberpunkHeroWithNav = () => {
 							{/* Download CV Button */}
 							<div className="relative z-10 p-6 border-t border-gray-800">
 								<a
-									href="/cv/Daniel_Philip_Johnson.pdf"
+									href="/cv/mira_dossan_resume.pdf"
 									download
 									className="flex items-center justify-center w-full p-4 bg-teal-400 text-gray-900 hover:bg-teal-300 transition-all duration-300 font-mono font-bold text-sm uppercase tracking-wider"
 									style={{ clipPath: 'polygon(0 0, 100% 0, 95% 100%, 5% 100%)' }}

@@ -116,7 +116,7 @@ export default function CyberpunkIntroduction() {
 						{/* Resume download */}
 						<div className="mb-6">
 							<a
-								href="/cv/Daniel_Philip_Johnson.pdf"
+								href="/cv/mira_dossan_resume.pdf"
 								download
 								className="group relative inline-flex items-center px-5 py-3 bg-gray-800 text-cyan-400 font-mono text-sm border border-cyan-400 hover:bg-cyan-900 hover:bg-opacity-20 transition-colors"
 								style={{ clipPath: "polygon(0 0, 100% 0, 95% 100%, 0 100%)" }}

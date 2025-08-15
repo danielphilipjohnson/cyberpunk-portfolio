@@ -208,55 +208,58 @@ export const CyberpunkContact = () => {
               }}></div>
           )}
 
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
             <div 
-              className="bg-teal-900 bg-opacity-30 px-3 py-1 border-l-2 border-teal-400 flex items-center"
+              className="bg-teal-900 bg-opacity-30 px-2 sm:px-3 py-1 border-l-2 border-teal-400 flex items-center shrink-0"
               style={{ clipPath: "polygon(0 0, 100% 0, 95% 100%, 0 100%)" }}
             >
-              <div className="w-2 h-2 bg-teal-400 mr-2 animate-pulse"></div>
+              <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-teal-400 mr-1 sm:mr-2 animate-pulse"></div>
               <span className="text-teal-400 font-mono text-xs">COMMUNICATION.sys</span>
             </div>
-            <h2 className="text-2xl md:text-3xl font-mono font-bold text-teal-400 uppercase tracking-wider flex items-center">
-              <span role="img" aria-label="mail" className="mr-2">📫</span>
-              CONTACT_INTERFACE
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-mono font-bold text-teal-400 uppercase tracking-wider flex items-center break-words">
+              <span role="img" aria-label="mail" className="mr-2 text-base sm:text-xl">📫</span>
+              <span className="break-all">CONTACT_INTERFACE</span>
             </h2>
-            <div className="h-px bg-teal-400 flex-grow opacity-30"></div>
+            <div className="hidden sm:block h-px bg-teal-400 flex-grow opacity-30"></div>
           </div>
-          <div className="flex items-center justify-between mt-3">
-            <div className="text-gray-400 font-mono text-sm">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-3 gap-2">
+            <div className="text-gray-400 font-mono text-xs sm:text-sm">
               {/* secure_channel_request // communication_protocol // v1.7.2 */}
             </div>
-            <div className="flex items-center space-x-4 text-xs font-mono">
-              <div className="text-gray-400">COMM_LINK: <span className={`font-bold ${
+            <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs font-mono">
+              <div className="text-gray-400 whitespace-nowrap">COMM_LINK: <span className={`font-bold ${
                 commLinkStatus === 'STABLE' ? 'text-green-400' :
                 commLinkStatus === 'OPTIMAL' ? 'text-cyan-400' :
                 commLinkStatus === 'ENHANCED' ? 'text-purple-400' : 'text-pink-400'
               }`}>{commLinkStatus}</span></div>
-              <div className="text-gray-400">ENCRYPTION: <span className="text-teal-400">{encryptionLevel}%</span></div>
-              <div className="text-gray-400">INTEGRITY: <span className="text-green-400">{dataIntegrity}%</span></div>
+              <div className="text-gray-400 whitespace-nowrap">ENCRYPTION: <span className="text-teal-400">{encryptionLevel}%</span></div>
+              <div className="text-gray-400 whitespace-nowrap">INTEGRITY: <span className="text-green-400">{dataIntegrity}%</span></div>
             </div>
           </div>
         </div>
 
         {/* Navigation Tabs */}
-        <div className="flex mb-8 overflow-x-auto">
+        <div className="flex mb-8 overflow-x-auto scrollbar-hide gap-1 pb-2">
           <button
             onClick={() => setActiveSection('main')}
-            className={`whitespace-nowrap px-4 py-2 font-mono text-sm border-t-2 ${activeSection === 'main' ? 'text-teal-400 border-teal-400 bg-teal-900 bg-opacity-10' : 'text-gray-400 border-gray-700 hover:text-teal-400 hover:border-teal-400'} transition-colors`}
+            className={`whitespace-nowrap px-3 sm:px-4 py-2 font-mono text-xs sm:text-sm border-t-2 shrink-0 ${activeSection === 'main' ? 'text-teal-400 border-teal-400 bg-teal-900 bg-opacity-10' : 'text-gray-400 border-gray-700 hover:text-teal-400 hover:border-teal-400'} transition-colors`}
           >
-            MAIN_CONTACT
+            <span className="hidden sm:inline">MAIN_CONTACT</span>
+            <span className="sm:hidden">MAIN</span>
           </button>
           <button
             onClick={() => setActiveSection('find')}
-            className={`whitespace-nowrap px-4 py-2 font-mono text-sm border-t-2 ${activeSection === 'find' ? 'text-pink-500 border-pink-500 bg-pink-900 bg-opacity-10' : 'text-gray-400 border-gray-700 hover:text-pink-500 hover:border-pink-500'} transition-colors`}
+            className={`whitespace-nowrap px-3 sm:px-4 py-2 font-mono text-xs sm:text-sm border-t-2 shrink-0 ${activeSection === 'find' ? 'text-pink-500 border-pink-500 bg-pink-900 bg-opacity-10' : 'text-gray-400 border-gray-700 hover:text-pink-500 hover:border-pink-500'} transition-colors`}
           >
-            NETWORK_VECTORS
+            <span className="hidden sm:inline">NETWORK_VECTORS</span>
+            <span className="sm:hidden">NETWORK</span>
           </button>
           <button
             onClick={() => setActiveSection('chat')}
-            className={`whitespace-nowrap px-4 py-2 font-mono text-sm border-t-2 ${activeSection === 'chat' ? 'text-blue-400 border-blue-400 bg-blue-900 bg-opacity-10' : 'text-gray-400 border-gray-700 hover:text-blue-400 hover:border-blue-400'} transition-colors`}
+            className={`whitespace-nowrap px-3 sm:px-4 py-2 font-mono text-xs sm:text-sm border-t-2 shrink-0 ${activeSection === 'chat' ? 'text-blue-400 border-blue-400 bg-blue-900 bg-opacity-10' : 'text-gray-400 border-gray-700 hover:text-blue-400 hover:border-blue-400'} transition-colors`}
           >
-            CHAT_REQUEST
+            <span className="hidden sm:inline">CHAT_REQUEST</span>
+            <span className="sm:hidden">CHAT</span>
           </button>
         </div>
 
@@ -274,47 +277,47 @@ export const CyberpunkContact = () => {
                   animation: "contactScan 4s ease-in-out infinite"
                 }}></div>
             )}
-            <div className="flex items-center mb-8">
-              <div className="w-10 h-10 bg-gray-900 border border-teal-400 flex items-center justify-center mr-4 text-xl">
+            <div className="flex flex-col sm:flex-row sm:items-center mb-6 sm:mb-8 gap-3 sm:gap-0">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-900 border border-teal-400 flex items-center justify-center mr-0 sm:mr-4 text-lg sm:text-xl shrink-0">
                 👉
               </div>
               <div>
-                <p className="text-gray-300 font-mono">
+                <p className="text-gray-300 font-mono text-sm sm:text-base break-words">
                   If you want to establish neural link with void.dev you can initiate contact protocols 
-                  <a href="/contact" className="text-teal-400 ml-1 hover:underline">here</a>
+                  <a href="/contact" className="text-teal-400 ml-1 hover:underline break-words">here</a>
                 </p>
               </div>
             </div>
             
             {/* Contact form or additional information */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-gray-900 p-4 border border-gray-700">
-                <h3 className="text-teal-400 font-mono mb-4 text-sm uppercase">Direct Communication</h3>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+              <div className="bg-gray-900 p-3 sm:p-4 border border-gray-700">
+                <h3 className="text-teal-400 font-mono mb-3 sm:mb-4 text-xs sm:text-sm uppercase">Direct Communication</h3>
                 <div className="space-y-2">
-                  <div className="flex items-center text-sm font-mono">
-                    <div className="w-4 h-4 bg-teal-400 bg-opacity-20 flex items-center justify-center mr-2">
+                  <div className="flex items-center text-xs sm:text-sm font-mono">
+                    <div className="w-3 sm:w-4 h-3 sm:h-4 bg-teal-400 bg-opacity-20 flex items-center justify-center mr-2 shrink-0">
                       <div className="w-1 h-1 bg-teal-400"></div>
                     </div>
-                    <span className="text-gray-300">void.dev@neural.link</span>
+                    <span className="text-gray-300 break-all">void.dev@neural.link</span>
                   </div>
-                  <div className="flex items-center text-sm font-mono">
-                    <div className="w-4 h-4 bg-teal-400 bg-opacity-20 flex items-center justify-center mr-2">
+                  <div className="flex items-center text-xs sm:text-sm font-mono">
+                    <div className="w-3 sm:w-4 h-3 sm:h-4 bg-teal-400 bg-opacity-20 flex items-center justify-center mr-2 shrink-0">
                       <div className="w-1 h-1 bg-teal-400"></div>
                     </div>
-                    <span className="text-gray-300">@void_dev_neural</span>
+                    <span className="text-gray-300 break-all">@void_dev_neural</span>
                   </div>
-                  <div className="flex items-center text-sm font-mono">
-                    <div className="w-4 h-4 bg-teal-400 bg-opacity-20 flex items-center justify-center mr-2">
+                  <div className="flex items-center text-xs sm:text-sm font-mono">
+                    <div className="w-3 sm:w-4 h-3 sm:h-4 bg-teal-400 bg-opacity-20 flex items-center justify-center mr-2 shrink-0">
                       <div className="w-1 h-1 bg-teal-400"></div>
                     </div>
-                    <span className="text-gray-300">Neural interface portal</span>
+                    <span className="text-gray-300 break-words">Neural interface portal</span>
                   </div>
                 </div>
               </div>
               
-              <div className="bg-gray-900 p-4 border border-gray-700">
-                <h3 className="text-teal-400 font-mono mb-4 text-sm uppercase">Response Metrics</h3>
-                <div className="space-y-4">
+              <div className="bg-gray-900 p-3 sm:p-4 border border-gray-700">
+                <h3 className="text-teal-400 font-mono mb-3 sm:mb-4 text-xs sm:text-sm uppercase">Response Metrics</h3>
+                <div className="space-y-3 sm:space-y-4">
                   <div>
                     <div className="flex justify-between text-xs font-mono mb-1">
                       <span className="text-gray-400">RESPONSE TIME</span>
@@ -379,34 +382,34 @@ export const CyberpunkContact = () => {
               NEURAL_NETWORK_ACCESS_POINTS
             </h3>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8">
               {findMeLocations.map((location, index) => (
                 <a 
                   href={location.url}
                   key={index}
-                  className="bg-gray-900 p-4 border border-gray-700 hover:border-pink-500 transition-colors group relative"
+                  className="bg-gray-900 p-3 sm:p-4 border border-gray-700 hover:border-pink-500 transition-colors group relative"
                   style={{ clipPath: "polygon(0 0, 100% 0, 98% 100%, 0 100%)" }}
                 >
                   {/* Threat level indicator */}
-                  <div className="absolute top-2 right-2 flex items-center space-x-2">
-                    <div className={`w-2 h-2 rounded-full animate-pulse ${
+                  <div className="absolute top-2 right-2 flex items-center space-x-1 sm:space-x-2">
+                    <div className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full animate-pulse ${
                       location.threat === 'LOW' ? 'bg-green-400' :
                       location.threat === 'MEDIUM' ? 'bg-yellow-400' :
                       location.threat === 'HIGH' ? 'bg-orange-400' : 'bg-red-400'
                     }`}></div>
-                    <span className="text-xs font-mono text-gray-500">{location.threat}</span>
+                    <span className="text-xs font-mono text-gray-500 hidden sm:inline">{location.threat}</span>
                   </div>
 
                   <div className="flex">
-                    <div className="w-12 h-12 bg-gray-800 border border-pink-500 flex items-center justify-center mr-4 text-xl group-hover:border-pink-400 transition-colors">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-800 border border-pink-500 flex items-center justify-center mr-3 sm:mr-4 text-base sm:text-lg group-hover:border-pink-400 transition-colors shrink-0">
                       {location.icon}
                     </div>
-                    <div className="flex-1">
-                      <h4 className="text-pink-500 font-mono font-bold mb-1 group-hover:text-pink-400 transition-colors">{location.platform}</h4>
-                      <p className="text-gray-400 text-sm font-mono leading-tight mb-2">{location.description}</p>
-                      <div className="flex items-center justify-between text-xs font-mono">
-                        <span className="text-gray-500">ICE: <span className="text-cyan-400">{location.ice}</span></span>
-                        <span className={`${
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-pink-500 font-mono font-bold mb-1 group-hover:text-pink-400 transition-colors text-sm sm:text-base break-words">{location.platform}</h4>
+                      <p className="text-gray-400 text-xs sm:text-sm font-mono leading-tight mb-2 break-words">{location.description}</p>
+                      <div className="flex flex-col xs:flex-row xs:items-center xs:justify-between gap-1 xs:gap-2 text-xs font-mono">
+                        <span className="text-gray-500 break-words">ICE: <span className="text-cyan-400">{location.ice}</span></span>
+                        <span className={`xs:text-right ${
                           location.threat === 'LOW' ? 'text-green-400' :
                           location.threat === 'MEDIUM' ? 'text-yellow-400' :
                           location.threat === 'HIGH' ? 'text-orange-400' : 'text-red-400'
@@ -416,15 +419,15 @@ export const CyberpunkContact = () => {
                   </div>
                   
                   {/* Enhanced connection scanner animation */}
-                  <div className="w-full h-px bg-gray-800 mt-4 relative overflow-hidden">
+                  <div className="w-full h-px bg-gray-800 mt-3 sm:mt-4 relative overflow-hidden">
                     <div 
-                      className="absolute top-0 left-0 w-10 h-px bg-pink-500 opacity-50"
+                      className="absolute top-0 left-0 w-6 sm:w-8 md:w-10 h-px bg-pink-500 opacity-50"
                       style={{ animation: "scanRight 3s ease-in-out infinite" }}
                     ></div>
                   </div>
 
                   {/* Neural activity on hover */}
-                  <div className="absolute bottom-2 left-2 w-2 h-2 bg-purple-500 rounded-full opacity-0 group-hover:opacity-100 animate-pulse transition-opacity"></div>
+                  <div className="absolute bottom-2 left-2 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-purple-500 rounded-full opacity-0 group-hover:opacity-100 animate-pulse transition-opacity"></div>
                 </a>
               ))}
             </div>
@@ -470,26 +473,26 @@ export const CyberpunkContact = () => {
             </h3>
             
             <div className="mb-6">
-              <div className="flex items-center bg-gray-900 p-4 border border-gray-700" style={{ clipPath: "polygon(0 0, 100% 0, 98% 100%, 0 100%)" }}>
-                <div className="w-10 h-10 bg-gray-800 border border-blue-400 flex items-center justify-center mr-4 text-xl">
+              <div className="flex flex-col sm:flex-row sm:items-center bg-gray-900 p-3 sm:p-4 border border-gray-700 gap-3 sm:gap-4" style={{ clipPath: "polygon(0 0, 100% 0, 98% 100%, 0 100%)" }}>
+                <div className="w-10 h-10 bg-gray-800 border border-blue-400 flex items-center justify-center text-lg sm:text-xl shrink-0 mx-auto sm:mx-0">
                   🌐
                 </div>
-                <p className="text-gray-300 font-mono">
-                  Initiate quantum-encrypted neural link via <a href="https://twitter.com/danielp_johnson" className="text-blue-400 hover:underline font-bold">@void_dev_neural</a> for the following data exchange protocols:
+                <p className="text-gray-300 font-mono text-sm sm:text-base text-center sm:text-left break-words">
+                  Initiate quantum-encrypted neural link via <a href="https://twitter.com/danielp_johnson" className="text-blue-400 hover:underline font-bold break-words">@void_dev_neural</a> for the following data exchange protocols:
                 </p>
               </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
               {chatTopics.map((topic, index) => (
                 <div 
                   key={index}
-                  className={`bg-gray-900 p-4 border ${hoverTopic === topic.id ? `border-${topic.color === 'yellow' ? 'yellow-400' : getColorClass(topic.color, 'border').replace('border-', '')}` : 'border-gray-700'} relative group`}
+                  className={`bg-gray-900 p-3 sm:p-4 border ${hoverTopic === topic.id ? `border-${topic.color === 'yellow' ? 'yellow-400' : getColorClass(topic.color, 'border').replace('border-', '')}` : 'border-gray-700'} relative group`}
                   onMouseEnter={() => setHoverTopic(topic.id)}
                   onMouseLeave={() => setHoverTopic(null)}
                 >
-                  <h4 className={`font-mono font-bold mb-2 ${getColorClass(topic.color, 'text')}`}>{topic.title}</h4>
-                  <p className="text-gray-300 text-sm font-mono leading-relaxed">{topic.description}</p>
+                  <h4 className={`font-mono font-bold mb-2 text-sm sm:text-base break-words ${getColorClass(topic.color, 'text')}`}>{topic.title}</h4>
+                  <p className="text-gray-300 text-xs sm:text-sm font-mono leading-relaxed break-words">{topic.description}</p>
                   
                   {/* Hover scanner effect */}
                   {hoverTopic === topic.id && (
@@ -672,6 +675,16 @@ export const CyberpunkContact = () => {
         
         .animate-matrix-flow {
           animation: matrixFlow 20s linear infinite;
+        }
+        
+        /* Hide scrollbar */
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
         }
       `}</style>
     </section>

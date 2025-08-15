@@ -82,10 +82,10 @@ export default function ContactPage() {
                 <div className="h-px bg-cyan-400 flex-grow opacity-60 max-w-32" />
               </div>
               
-              <h2 className="text-3xl md:text-4xl font-mono font-bold text-white mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-mono font-bold text-white mb-4">
                 INITIATE_DIRECT_CONNECTION
               </h2>
-              <p className="text-gray-300 font-mono text-lg max-w-2xl mx-auto">
+              <p className="text-gray-300 font-mono text-base sm:text-lg max-w-2xl mx-auto">
                 Use the quantum-encrypted form below to establish secure neural link communication. 
                 All transmissions are monitored by advanced ICE protocols for maximum security.
               </p>
@@ -105,7 +105,7 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <h3 className="text-cyan-400 font-mono font-bold text-sm mb-2">QUANTUM_EMAIL</h3>
-                <p className="text-gray-300 font-mono text-sm">daniel@void.dev</p>
+                <p className="text-gray-300 font-mono text-sm">mira.Dossan@void.dev</p>
                 <div className="text-green-400 font-mono text-xs mt-2">ENCRYPTION: ACTIVE</div>
               </div>
 

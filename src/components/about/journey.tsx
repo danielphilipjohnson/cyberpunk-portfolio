@@ -191,28 +191,32 @@ export const CyberpunkDevJourney = () => {
 							<span className="text-green-400 font-mono text-xs">NEURAL_ACTIVITY: {neuralActivity}%</span>
 						</div>
 						
-						<div className="flex items-center gap-4">
-							{/* System identifier */}
-							<div className="bg-cyan-900 bg-opacity-40 px-4 py-2 border-l-2 border-cyan-400 flex items-center"
-								style={{ clipPath: "polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%)" }}>
-								<div className="w-3 h-3 bg-cyan-400 mr-3 animate-pulse"></div>
-								<span className="text-cyan-400 font-mono text-sm font-bold">MEMORY_BANK.neural</span>
-							</div>
-							
-							{/* Main title */}
-							<div className="flex-1">
-								<h2 className="text-3xl md:text-4xl font-mono font-bold text-white uppercase tracking-wider flex items-center mb-2">
-									<span className="text-cyan-400 mr-3">🧠</span>
-									NEURAL_PATHWAY_TRACE
-									<div className="ml-4 px-3 py-1 bg-pink-900 bg-opacity-30 border border-pink-500 text-pink-500 text-xs">
-										[CLASSIFIED]
+							<div className="flex flex-col md:flex-row items-start md:items-center gap-4">
+								{/* System identifier */}
+								<div className="bg-cyan-900 bg-opacity-40 px-3 md:px-4 py-2 border-l-2 border-cyan-400 flex items-center"
+									style={{ clipPath: "polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%)" }}>
+									<div className="w-3 h-3 bg-cyan-400 mr-2 md:mr-3 animate-pulse"></div>
+									<span className="text-cyan-400 font-mono text-xs md:text-sm font-bold">MEMORY_BANK.neural</span>
+								</div>
+								
+								{/* Main title */}
+								<div className="flex-1 w-full md:w-auto">
+									<h2 className="text-2xl sm:text-3xl md:text-4xl font-mono font-bold text-white uppercase tracking-wider flex flex-col sm:flex-row items-start sm:items-center mb-2">
+										<div className="flex items-center mb-2 sm:mb-0">
+											<span className="text-cyan-400 mr-3">🧠</span>
+											NEURAL_PATHWAY_TRACE
+										</div>
+										<div className="sm:ml-4 px-2 sm:px-3 py-1 bg-pink-900 bg-opacity-30 border border-pink-500 text-pink-500 text-xs">
+											[CLASSIFIED]
+										</div>
+									</h2>
+									<div className="text-gray-400 font-mono text-xs sm:text-sm leading-relaxed">
+									<span className="block sm:inline">Subject: MIRA_&quot;VOID&quot;_DOSSAN</span>
+										<span className="hidden sm:inline"> // </span>
+										<span className="block sm:inline">Clearance: ALPHA // Neural_ID: NC-4487</span>
 									</div>
-								</h2>
-								<div className="text-gray-400 font-mono text-sm">
-									Subject: DANIEL_&quot;VOID&quot;_JOHNSON // Clearance: ALPHA // Neural_ID: NC-4487
 								</div>
 							</div>
-						</div>
 						
 						{/* Tech status indicators */}
 						<div className="absolute bottom-2 left-4 flex space-x-4 text-xs font-mono">
@@ -345,30 +349,36 @@ export const CyberpunkDevJourney = () => {
 								NEURAL_ENGRAM_ALPHA // FIRST_CODE_EXPOSURE
 							</h3>
 
-							<div className="text-gray-300 font-mono text-sm leading-relaxed relative">
-								<div className="mb-4 p-3 bg-gray-900 border-l-2 border-cyan-400">
-									<div className="text-xs text-cyan-400 mb-1">[MEMORY_TRACE_INITIATED]</div>
-									<div className="text-yellow-400 font-bold">SUBJECT_AGE: 4.0 // NEURAL_PLASTICITY: HIGH</div>
-								</div>
-								
-								<strong className="text-cyan-400">INITIAL_WETWARE_EXPOSURE:</strong> Neural pathways first activated when 
-								my biological_parent executed manual code transcription protocols on the legacy 
-								{renderNeuralLink(neuralTechNodes["CBM-64 Neural Interface"].url, "CBM-64 Neural Interface", "c64", neuralTechNodes["CBM-64 Neural Interface"].threat)} 
-								system. Each program required direct memory injection - no storage drives, pure 
-								volatile consciousness. First successful neural handshake achieved through 
-								{renderNeuralLink(neuralTechNodes["Blue Meanies Combat Protocol"].url, "Blue Meanies Combat Protocol", "meanies", neuralTechNodes["Blue Meanies Combat Protocol"].threat)} 
-								- a primitive space combat simulation.
+									<div className="text-gray-300 font-mono text-sm sm:text-base leading-relaxed relative">
+										<div className="mb-4 p-3 sm:p-4 bg-gray-900 border-l-2 border-cyan-400">
+											<div className="text-xs sm:text-sm text-cyan-400 mb-1">[MEMORY_TRACE_INITIATED]</div>
+											<div className="text-yellow-400 font-bold text-sm sm:text-base">SUBJECT_AGE: 4.0 // NEURAL_PLASTICITY: HIGH</div>
+										</div>
+										
+										<p className="mb-4">
+											<strong className="text-cyan-400">INITIAL_WETWARE_EXPOSURE:</strong> Neural pathways first activated when 
+									my biological_parent executed manual code transcription protocols on the legacy 
+									{renderNeuralLink(neuralTechNodes["CBM-64 Neural Interface"].url, "CBM-64 Neural Interface", "c64", neuralTechNodes["CBM-64 Neural Interface"].threat)} 
+									system.
+										</p>
+										
+										<p className="mb-4">
+											Each program required direct memory injection - no storage drives, pure 
+									volatile consciousness. First successful neural handshake achieved through 
+									{renderNeuralLink(neuralTechNodes["Blue Meanies Combat Protocol"].url, "Blue Meanies Combat Protocol", "meanies", neuralTechNodes["Blue Meanies Combat Protocol"].threat)} 
+									- a primitive space combat simulation.
+										</p>
 
-								<div className="mt-4 p-3 bg-red-900 bg-opacity-20 border border-red-400">
-									<div className="text-red-400 font-bold text-xs mb-1">[PARENTAL_FEEDBACK_LOG]</div>
-									<div className="text-gray-300 italic">&quot;All that neural processing time for a simple space invaders clone...&quot; 
-									- Parent_Unit complained about resource allocation inefficiency.</div>
-								</div>
+										<div className="mt-4 p-3 sm:p-4 bg-red-900 bg-opacity-20 border border-red-400">
+											<div className="text-red-400 font-bold text-xs sm:text-sm mb-2">[PARENTAL_FEEDBACK_LOG]</div>
+											<div className="text-gray-300 italic text-sm sm:text-base leading-relaxed">"All that neural processing time for a simple space invaders clone..." 
+										- Parent_Unit complained about resource allocation inefficiency.</div>
+										</div>
 
-								<div className="mt-4 text-xs text-gray-500">
-									{'// first_dopamine_release // pattern_recognition_engaged // addiction_pathway_initialized'}
-								</div>
-							</div>
+										<div className="mt-4 text-xs sm:text-sm text-gray-500">
+											{'// first_dopamine_release // pattern_recognition_engaged // addiction_pathway_initialized'}
+										</div>
+									</div>
 
 							{/* Read more button */}
 							<div className="mt-6">
@@ -421,16 +431,18 @@ export const CyberpunkDevJourney = () => {
 								CORPO_HARDWARE_ACQUISITION // SYSTEM_LIBERATION
 							</h3>
 
-							<div className="text-gray-300 font-mono text-sm leading-relaxed">
-								<div className="mb-4 p-3 bg-gray-900 border-l-2 border-pink-500">
-									<div className="text-xs text-pink-500 mb-1">[CORPO_ACQUISITION_PROTOCOL]</div>
-									<div className="text-yellow-400 font-bold">YEAR: 2008 // MISSION: SECURE_FIRST_RIG // METHOD: MANUAL_LABOR</div>
+							<div className="text-gray-300 font-mono text-sm sm:text-base leading-relaxed">
+								<div className="mb-4 p-3 sm:p-4 bg-gray-900 border-l-2 border-pink-500">
+									<div className="text-xs sm:text-sm text-pink-500 mb-1">[CORPO_ACQUISITION_PROTOCOL]</div>
+									<div className="text-yellow-400 font-bold text-sm sm:text-base">YEAR: 2008 // MISSION: SECURE_FIRST_RIG // METHOD: MANUAL_LABOR</div>
 								</div>
 
-								Physical labor protocols engaged - hotel sanitation contracts executed alongside 
+								<p className="mb-4">
+									Physical labor protocols engaged - hotel sanitation contracts executed alongside 
 								biological_parent unit. Target acquired: 
 								{renderNeuralLink(neuralTechNodes["Packard Bell Corporate Terminal"].url, "Packard Bell Corporate Terminal", "packard", neuralTechNodes["Packard Bell Corporate Terminal"].threat)}
-								- specs: 2GB neural_RAM, dual-core Celeron wetware processor. 
+								- specs: 2GB neural_RAM, dual-core Celeron wetware processor.
+								</p>
 
 								<div className="my-4 p-3 bg-red-900 bg-opacity-30 border border-red-500">
 									<div className="text-red-400 font-bold text-xs mb-2">[CRITICAL_SYSTEM_ERROR]</div>
@@ -493,26 +505,26 @@ export const CyberpunkDevJourney = () => {
 							)}
 
 							{/* Neural system specs display */}
-							<div className="mt-8 pt-4 border-t border-pink-500 grid grid-cols-2 md:grid-cols-4 gap-3">
-								<div className="bg-gray-900 p-3 border border-red-500 relative">
+							<div className="mt-8 pt-4 border-t border-pink-500 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+								<div className="bg-gray-900 p-3 sm:p-4 border border-red-500 relative min-h-[60px] flex flex-col justify-center">
 									<div className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
 									<div className="text-xs text-gray-500 font-mono mb-1">LEGACY_OS</div>
-									<div className="text-red-400 font-mono text-sm">VISTA_ICE</div>
+									<div className="text-red-400 font-mono text-sm font-bold">VISTA_ICE</div>
 								</div>
-								<div className="bg-gray-900 p-3 border border-green-400 relative">
+								<div className="bg-gray-900 p-3 sm:p-4 border border-green-400 relative min-h-[60px] flex flex-col justify-center">
 									<div className="absolute top-1 right-1 w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
 									<div className="text-xs text-gray-500 font-mono mb-1">PRIMARY_OS</div>
-									<div className="text-green-400 font-mono text-sm">KUBUNTU_PLASMA</div>
+									<div className="text-green-400 font-mono text-sm font-bold">KUBUNTU_PLASMA</div>
 								</div>
-								<div className="bg-gray-900 p-3 border border-yellow-400 relative">
+								<div className="bg-gray-900 p-3 sm:p-4 border border-yellow-400 relative min-h-[60px] flex flex-col justify-center">
 									<div className="absolute top-1 right-1 w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
 									<div className="text-xs text-gray-500 font-mono mb-1">INIT_LANG</div>
-									<div className="text-yellow-400 font-mono text-sm">CBM_BASIC</div>
+									<div className="text-yellow-400 font-mono text-sm font-bold">CBM_BASIC</div>
 								</div>
-								<div className="bg-gray-900 p-3 border border-cyan-400 relative">
+								<div className="bg-gray-900 p-3 sm:p-4 border border-cyan-400 relative min-h-[60px] flex flex-col justify-center">
 									<div className="absolute top-1 right-1 w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
 									<div className="text-xs text-gray-500 font-mono mb-1">NEURAL_STACK</div>
-									<div className="text-cyan-400 font-mono text-sm">JS_REACT.neural</div>
+									<div className="text-cyan-400 font-mono text-sm font-bold">JS_REACT.neural</div>
 								</div>
 							</div>
 

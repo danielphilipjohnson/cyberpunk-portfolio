@@ -7,7 +7,7 @@ export default function TerminalIntro() {
     "<span class='text-cyan-400'>SYSTEM</span>: Initializing identity protocol...",
     "<span class='text-cyan-400'>SYSTEM</span>: Scanning neural patterns...",
     "<span class='text-cyan-400'>SYSTEM</span>: Identity confirmed ✓",
-    "<span class='text-pink-500'>CODENAME</span>: Daniel Philip Johnson",
+    "<span class='text-pink-500'>CODENAME</span>: Mira Dossan",
     "<span class='text-green-400'>STATUS</span>: Full-Stack Engineer [ACTIVE]",
     "<span class='text-lime-400'>LOCATION</span>: Cornwall [REMOTE UPLINK]",
   ], []);
@@ -64,7 +64,7 @@ export default function TerminalIntro() {
           <div className="w-3 h-3 rounded-full bg-green-500"></div>
         </div>
         <div className="ml-4 text-xs text-gray-400 font-mono">
-          daniel@cyberpunk-portfolio:~$
+          .dossan@cyberpunk-portfolio:~$
         </div>
       </div>
 

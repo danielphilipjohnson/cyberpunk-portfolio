@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Navigation from '@/components/layout/Navigation';
 import CyberpunkCorpoProfile from '@/components/about/corpo-profile';
 import CyberpunkDevJourney from '@/components/about/journey';
 import CyberpunkMissionStatement from '@/components/about/mission';
@@ -70,41 +71,45 @@ export default function AboutPage() {
     <main className={`min-h-screen bg-gray-900 transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
       {/* Corporate Security Warning Modal */}
       {showSecurityWarning && (
-        <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-[100] backdrop-blur-sm">
-          <div className="bg-red-900 border-2 border-red-400 p-6 max-w-md mx-4 relative"
+        <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-[100] backdrop-blur-sm p-4">
+          <div className="bg-red-900 border-2 border-red-400 p-4 sm:p-6 w-full max-w-sm sm:max-w-md mx-auto relative"
                style={{ clipPath: "polygon(0 0, 95% 0, 100% 10%, 100% 100%, 5% 100%, 0 90%)" }}>
             
             {/* Warning Icon */}
-            <div className="text-center mb-4">
-              <div className="text-6xl text-red-400 animate-pulse">⚠️</div>
+            <div className="text-center mb-3 sm:mb-4">
+              <div className="text-4xl sm:text-6xl text-red-400 animate-pulse">⚠️</div>
             </div>
             
             {/* Warning Text */}
-            <div className="text-center mb-6">
-              <h2 className="text-red-400 font-mono font-bold text-lg mb-2 uppercase tracking-wider">
+            <div className="text-center mb-4 sm:mb-6">
+              <h2 className="text-red-400 font-mono font-bold text-base sm:text-lg mb-2 uppercase tracking-wider break-words">
                 CORPO SECURITY ALERT
               </h2>
-              <p className="text-red-300 font-mono text-sm leading-relaxed mb-4">
+              <p className="text-red-300 font-mono text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4 break-words">
                 You are accessing classified Militech neural interface data. 
                 Unauthorized viewing may result in memory wipe protocols.
               </p>
-              <div className="text-red-400 font-mono text-xs mb-4">
-                [NEURAL_TRACE_ACTIVE] • [ICE_MONITORING] • [CORPO_OVERSIGHT]
+              <div className="text-red-400 font-mono text-xs mb-3 sm:mb-4 break-all">
+                <span className="block sm:inline">[NEURAL_TRACE_ACTIVE]</span>
+                <span className="hidden sm:inline"> • </span>
+                <span className="block sm:inline">[ICE_MONITORING]</span>
+                <span className="hidden sm:inline"> • </span>
+                <span className="block sm:inline">[CORPO_OVERSIGHT]</span>
               </div>
             </div>
             
             {/* Buttons */}
-            <div className="flex space-x-4">
+            <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
               <button 
                 onClick={() => setShowSecurityWarning(false)}
-                className="flex-1 bg-red-400 text-black font-mono font-bold py-2 px-4 hover:bg-red-300 transition-colors"
+                className="flex-1 bg-red-400 text-black font-mono font-bold py-2 px-3 sm:px-4 hover:bg-red-300 transition-colors text-xs sm:text-sm"
                 style={{ clipPath: "polygon(0 0, 100% 0, 95% 100%, 5% 100%)" }}
               >
                 [ACCEPT_RISK]
               </button>
               <Link 
                 href="/"
-                className="flex-1 bg-gray-700 text-red-400 font-mono font-bold py-2 px-4 hover:bg-gray-600 transition-colors text-center"
+                className="flex-1 bg-gray-700 text-red-400 font-mono font-bold py-2 px-3 sm:px-4 hover:bg-gray-600 transition-colors text-center text-xs sm:text-sm"
                 style={{ clipPath: "polygon(0 0, 100% 0, 95% 100%, 5% 100%)" }}
               >
                 [JACK_OUT]
@@ -112,8 +117,8 @@ export default function AboutPage() {
             </div>
             
             {/* Auto-dismiss countdown */}
-            <div className="mt-4 text-center">
-              <span className="text-red-400 font-mono text-xs opacity-60">
+            <div className="mt-3 sm:mt-4 text-center">
+              <span className="text-red-400 font-mono text-xs opacity-60 break-words">
                 Auto-dismissing in 5 seconds...
               </span>
             </div>
@@ -121,107 +126,44 @@ export default function AboutPage() {
         </div>
       )}
       
-      {/* Main Navigation Bar */}
-      <header className="bg-gray-900 border-b border-gray-800 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6">
-          {/* Main nav container */}
-          <div className="bg-gray-900/60 backdrop-blur-md border border-teal-400/20 p-4 flex items-center justify-between"
-            style={{ clipPath: 'polygon(0 0, 100% 0, 98% 100%, 0 100%)' }}>
-            
-            {/* Logo */}
-            <div className="flex items-center">
-              <div className="w-10 h-10 bg-teal-400/20 border border-teal-400 flex items-center justify-center mr-3"
-                style={{ clipPath: 'polygon(0 0, 100% 0, 100% 80%, 80% 100%, 0 100%)' }}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9.5 3A6.5 6.5 0 0 0 3 9.5v1A1.5 1.5 0 0 0 4.5 12H6a1.5 1.5 0 0 0 1.5-1.5v-1A3.5 3.5 0 0 1 11 6h1a3.5 3.5 0 0 1 3.5 3.5v1A1.5 1.5 0 0 0 17 12h1.5a1.5 1.5 0 0 0 1.5-1.5v-1A6.5 6.5 0 0 0 13.5 3h-4z" fill="#5eead4"/>
-                  <path d="M4.5 15a1.5 1.5 0 0 0-1.5 1.5v2A4.5 4.5 0 0 0 7.5 23h9a4.5 4.5 0 0 0 4.5-4.5v-2a1.5 1.5 0 0 0-1.5-1.5h-15z" fill="#5eead4"/>
-                </svg>
-              </div>
-              <div>
-                <div className="text-teal-v0i.dev400 font-bold text-lg tracking-wider lowercase font-mono">void.dev</div>
-                <div className="text-gray-400 text-xs font-mono">[NETRUNNER.PORTFOLIO]</div>
-              </div>
-            </div>
-
-            {/* Navigation links */}
-            <nav className="hidden md:flex items-center space-x-8">
-              <Link href="/" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
-                Home
-              </Link>
-              <Link href="/about" className="text-teal-400 border-b border-teal-400 text-sm font-mono uppercase tracking-wider pb-1">
-                About
-              </Link>
-              <Link href="/projects" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
-                Projects
-              </Link>
-              <Link href="/blog" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
-                Blog
-              </Link>
-              <Link href="/contact" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
-                Contact
-              </Link>
-            </nav>
-
-            {/* CTA Button */}
-            <a
-              href="/cv/Daniel_Philip_Johnson.pdf"
-              download
-              className="hidden md:flex items-center gap-2 px-4 py-2 bg-teal-400 text-gray-900 hover:bg-teal-300 transition-all duration-300 font-bold text-xs uppercase tracking-widest hover:shadow-lg hover:shadow-teal-400/25"
-              style={{ clipPath: 'polygon(0 0, 100% 0, 95% 100%, 0 100%)' }}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
-              Download CV
-            </a>
-
-            {/* Mobile menu button */}
-            <button 
-              className="md:hidden text-teal-400 hover:text-teal-300 transition-colors"
-              aria-label="Toggle mobile menu"
-              title="Toggle mobile menu"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </header>
+      {/* Navigation */}
+      <Navigation />
       
       {/* Page-specific Cyberpunk Header */}
-      <div className="bg-gray-900 border-b border-gray-800 sticky top-16 z-40">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between py-4">
+      <div className="bg-gray-900 border-b border-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between py-3 sm:py-4 gap-3 lg:gap-0">
             {/* Page title */}
-            <div className="flex items-center">
-              <Link href="/" className="flex items-center mr-6 group">
-                <div className="w-8 h-8 bg-cyan-900 bg-opacity-30 border border-cyan-400 flex items-center justify-center mr-2 group-hover:bg-cyan-400 group-hover:text-gray-900 transition-colors"
+            <div className="flex flex-col sm:flex-row sm:items-center min-w-0">
+              <Link href="/" className="flex items-center mb-2 sm:mb-0 sm:mr-4 lg:mr-6 group shrink-0">
+                <div className="w-6 h-6 sm:w-8 sm:h-8 bg-cyan-900 bg-opacity-30 border border-cyan-400 flex items-center justify-center mr-2 group-hover:bg-cyan-400 group-hover:text-gray-900 transition-colors"
                      style={{ clipPath: "polygon(0 0, 100% 0, 90% 100%, 0 100%)" }}>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 sm:h-4 sm:w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m0 7h18" />
                   </svg>
                 </div>
                 <span className="text-cyan-400 font-mono text-xs group-hover:text-cyan-300">[HOME]</span>
               </Link>
-              <div 
-                className="bg-cyan-900 bg-opacity-30 px-3 py-1 border-l-2 border-cyan-400 flex items-center mr-4"
-                style={{ clipPath: "polygon(0 0, 100% 0, 95% 100%, 0 100%)" }}
-              >
-                <div className="w-2 h-2 bg-cyan-400 mr-2"></div>
-                <span className="text-cyan-400 font-mono text-xs">ABOUT.sys</span>
+              <div className="flex flex-col sm:flex-row sm:items-center min-w-0">
+                <div 
+                  className="bg-cyan-900 bg-opacity-30 px-2 sm:px-3 py-1 border-l-2 border-cyan-400 flex items-center mb-2 sm:mb-0 sm:mr-3 lg:mr-4 shrink-0"
+                  style={{ clipPath: "polygon(0 0, 100% 0, 95% 100%, 0 100%)" }}
+                >
+                  <div className="w-2 h-2 bg-cyan-400 mr-2"></div>
+                  <span className="text-cyan-400 font-mono text-xs">ABOUT.sys</span>
+                </div>
+                <h1 className="text-lg sm:text-xl lg:text-2xl font-mono font-bold text-cyan-400 uppercase tracking-wider break-words">
+                  CORPO_OPERATIVE_DOSSIER
+                </h1>
               </div>
-              <h1 className="text-2xl font-mono font-bold text-cyan-400 uppercase tracking-wider">
-                CORPO_OPERATIVE_DOSSIER
-              </h1>
             </div>
 
             {/* Corporate controls */}
-            <div className="flex items-center space-x-4">
-              <div className="text-red-400 font-mono text-xs px-2 py-1 border border-red-400 bg-red-900 bg-opacity-20">
+            <div className="flex items-center space-x-2 sm:space-x-4 shrink-0">
+              <div className="text-red-400 font-mono text-xs px-1 sm:px-2 py-1 border border-red-400 bg-red-900 bg-opacity-20">
                 [CLASSIFIED]
               </div>
-              <div className="text-lime-400 font-mono text-xs cursor-pointer hover:text-lime-300 underline"
+              <div className="hidden sm:block text-lime-400 font-mono text-xs cursor-pointer hover:text-lime-300 underline"
                    onClick={triggerReboot}>
                 [ICE_REBOOT]
               </div>
@@ -229,16 +171,17 @@ export default function AboutPage() {
           </div>
 
           {/* Navigation */}
-          <div className="flex overflow-x-auto pb-4 scrollbar-hide">
+          <div className="flex overflow-x-auto pb-4 scrollbar-hide gap-2">
             {navigationSections.map((section) => (
               <button
                 key={section.id}
                 onClick={() => scrollToSection(section.id)}
-                className={`whitespace-nowrap px-4 py-2 font-mono text-sm border-t-2 mr-2 ${getNavColorClass(section.color, activeSection === section.id)} bg-opacity-10 transition-all duration-300`}
+                className={`whitespace-nowrap px-3 sm:px-4 py-2 font-mono text-xs sm:text-sm border-t-2 shrink-0 ${getNavColorClass(section.color, activeSection === section.id)} bg-opacity-10 transition-all duration-300`}
                 style={{ clipPath: "polygon(0 0, 95% 0, 100% 100%, 5% 100%)" }}
               >
-                <span className="mr-2">{section.icon}</span>
-                {section.label}
+                <span className="mr-1 sm:mr-2">{section.icon}</span>
+                <span className="hidden sm:inline">{section.label}</span>
+                <span className="sm:hidden">{section.label.split('_')[0]}</span>
               </button>
             ))}
           </div>
@@ -350,6 +293,16 @@ export default function AboutPage() {
         @keyframes dataStream {
           0% { transform: translateY(-100%); }
           100% { transform: translateY(calc(100vh + 100%)); }
+        }
+
+        @keyframes scanlines {
+          0% { background-position: 0 0; }
+          100% { background-position: 0 8px; }
+        }
+
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
         }
         
         .scrollbar-hide {

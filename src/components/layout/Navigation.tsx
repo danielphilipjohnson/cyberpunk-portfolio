@@ -57,7 +57,7 @@ export default function Navigation() {
     { href: '/contact', label: 'Contact', icon: '🔗' }
   ];
   return (
-    <header className="relative z-20 px-6 md:px-12 py-6 bg-gray-900/60 backdrop-blur-md">
+    <header className="relative z-50 px-6 md:px-12 py-6 bg-gray-900/60 backdrop-blur-md">
       <div className="max-w-7xl mx-auto">
         {/* Main nav container */}
         <div className="bg-gray-900/60 backdrop-blur-md border border-teal-400/20 p-4 flex items-center justify-between"
@@ -97,23 +97,39 @@ export default function Navigation() {
             // Normal navigation for other pages
             <>
               <nav className="hidden md:flex items-center space-x-8">
-                <Link href="/about" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
+                <Link href="/about" className={`text-sm font-mono uppercase tracking-wider pb-1 transition-colors ${
+                  pathname === '/about' 
+                    ? 'text-teal-400 border-b border-teal-400' 
+                    : 'text-white/80 hover:text-teal-400 border-b border-transparent hover:border-teal-400'
+                }`}>
                   About
                 </Link>
-                <Link href="/projects" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
+                <Link href="/projects" className={`text-sm font-mono uppercase tracking-wider pb-1 transition-colors ${
+                  pathname === '/projects' 
+                    ? 'text-teal-400 border-b border-teal-400' 
+                    : 'text-white/80 hover:text-teal-400 border-b border-transparent hover:border-teal-400'
+                }`}>
                   Projects
                 </Link>
-                <Link href="/blog" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
+                <Link href="/blog" className={`text-sm font-mono uppercase tracking-wider pb-1 transition-colors ${
+                  pathname === '/blog' || isOnBlogPost
+                    ? 'text-teal-400 border-b border-teal-400' 
+                    : 'text-white/80 hover:text-teal-400 border-b border-transparent hover:border-teal-400'
+                }`}>
                   Blog
                 </Link>
-                <Link href="/contact" className="text-white/80 hover:text-teal-400 transition-colors text-sm font-mono uppercase tracking-wider border-b border-transparent hover:border-teal-400 pb-1">
+                <Link href="/contact" className={`text-sm font-mono uppercase tracking-wider pb-1 transition-colors ${
+                  pathname === '/contact' 
+                    ? 'text-teal-400 border-b border-teal-400' 
+                    : 'text-white/80 hover:text-teal-400 border-b border-transparent hover:border-teal-400'
+                }`}>
                   Contact
                 </Link>
               </nav>
 
               {/* CTA Button */}
               <a
-                href="/cv/Daniel_Philip_Johnson.pdf"
+                href="/cv/mira_dossan_resume.pdf"
                 download
                 className="hidden md:flex items-center gap-2 px-4 py-2 bg-teal-400 text-gray-900 hover:bg-teal-300 transition-all duration-300 font-bold text-xs uppercase tracking-widest hover:shadow-lg hover:shadow-teal-400/25"
                 style={{ clipPath: 'polygon(0 0, 100% 0, 95% 100%, 0 100%)' }}
@@ -159,12 +175,12 @@ export default function Navigation() {
         <>
           {/* Backdrop */}
           <div 
-            className="fixed inset-0 h-screen w-screen bg-black/80 backdrop-blur-sm z-40 md:hidden"
+            className="fixed inset-0 h-screen w-screen bg-black/80 backdrop-blur-sm z-[60] md:hidden"
             onClick={toggleMobileMenu}
           />
           
           {/* Mobile Menu Panel */}
-          <div className={`fixed top-0 right-0 h-screen w-80 max-w-[90vw] bg-gray-900/95 backdrop-blur-md border-l border-cyan-400/30 z-50 transform transition-all duration-300 ease-out md:hidden flex flex-col ${
+          <div className={`fixed top-0 right-0 h-screen w-80 max-w-[90vw] bg-gray-900/95 backdrop-blur-md border-l border-cyan-400/30 z-[70] transform transition-all duration-300 ease-out md:hidden flex flex-col ${
             isAnimating ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
           }`}>
             
@@ -273,7 +289,7 @@ export default function Navigation() {
               {/* Download CV Button */}
               <div className="relative z-10 p-6 border-t border-gray-800">
                 <a
-                  href="/cv/Daniel_Philip_Johnson.pdf"
+                  href="/cv/mira_dossan_resume.pdf"
                   download
                   className="flex items-center justify-center w-full p-4 bg-teal-400 text-gray-900 hover:bg-teal-300 transition-all duration-300 font-mono font-bold text-sm uppercase tracking-wider"
                   style={{ clipPath: 'polygon(0 0, 100% 0, 95% 100%, 5% 100%)' }}

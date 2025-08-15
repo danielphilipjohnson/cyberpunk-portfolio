@@ -105,50 +105,50 @@ export default function ProjectsPage() {
         <ProjectsGrid onProjectSelect={handleProjectSelect} />
 
         {/* Neural Connection Status Footer */}
-        <section className="py-12 bg-gray-900 border-t border-gray-800">
-          <div className="max-w-4xl mx-auto px-6">
-            <div className="bg-gray-800 border border-gray-700 p-8 text-center"
+        <section className="py-8 sm:py-12 bg-gray-900 border-t border-gray-800">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6">
+            <div className="bg-gray-800 border border-gray-700 p-6 sm:p-8 text-center"
                  style={{ clipPath: 'polygon(0 0, 100% 0, 98% 100%, 2% 100%)' }}>
               
-              <div className="flex items-center justify-center space-x-4 mb-6">
-                <div className="w-4 h-4 bg-green-400 rounded-full animate-pulse" />
-                <h3 className="text-green-400 font-mono font-bold text-xl">PROJECT_DATABASE_SYNCHRONIZED</h3>
-                <div className="w-4 h-4 bg-green-400 rounded-full animate-pulse" />
+              <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4 mb-6">
+                <div className="w-3 h-3 sm:w-4 sm:h-4 bg-green-400 rounded-full animate-pulse" />
+                <h3 className="text-green-400 font-mono font-bold text-lg sm:text-xl">PROJECT_DATABASE_SYNCHRONIZED</h3>
+                <div className="w-3 h-3 sm:w-4 sm:h-4 bg-green-400 rounded-full animate-pulse" />
               </div>
               
-              <p className="text-gray-300 font-mono text-lg mb-6">
+              <p className="text-gray-300 font-mono text-sm sm:text-base lg:text-lg mb-6 leading-relaxed">
                 Neural interface successfully connected to project archive. All systems operational. 
                 Ready to initialize collaboration protocols for your next cybernetic enhancement project.
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <div className="bg-gray-900 border border-gray-600 p-4">
-                  <div className="text-cyan-400 font-mono text-sm font-bold">NEURAL_UPTIME</div>
-                  <div className="text-white font-mono text-lg">99.8%</div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
+                <div className="bg-gray-900 border border-gray-600 p-3 sm:p-4">
+                  <div className="text-cyan-400 font-mono text-xs sm:text-sm font-bold">NEURAL_UPTIME</div>
+                  <div className="text-white font-mono text-base sm:text-lg">99.8%</div>
                   <div className="w-full h-1 bg-gray-700 mt-2">
                     <div className="h-full bg-cyan-400" style={{ width: '99.8%' }} />
                   </div>
                 </div>
-                <div className="bg-gray-900 border border-gray-600 p-4">
-                  <div className="text-purple-400 font-mono text-sm font-bold">DATA_INTEGRITY</div>
-                  <div className="text-white font-mono text-lg">100%</div>
+                <div className="bg-gray-900 border border-gray-600 p-3 sm:p-4">
+                  <div className="text-purple-400 font-mono text-xs sm:text-sm font-bold">DATA_INTEGRITY</div>
+                  <div className="text-white font-mono text-base sm:text-lg">100%</div>
                   <div className="w-full h-1 bg-gray-700 mt-2">
                     <div className="h-full bg-purple-400" style={{ width: '100%' }} />
                   </div>
                 </div>
-                <div className="bg-gray-900 border border-gray-600 p-4">
-                  <div className="text-green-400 font-mono text-sm font-bold">ACCESS_LEVEL</div>
-                  <div className="text-white font-mono text-lg">ADMIN</div>
+                <div className="bg-gray-900 border border-gray-600 p-3 sm:p-4">
+                  <div className="text-green-400 font-mono text-xs sm:text-sm font-bold">ACCESS_LEVEL</div>
+                  <div className="text-white font-mono text-base sm:text-lg">ADMIN</div>
                   <div className="w-full h-1 bg-gray-700 mt-2">
                     <div className="h-full bg-green-400" style={{ width: '100%' }} />
                   </div>
                 </div>
               </div>
 
-              <div className="flex flex-wrap justify-center gap-4">
+              <div className="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-3 sm:gap-4">
                 <Link
                   href="/contact"
-                  className="px-6 py-3 bg-cyan-400 bg-opacity-20 border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-gray-900 transition-all duration-300 font-mono font-bold"
+                  className="px-4 sm:px-6 py-2 sm:py-3 bg-cyan-400 bg-opacity-20 border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-gray-900 transition-all duration-300 font-mono text-xs sm:text-sm font-bold"
                   style={{ clipPath: 'polygon(0 0, 100% 0, 95% 100%, 5% 100%)' }}
                 >
                   INITIATE_COLLABORATION
@@ -157,14 +157,14 @@ export default function ProjectsPage() {
                   href="https://github.com/danielphilipjohnson"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 bg-purple-400 bg-opacity-20 border border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-gray-900 transition-all duration-300 font-mono font-bold"
+                  className="px-4 sm:px-6 py-2 sm:py-3 bg-purple-400 bg-opacity-20 border border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-gray-900 transition-all duration-300 font-mono text-xs sm:text-sm font-bold"
                   style={{ clipPath: 'polygon(0 0, 100% 0, 95% 100%, 5% 100%)' }}
                 >
                   ACCESS_SOURCE_CODE
                 </a>
                 <Link
                   href="/blog"
-                  className="px-6 py-3 bg-pink-400 bg-opacity-20 border border-pink-400 text-pink-400 hover:bg-pink-400 hover:text-gray-900 transition-all duration-300 font-mono font-bold"
+                  className="px-4 sm:px-6 py-2 sm:py-3 bg-pink-400 bg-opacity-20 border border-pink-400 text-pink-400 hover:bg-pink-400 hover:text-gray-900 transition-all duration-300 font-mono text-xs sm:text-sm font-bold"
                   style={{ clipPath: 'polygon(0 0, 100% 0, 95% 100%, 5% 100%)' }}
                 >
                   READ_NEURAL_LOGS

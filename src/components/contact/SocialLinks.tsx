@@ -202,7 +202,7 @@ export default function SocialLinks() {
             </div>
             
             <div className="text-center">
-              <h3 className="text-2xl font-mono font-bold text-white mb-2">
+              <h3 className="text-xl sm:text-2xl font-mono font-bold text-white mb-2">
                 NEURAL_NETWORK_ACCESS_POINTS
               </h3>
               <p className="text-gray-300 font-mono text-sm">
