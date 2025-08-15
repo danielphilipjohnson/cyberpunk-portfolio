@@ -2,33 +2,15 @@
 
 import React from 'react';
 import BlogPostCard from './BlogPostCard';
-import { BlogPost, getPostsByCategory, blogPosts } from '@/data/blogPosts';
+import { BlogPost } from '@/data/blogPosts';
 import CyberpunkSectionDecor from '../visuals/CyberpunkSectionDecor';
 
 interface RelatedPostsProps {
   currentPost: BlogPost;
+  relatedPosts?: BlogPost[];
 }
 
-export default function RelatedPosts({ currentPost }: RelatedPostsProps) {
-  // Get posts from the same category, excluding the current post
-  const categoryPosts = getPostsByCategory(currentPost.category)
-    .filter(post => post.slug !== currentPost.slug)
-    .slice(0, 3); // Limit to 3 related posts
-
-  // If we don't have enough posts from the same category, fill with recent posts
-  const allOtherPosts = blogPosts
-    .filter((post: BlogPost) => post.slug !== currentPost.slug);
-  
-  const relatedPosts = [...categoryPosts];
-  
-  // Fill remaining slots with posts from other categories
-  if (relatedPosts.length < 3) {
-    const additionalPosts = allOtherPosts
-      .filter((post: BlogPost) => !relatedPosts.some(rp => rp.slug === post.slug))
-      .slice(0, 3 - relatedPosts.length);
-    relatedPosts.push(...additionalPosts);
-  }
-
+export default function RelatedPosts({ currentPost, relatedPosts = [] }: RelatedPostsProps) {
   if (relatedPosts.length === 0) {
     return null; // Don't show section if no related posts
   }

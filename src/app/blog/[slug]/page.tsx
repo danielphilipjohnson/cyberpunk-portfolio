@@ -7,7 +7,7 @@ import BlogPostContent from '@/components/blog/BlogPostContent';
 import BlogPostNavigation from '@/components/blog/BlogPostNavigation';
 import RelatedPosts from '@/components/blog/RelatedPosts';
 import Footer from '@/components/home/Footer';
-import { getPost, getAllPosts } from '@/lib/mdx';
+import { getPost, getAllPosts, getRelatedPosts } from '@/lib/mdx';
 import { BlogPost as LegacyBlogPost } from '@/data/blogPosts';
 
 interface BlogPostPageProps {
@@ -55,10 +55,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const allPosts = getAllPosts();
   const { previousPost, nextPost } = getAdjacentPosts(slug, allPosts);
   
+  // Get related posts from MDX system
+  const mdxRelatedPosts = getRelatedPosts(slug, 3);
+  
   // Convert MDX post to legacy format for existing components
   const legacyPost = convertMDXPostToLegacy(post);
   const legacyPreviousPost = previousPost ? convertMDXPostToLegacy(previousPost) : null;
   const legacyNextPost = nextPost ? convertMDXPostToLegacy(nextPost) : null;
+  const legacyRelatedPosts = mdxRelatedPosts.map(convertMDXPostToLegacy);
   
   return (
     <main className="min-h-screen bg-gray-900">
@@ -76,8 +80,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         category={legacyPost.category}
       />
       
-      {/* Related Posts - temporarily disabled during MDX migration */}
-      {/* <RelatedPosts currentPost={legacyPost} /> */}
+      {/* Related Posts */}
+      <RelatedPosts currentPost={legacyPost} relatedPosts={legacyRelatedPosts} />
       
       {/* Navigation to Previous/Next Posts */}
       <BlogPostNavigation 
