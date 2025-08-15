@@ -164,7 +164,7 @@ export const CyberpunkHeroWithNav = () => {
 			</div>
 
 			{/* Social media icons with angular containers - left side */}
-			<div className="absolute left-0 top-1/2 -translate-y-1/2 z-20">
+			<div className="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 z-20">
 				<div className="flex flex-col space-y-4 p-4">
 					<div className="w-10 h-10 bg-teal-900/80 flex items-center justify-center text-teal-400 hover:bg-teal-800 transition-colors"
 						style={{ clipPath: 'polygon(0 0, 85% 0, 100% 15%, 100% 85%, 85% 100%, 0 100%)' }}>
