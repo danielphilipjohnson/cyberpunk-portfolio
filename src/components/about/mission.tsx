@@ -340,7 +340,7 @@ export const CyberpunkMissionStatement = () => {
 							</div>
 
 							<p className="text-gray-300 font-mono leading-relaxed text-xs sm:text-sm mb-3 sm:mb-4 break-words">
-								{highlightText("Enthusiastic programmer who is expanding his skills at hiyield. He currently works as a Full-Stack python developer. I have a Theoretical knowledge of the fundamentals HTML, CSS and JS. Formely specialised in react development, until switching to nuxt and vue.js. My tech stack is django-rest, nuxt, vue and tailwind for styling as well as contributing with the WordPress team.")}
+								{highlightText("Adaptive mesh architect expanding operational bandwidth within Neurovia Corporation’s Neural Interface Division. Currently engaged as a full-stack SynthPython engineer, with a strong theoretical foundation in NeuroHTML, PulseCSS, and QuantumScript. Formerly specialized in Reactix Frameworks before transitioning to Nuxtara and Vuestral Systems. Primary tech stack includes Django-ΣREST, Nuxtara Core, Vuestral UI, and Tailwind-X for interface modulation, as well as contributing to the Neurovia HoloPress Deployment Team.")}
 							</p>
 
 							{/* Status indicator */}

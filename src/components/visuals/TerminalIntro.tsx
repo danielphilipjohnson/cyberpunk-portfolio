@@ -9,7 +9,7 @@ export default function TerminalIntro() {
     "<span class='text-cyan-400'>SYSTEM</span>: Identity confirmed ✓",
     "<span class='text-pink-500'>CODENAME</span>: Mira Dossan",
     "<span class='text-green-400'>STATUS</span>: Full-Stack Engineer [ACTIVE]",
-    "<span class='text-lime-400'>LOCATION</span>: Cornwall [REMOTE UPLINK]",
+    "<span class='text-lime-400'>LOCATION</span>: Neural Port Node 9 [REMOTE UPLINK]",
   ], []);
 
   const [currentLineIndex, setCurrentLineIndex] = useState(0);

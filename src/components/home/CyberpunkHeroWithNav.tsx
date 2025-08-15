@@ -214,7 +214,7 @@ export const CyberpunkHeroWithNav = () => {
 						<div className="inline-flex items-center bg-gray-800/60 border border-pink-500/30 px-4 py-2"
 							style={{ clipPath: 'polygon(0 0, 100% 0, 95% 100%, 0 100%)' }}>
 							<span className="text-pink-500 font-mono text-sm mr-2">[CORPO_LINK]</span>
-							<span className="text-white font-bold tracking-wider">HIYIELD CORP</span>
+							<span className="text-white font-bold tracking-wider">Neurovia Corporation</span>
 						</div>
 					</div>
 

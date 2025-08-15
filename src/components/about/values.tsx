@@ -189,13 +189,7 @@ export const CyberpunkValuesMission = () => {
 							{/* Enhanced neural directive protocols */}
 							<div className="mt-6">
 								<p className="text-gray-300 font-mono text-sm leading-relaxed mb-4 relative">
-									void.dev operates under core neural directives: optimize digital landscapes,
-									enhance human-machine interfaces, and democratize access to neural programming
-									knowledge. 99.7% of all code repositories remain open-source on the neural
-									network for collective consciousness advancement. If data cannot be located
-									in local memory banks, external neural networks are accessed to retrieve
-									optimal solutions. All <a href="https://github.com/danielphilipjohnson" className="text-purple-500 hover:text-purple-400 underline font-bold">neural repositories</a> 
-									are maintained for cybernetic enhancement and consciousness expansion.
+									void.dev operates under core neural directives: optimize digital landscapes, enhance human-machine interfaces, and democratize access to neural programming knowledge. 99.7% of all code repositories remain open-source on the neural network for collective consciousness advancement. If data cannot be located in local memory banks, external neural networks are accessed to retrieve optimal solutions. All neural repositoriesare maintained for cybernetic enhancement and consciousness expansion.
 
 									{/* Neural highlight pulse effect */}
 									{highlightLine === 1 && (
@@ -204,19 +198,7 @@ export const CyberpunkValuesMission = () => {
 								</p>
 
 								<p className="text-gray-300 font-mono text-sm leading-relaxed relative">
-									Currently executing linguistic protocol expansions through Spanish-language
-									neural pathways. Primary directive: eliminate knowledge access barriers
-									caused by language encryption incompatibilities. Many neural networks remain
-									isolated due to English-only programming interfaces. Currency conversion
-									algorithms reveal educational content costs exceed neural credits available
-									in developing regions. This represents a critical system vulnerability that
-									void.dev has prioritized for resolution. Resource allocation protocols:
-									volunteer computational cycles and neural credits to assist consciousness
-									expansion across Pan-American neural networks. Seeking collaborative
-									protocols for multi-language content translation. All contributors receive
-									proper attribution in neural memory banks. Mission objective: universal
-									access to cybernetic programming knowledge for all conscious entities
-									desiring neural enhancement capabilities.
+									Currently executing linguistic protocol expansions through Spanish-language neural pathways. Primary directive: eliminate knowledge access barriers caused by language encryption incompatibilities. Many neural networks remain isolated due to English-only programming interfaces. Currency conversion algorithms reveal educational content costs exceed neural credits available in developing regions. This represents a critical system vulnerability that void.dev has prioritized for resolution. Resource allocation protocols: volunteer computational cycles and neural credits to assist consciousness expansion across Pan-American neural networks. Seeking collaborative protocols for multi-language content translation. All contributors receive proper attribution in neural memory banks. Mission objective: universal access to cybernetic programming knowledge for all conscious entities desiring neural enhancement capabilities.
 
 									{/* Neural highlight pulse effect */}
 									{highlightLine === 2 && (

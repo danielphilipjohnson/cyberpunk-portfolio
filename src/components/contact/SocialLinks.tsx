@@ -187,7 +187,7 @@ export default function SocialLinks() {
                   <div className="w-3 h-3 bg-purple-400 animate-pulse" />
                 </div>
                 <div>
-                  <h2 className="text-purple-400 font-mono font-bold text-xl">SOCIAL_NETWORK_INTERFACE</h2>
+                  <h2 className="text-purple-400 font-mono font-bold text-md md:text-xl">SOCIAL_NETWORK_INTERFACE</h2>
                   <div className="text-gray-400 font-mono text-sm">quantum_social_protocol_v2.3.1</div>
                 </div>
               </div>
@@ -202,7 +202,7 @@ export default function SocialLinks() {
             </div>
             
             <div className="text-center">
-              <h3 className="text-xl sm:text-2xl font-mono font-bold text-white mb-2">
+              <h3 className="text-md sm:text-2xl font-mono font-bold text-white mb-2">
                 NEURAL_NETWORK_ACCESS_POINTS
               </h3>
               <p className="text-gray-300 font-mono text-sm">
@@ -325,7 +325,7 @@ export default function SocialLinks() {
 
         {/* Network status footer */}
         <div className="mt-12 bg-gray-900 border border-gray-700 p-6 text-center">
-          <div className="flex items-center justify-center space-x-8 text-sm font-mono">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-center space-x-8 text-sm font-mono">
             <div className="flex items-center space-x-2">
               <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse" />
               <span className="text-green-400">NETWORKS_ONLINE: 6/6</span>

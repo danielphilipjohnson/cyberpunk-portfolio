@@ -28,8 +28,8 @@ export default function CyberpunkFooter() {
 
 	// External links
 	const externalLinks = [
-		{ name: "Hashnode", url: "https://danielphilipjohnson.me/", alt: "Hashnode of Daniel Philip Johnson" },
-		{ name: "dev.to", url: "https://dev.to/danielphilipjohnson", alt: "dev.to of Daniel Philip Johnson" }
+		{ name: "Hashnode", url: "https://danielphilipjohnson.me/", alt: "Hashnode of Mira Dossen" },
+		{ name: "dev.to", url: "https://dev.to/danielphilipjohnson", alt: "dev.to of Mira Dossen" }
 	];
 
 	// Developer links
@@ -442,7 +442,7 @@ export default function CyberpunkFooter() {
 							<span className="text-cyan-400 font-mono mb-1 sm:mb-0 sm:mr-2 text-xs sm:text-sm">[SYS.INFO]</span>
 							<div className="flex flex-col sm:flex-row sm:items-center">
 								<span className="text-gray-400 text-xs sm:text-sm break-words">© 2020-{new Date().getFullYear()}</span>
-								<span className="text-gray-400 text-xs sm:text-sm break-words">Developed by Daniel Philip Johnson</span>
+								<span className="text-gray-400 text-xs sm:text-sm break-words">Developed by Mira Dossen</span>
 								{/* Hidden reboot easter egg - desktop only */}
 								<button
 									onClick={triggerReboot}
@@ -458,12 +458,17 @@ export default function CyberpunkFooter() {
 					<div className="text-sm flex flex-col sm:flex-row sm:items-center justify-start lg:justify-end">
 						<span className="text-gray-500 mb-2 sm:mb-0 sm:mr-2 text-xs sm:text-sm break-words">POWERED_BY:</span>
 						<div className="flex flex-wrap items-center">
-							<a href="https://nuxtjs.org/" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 mx-1">#Nuxt</a>
+							<a href="#" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 mx-1">#Nuxtara_Matrix</a>
 							<span className="text-gray-600">|</span>
-							<a href="https://www.storyblok.com/" target="_blank" rel="noopener noreferrer" className="text-pink-500 hover:text-pink-400 mx-1">#Storyblok</a>
+							<a href="#" target="_blank" rel="noopener noreferrer" className="text-pink-500 hover:text-pink-400 mx-1">#Vuestral_Nexus</a>
 							<span className="text-gray-600">|</span>
-							<a href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 mx-1">#TailwindCSS</a>
+							<a href="#" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 mx-1">#Tailwind_X_HoloWeave</a>
+							<span className="text-gray-600">|</span>
+							<a href="#" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 mx-1">#Ghost_Op_Executable</a>
+							<span className="text-gray-600">|</span>
+							<a href="#" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 mx-1">#HelixCloud_Spine</a>
 						</div>
+
 					</div>
 				</div>
 

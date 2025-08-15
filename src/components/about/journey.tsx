@@ -191,29 +191,44 @@ export const CyberpunkDevJourney = () => {
 							<span className="text-green-400 font-mono text-xs">NEURAL_ACTIVITY: {neuralActivity}%</span>
 						</div>
 						
-							<div className="flex flex-col md:flex-row items-start md:items-center gap-4">
-								{/* System identifier */}
-								<div className="bg-cyan-900 bg-opacity-40 px-3 md:px-4 py-2 border-l-2 border-cyan-400 flex items-center"
-									style={{ clipPath: "polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%)" }}>
-									<div className="w-3 h-3 bg-cyan-400 mr-2 md:mr-3 animate-pulse"></div>
-									<span className="text-cyan-400 font-mono text-xs md:text-sm font-bold">MEMORY_BANK.neural</span>
+							{/* Mobile-first responsive layout */}
+							<div className="space-y-4">
+								{/* System identifier - full width on mobile */}
+								<div className="flex justify-center md:justify-start">
+									<div className="bg-cyan-900 bg-opacity-40 px-3 py-2 border-l-2 border-cyan-400 flex items-center"
+										style={{ clipPath: "polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%)" }}>
+										<div className="w-3 h-3 bg-cyan-400 mr-2 animate-pulse"></div>
+										<span className="text-cyan-400 font-mono text-xs sm:text-sm font-bold">MEMORY_BANK.neural</span>
+									</div>
 								</div>
 								
-								{/* Main title */}
-								<div className="flex-1 w-full md:w-auto">
-									<h2 className="text-2xl sm:text-3xl md:text-4xl font-mono font-bold text-white uppercase tracking-wider flex flex-col sm:flex-row items-start sm:items-center mb-2">
-										<div className="flex items-center mb-2 sm:mb-0">
-											<span className="text-cyan-400 mr-3">🧠</span>
-											NEURAL_PATHWAY_TRACE
+								{/* Main title section - improved mobile layout */}
+								<div className="text-center md:text-left">
+									{/* Title with brain icon */}
+									<div className="flex flex-col items-center md:items-start space-y-3">
+										<div className="flex items-center justify-center md:justify-start">
+											<span className="text-2xl sm:text-3xl mr-3">🧠</span>
+											<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-mono font-bold text-white uppercase tracking-wide">
+												NEURAL_PATHWAY_TRACE
+											</h2>
 										</div>
-										<div className="sm:ml-4 px-2 sm:px-3 py-1 bg-pink-900 bg-opacity-30 border border-pink-500 text-pink-500 text-xs">
-											[CLASSIFIED]
+										
+										{/* Classified badge - centered on mobile */}
+										<div className="flex justify-center md:justify-start">
+											<div className="px-3 py-1 bg-pink-900 bg-opacity-30 border border-pink-400 text-pink-400 text-xs font-mono font-bold"
+												style={{ clipPath: "polygon(0 0, 100% 0, 95% 100%, 5% 100%)" }}>
+												[CLASSIFIED]
+											</div>
 										</div>
-									</h2>
-									<div className="text-gray-400 font-mono text-xs sm:text-sm leading-relaxed">
-									<span className="block sm:inline">Subject: MIRA_&quot;VOID&quot;_DOSSAN</span>
-										<span className="hidden sm:inline"> // </span>
-										<span className="block sm:inline">Clearance: ALPHA // Neural_ID: NC-4487</span>
+									</div>
+									
+									{/* Subject info - improved mobile formatting */}
+									<div className="text-gray-400 font-mono text-xs sm:text-sm leading-relaxed mt-3">
+										<div className="flex flex-col sm:flex-row sm:items-center sm:space-x-2 space-y-1 sm:space-y-0">
+											<span>Subject: MIRA_&quot;VOID&quot;_DOSSAN</span>
+											<span className="hidden sm:inline text-cyan-400">{'//'}</span>
+											<span>Clearance: ALPHA // Neural_ID: NC-4487</span>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -271,7 +286,7 @@ export const CyberpunkDevJourney = () => {
 								<div className="absolute top-0 right-0 bottom-0 bg-cyan-400 w-px opacity-60 z-10"></div>
 								
 								<img
-									src="/_nuxt/image/0a9ae2.webp"
+									src="/img/neuralscan.png"
 									alt="Neural scan: Subject age 4 - Early system initialization"
 									className={`w-full object-cover filter ${activeScanLine === 'memory-bank-alpha' ? 'brightness-110 contrast-110' : 'brightness-90'} transition-all duration-700`}
 								/>
@@ -371,7 +386,7 @@ export const CyberpunkDevJourney = () => {
 
 										<div className="mt-4 p-3 sm:p-4 bg-red-900 bg-opacity-20 border border-red-400">
 											<div className="text-red-400 font-bold text-xs sm:text-sm mb-2">[PARENTAL_FEEDBACK_LOG]</div>
-											<div className="text-gray-300 italic text-sm sm:text-base leading-relaxed">"All that neural processing time for a simple space invaders clone..." 
+											<div className="text-gray-300 italic text-sm sm:text-base leading-relaxed">&quot;All that neural processing time for a simple space invaders clone...&quot; 
 										- Parent_Unit complained about resource allocation inefficiency.</div>
 										</div>
 
@@ -545,8 +560,8 @@ export const CyberpunkDevJourney = () => {
 							{/* Image with tech frame */}
 							<div className="relative mb-3 overflow-hidden">
 								<img
-									src="/_nuxt/image/5a372e.webp"
-									alt="A selfie of me with the sea the st ives sea behind."
+									src="/img/selfie.png"
+									alt="A selfie of me"
 									className="w-full object-cover"
 								/>
 

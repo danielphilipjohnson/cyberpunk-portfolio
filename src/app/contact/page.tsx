@@ -82,7 +82,7 @@ export default function ContactPage() {
                 <div className="h-px bg-cyan-400 flex-grow opacity-60 max-w-32" />
               </div>
               
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-mono font-bold text-white mb-4">
+              <h2 className="text-lg sm:text-3xl md:text-4xl font-mono font-bold text-white mb-4">
                 INITIATE_DIRECT_CONNECTION
               </h2>
               <p className="text-gray-300 font-mono text-base sm:text-lg max-w-2xl mx-auto">

@@ -16,13 +16,14 @@ export const CyberpunkAbout = () => {
 
 	// Personal info points with icons
 	const infoPoints = [
-		{ icon: <span className="mr-2">😄</span>, text: "Pronouns: Him, he, they" },
-		{ icon: <MapPin size={16} className="mr-2 text-pink-500" />, text: "Cornwall 🏴󠁧󠁢󠁥󠁮󠁧󠁿" },
-		{ icon: <BookOpen size={16} className="mr-2 text-cyan-400" />, text: "Bsc Psychology | University of Plymouth 🏫" },
-		{ icon: <Code size={16} className="mr-2 text-green-400" />, text: "Psychologist turned React developer 🖥️" },
-		{ icon: <Cpu size={16} className="mr-2 text-blue-400" />, text: "I'm currently using Kubuntu 20.04 and Manjaro 20.0.3" },
-		{ icon: <Terminal size={16} className="mr-2 text-purple-500" />, text: "In my spare time I build linux from scratch" }
+		{ icon: <span className="mr-2">🜂</span>, text: "Pronouns: They / Them" },
+		{ icon: <MapPin size={16} className="mr-2 text-pink-500" />, text: "Current Assignment: Neural Port Node 9, Cornwall Sector" },
+		{ icon: <BookOpen size={16} className="mr-2 text-cyan-400" />, text: "Neuro-Architecture Certification | Avalon Institute of Cognitive Systems" },
+		{ icon: <Code size={16} className="mr-2 text-green-400" />, text: "Specialist in cognitive mesh interfacing & adaptive UI engineering" },
+		{ icon: <Cpu size={16} className="mr-2 text-blue-400" />, text: "Operating Systems: HelixOS 5.2 & Manjaro 20.0.3" },
+		{ icon: <Terminal size={16} className="mr-2 text-purple-500" />, text: "Recreational Projects: Compiling black-market firmware for unregistered implants" }
 	];
+
 
 	// Social links
 	const socialLinks = [
@@ -99,7 +100,7 @@ export const CyberpunkAbout = () => {
 									style={{ clipPath: "polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%)" }}
 								>
 									<img
-										src=""
+										src="/img/selfie.png"
 										alt="Mira Dossan"
 										className="w-28 h-28 object-cover"
 									/>
@@ -140,12 +141,12 @@ export const CyberpunkAbout = () => {
 										<div className="flex items-center space-x-4 mb-2">
 											<h3 className="text-sm font-mono text-purple-400 flex items-center">
 												<span className="w-2 h-2 bg-purple-400 rounded-full mr-2 animate-pulse"></span>
-												HIYIELD CORP - Neural Interface Division
+												Neurovia Corporation - Neural Interface Division
 											</h3>
 										</div>
 										<div className="text-xs font-mono text-gray-400 flex items-center">
 											<span className="text-green-400 mr-2">▲</span>
-											LOCATION: NIGHT_CITY_REMOTE_NODE // Cornwall Sector
+											LOCATION: NIGHT_CITY_REMOTE_NODE // Neural Port Node 9 Sector
 										</div>
 									</div>
 

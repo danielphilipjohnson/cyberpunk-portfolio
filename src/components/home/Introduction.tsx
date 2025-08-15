@@ -157,20 +157,43 @@ export default function CyberpunkIntroduction() {
 						>
 							{/* Bio info with cyberpunk styling */}
 							<div className="prose prose-sm prose-cyan max-w-none font-mono text-gray-300">
-									<p>
-										Operating as a <span className="text-cyan-400 font-bold">NETRUNNER.ENGINEER</span> with <span className="text-cyan-400 font-bold">2+ cycles</span> in the digital matrix, I&apos;m executing a protocol to achieve <span className="text-cyan-400 font-bold">SENIOR_OPERATIVE</span> clearance. My background in startup data-fortresses has honed my ability to architect rapid deployment systems that jack client visions directly into the Net.
-									</p>
+								<p>
+									Operating as a <span className="text-cyan-400 font-bold">NETRUNNER.ENGINEER</span>
+									with <span className="text-cyan-400 font-bold">2+ cycles</span> in the digital matrix,
+									I&apos;m executing a protocol to achieve
+									<span className="text-cyan-400 font-bold"> SENIOR_OPERATIVE</span> clearance.
+									My background in startup-grade data-fortresses has honed my ability to architect
+									rapid-deployment lattice systems that jack client visions directly into the HyperGrid.
+								</p>
 
-									<p className="mt-4">
-										Currently running point on <span className="text-pink-500 font-bold">PROJECT_GENESIS</span> at <span className="text-pink-500 font-bold">Nexus_Dynamics</span>, deploying neural architecture via Nuxt.3, Node.js, BigCommerce APIs, and ELK surveillance stack for seamless cloud migration to Google&apos;s infrastructure backbone.
-									</p>
+								<p className="mt-4">
+									Currently running point on
+									<span className="text-pink-500 font-bold"> PROJECT_GENESIS</span> at
+									<span className="text-pink-500 font-bold"> Nexus_Dynamics</span>, deploying
+									adaptive neural architecture via <span className="text-cyan-400 font-bold">Nuxtara.3</span>,
+									<span className="text-cyan-400 font-bold">NodeFlux</span>,
+									<span className="text-cyan-400 font-bold">MacroCommerce API conduits</span>,
+									and the <span className="text-cyan-400 font-bold">SPECTRE-7 surveillance lattice</span>
+									for seamless consciousness archive migration to the
+									<span className="text-cyan-400 font-bold"> HelixCloud quantum spine</span>.
+								</p>
+
 
 									<p className="mt-4">
 										<span className="text-pink-500">CYBERWARE_ARSENAL:</span>
 									</p>
 
 									<div className="flex flex-wrap gap-2 mt-2">
-										{['Go.exe', 'JavaScript.dll', 'TypeScript.sys', 'Vue.3_Neural', 'Nuxt.3_Matrix', 'Tailwind.css', 'Google_Cloud.net', 'Firebase.db'].map((tech, index) => (
+									{[
+										'Ghost.Op_Executable', 
+										'JadeScript_Nexus.DLL', 
+										'TypeSynth_Core.SYS', 
+										'Vuestral_3_NeuroMod', 
+										'Nuxtara_3_MatrixNode', 
+										'Tailwind_X_HoloWeave.CSS', 
+										'HelixCloud_Spine.NET', 
+										'PyreBase_Cogitator.DB'
+										].map((tech, index) => (
 										<div
 											key={index}
 											className="px-2 py-1 text-xs bg-gray-800 text-lime-400 border border-lime-900"
