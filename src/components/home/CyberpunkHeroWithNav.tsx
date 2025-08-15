@@ -47,6 +47,7 @@ export const CyberpunkHeroWithNav = () => {
 	};
 
 	const navLinks = [
+		{ href: '/', label: 'Home', icon: '🏠' },
 		{ href: '/about', label: 'About', icon: '👤' },
 		{ href: '/projects', label: 'Projects', icon: '💻' },
 		{ href: '/blog', label: 'Blog', icon: '📡' },
