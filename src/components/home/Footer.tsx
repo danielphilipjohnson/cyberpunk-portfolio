@@ -438,27 +438,32 @@ export default function CyberpunkFooter() {
 				{/* Copyright section */}
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-y-4 pt-6 pb-8">
 					<div className="text-sm">
-						<div className="flex items-center">
-							<span className="text-cyan-400 font-mono mr-2">[SYS.INFO]</span>
-							<span className="text-gray-400">© 2020-{new Date().getFullYear()} • Developed by Daniel Philip Johnson</span>
-							{/* Hidden reboot easter egg */}
-							<button
-								onClick={triggerReboot}
-								className="ml-4 text-xs text-gray-600 hover:text-cyan-400 font-mono opacity-30 hover:opacity-100 transition-all"
-								title="Reboot neural system"
-							>
-								[REBOOT]
-							</button>
+						<div className="flex flex-col sm:flex-row sm:items-center">
+							<span className="text-cyan-400 font-mono mb-1 sm:mb-0 sm:mr-2 text-xs sm:text-sm">[SYS.INFO]</span>
+							<div className="flex flex-col sm:flex-row sm:items-center">
+								<span className="text-gray-400 text-xs sm:text-sm break-words">© 2020-{new Date().getFullYear()}</span>
+								<span className="text-gray-400 text-xs sm:text-sm break-words">Developed by Daniel Philip Johnson</span>
+								{/* Hidden reboot easter egg - desktop only */}
+								<button
+									onClick={triggerReboot}
+									className="hidden sm:block sm:ml-4 text-xs text-gray-600 hover:text-cyan-400 font-mono opacity-30 hover:opacity-100 transition-all"
+									title="Reboot neural system"
+								>
+									[REBOOT]
+								</button>
+							</div>
 						</div>
 					</div>
 
-					<div className="text-sm flex items-center justify-start lg:justify-end">
-						<span className="text-gray-500 mr-2">POWERED_BY:</span>
-						<a href="https://nuxtjs.org/" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 mx-1">#Nuxt</a>
-						<span className="text-gray-600">|</span>
-						<a href="https://www.storyblok.com/" target="_blank" rel="noopener noreferrer" className="text-pink-500 hover:text-pink-400 mx-1">#Storyblok</a>
-						<span className="text-gray-600">|</span>
-						<a href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 mx-1">#TailwindCSS</a>
+					<div className="text-sm flex flex-col sm:flex-row sm:items-center justify-start lg:justify-end">
+						<span className="text-gray-500 mb-2 sm:mb-0 sm:mr-2 text-xs sm:text-sm break-words">POWERED_BY:</span>
+						<div className="flex flex-wrap items-center">
+							<a href="https://nuxtjs.org/" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 mx-1">#Nuxt</a>
+							<span className="text-gray-600">|</span>
+							<a href="https://www.storyblok.com/" target="_blank" rel="noopener noreferrer" className="text-pink-500 hover:text-pink-400 mx-1">#Storyblok</a>
+							<span className="text-gray-600">|</span>
+							<a href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 mx-1">#TailwindCSS</a>
+						</div>
 					</div>
 				</div>
 

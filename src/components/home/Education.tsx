@@ -66,17 +66,19 @@ export default function CyberpunkEducation() {
 			<div className="max-w-7xl mx-auto px-6 relative z-10">
 				{/* Section header */}
 				<div className="mb-12">
-					<div className="flex items-center mb-4">
+					<div className="flex flex-col sm:flex-row sm:items-center mb-4">
 						<div
-							className="bg-purple-900 bg-opacity-30 text-purple-500 font-mono px-3 py-1 mr-4 border border-purple-500"
+							className="bg-purple-900 bg-opacity-30 text-purple-500 font-mono px-3 py-1 mb-2 sm:mb-0 sm:mr-4 border border-purple-500 text-xs sm:text-sm break-words"
 							style={{ clipPath: "polygon(0 0, 100% 0, 85% 100%, 0 100%)" }}
 						>
-						EDUCATION.STATUS // NEURAL_ACADEMY_DATABASE.LOG
+					EDUCATION.STATUS // NEURAL_ACADEMY_DATABASE.LOG
 						</div>
-						<h2 className="text-3xl font-mono font-bold text-purple-500 uppercase tracking-wider">
-							NEURAL EDUCATION
-						</h2>
-						<div className="h-px flex-grow bg-purple-500 ml-4 opacity-30"></div>
+						<div className="flex items-center">
+							<h2 className="text-3xl font-mono font-bold text-purple-500 uppercase tracking-wider">
+								NEURAL EDUCATION
+							</h2>
+							<div className="h-px flex-grow bg-purple-500 ml-4 opacity-30"></div>
+						</div>
 					</div>
 
 					<div

@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { Pencil, BookOpen, Code2, MonitorSmartphone, Paintbrush, Hammer } from "lucide-react";
 import CyberpunkBorderCard from "./CyberpunkBorderCard";
 import CyberpunkSectionDecor from '../visuals/CyberpunkSectionDecor';
@@ -174,12 +175,13 @@ export default function EnhancedCyberpunkServiceGrid() {
 
 								{/* Interactive button */}
 								<div className="mt-4 text-right">
-									<button
-										className={`text-xs font-mono px-3 py-1 bg-gray-800 border border-${color === 'pink' ? 'pink-500' : `${color}-400`} text-${color === 'pink' ? 'pink-500' : `${color}-400`} hover:bg-${color === 'pink' ? 'pink-900' : `${color}-900`} hover:bg-opacity-30 transition-colors`}
+									<Link
+										href={`/contact?service=${encodeURIComponent(title)}`}
+										className={`inline-block text-xs font-mono px-3 py-1 bg-gray-800 border border-${color === 'pink' ? 'pink-500' : `${color}-400`} text-${color === 'pink' ? 'pink-500' : `${color}-400`} hover:bg-${color === 'pink' ? 'pink-900' : `${color}-900`} hover:bg-opacity-30 transition-colors`}
 										style={{ clipPath: "polygon(0 0, 100% 0, 100% 70%, 90% 100%, 0 100%)" }}
 									>
 										INITIATE CONTACT {'>'}
-									</button>
+									</Link>
 								</div>
 
 								{/* Hover scanner effect */}

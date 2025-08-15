@@ -163,7 +163,7 @@ export default function CyberpunkToolsGrid() {
 						<div className="h-px bg-cyan-400 flex-grow opacity-30"></div>
 					</div>
 
-					<p className="text-gray-400 font-mono mt-2 text-sm">
+					<p className="text-gray-400 font-mono mt-2 text-xs sm:text-sm break-words">
 						{'//neural_enhancement_modules_for_net_operations'} v3.7.1
 					</p>
 				</div>

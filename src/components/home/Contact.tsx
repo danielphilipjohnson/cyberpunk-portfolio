@@ -127,23 +127,23 @@ export default function CyberpunkContact() {
 							<div className="text-cyan-400 font-mono text-xs mt-1">Secure Channel: {contactChannel}</div>
 							<div 
 								onClick={triggerReboot} 
-								className="absolute top-2 right-2 text-lime-400 font-mono text-xs cursor-pointer hover:text-lime-300 underline">[REBOOT]</div>
+								className="hidden sm:block absolute top-2 right-2 text-lime-400 font-mono text-xs cursor-pointer hover:text-lime-300 underline">[REBOOT]</div>
 						</div>
 
 						<div className="inline-block mb-4">
-							<div className="flex items-center">
+							<div className="flex flex-col sm:flex-row sm:items-center">
 								<div
-									className="bg-cyan-900 bg-opacity-30 px-3 py-1 border-l-2 border-cyan-400 flex items-center"
+									className="bg-cyan-900 bg-opacity-30 px-3 py-1 mb-2 sm:mb-0 border-l-2 border-cyan-400 flex items-center text-xs sm:text-sm break-words"
 									style={{ clipPath: "polygon(0 0, 100% 0, 95% 100%, 0 100%)" }}
 								>
 									<div className="w-2 h-2 bg-cyan-400 mr-2"></div>
-									<span className="text-cyan-400 font-mono text-xs">NETRUNNER_ACCESS_GRANTED</span>
+									<span className="text-cyan-400 font-mono">NETRUNNER_ACCESS_GRANTED</span>
 								</div>
 								<div
-									className="bg-cyan-900 bg-opacity-20 px-3 py-1 border-r-2 border-cyan-400"
+									className="bg-cyan-900 bg-opacity-20 px-3 py-1 border-r-2 border-cyan-400 text-xs sm:text-sm break-words"
 									style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 5% 100%)" }}
 								>
-									<span className="text-cyan-400 font-mono text-xs">{encryptionLevel}</span>
+									<span className="text-cyan-400 font-mono">{encryptionLevel}</span>
 								</div>
 							</div>
 						</div>
