@@ -284,7 +284,7 @@ export const CyberpunkHeroWithNav = () => {
 				<>
 					{/* Backdrop */}
 					<div 
-						className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 md:hidden"
+						className="fixed inset-0 h-screen w-screen bg-black/80 backdrop-blur-sm z-40 md:hidden"
 						onClick={toggleMobileMenu}
 					/>
 					
