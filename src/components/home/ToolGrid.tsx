@@ -127,16 +127,19 @@ export default function CyberpunkToolsGrid() {
 
 	// Map color names to appropriate Tailwind classes, only using valid color schemes
 	const getColorClass = (color: string, type: 'text' | 'border' | 'bg') => {
-		const colorMap = {
-			blue: type === 'text' ? 'text-blue-400' : type === 'border' ? 'border-blue-400' : 'bg-blue-400',
-			green: type === 'text' ? 'text-green-400' : type === 'border' ? 'border-green-400' : 'bg-green-400',
-			cyan: type === 'text' ? 'text-cyan-400' : type === 'border' ? 'border-cyan-400' : 'bg-cyan-400',
-			pink: type === 'text' ? 'text-pink-500' : type === 'border' ? 'border-pink-500' : 'bg-pink-500',
-			purple: type === 'text' ? 'text-purple-500' : type === 'border' ? 'border-purple-500' : 'bg-purple-500',
-			lime: type === 'text' ? 'text-lime-400' : type === 'border' ? 'border-lime-400' : 'bg-lime-400',
-		} as const;
+		const colorMap: Record<string, Record<string, string>> = {
+			cyan: { text: 'text-cyan-400', border: 'border-cyan-400', bg: 'bg-cyan-400' },
+			purple: { text: 'text-purple-400', border: 'border-purple-400', bg: 'bg-purple-400' },
+			pink: { text: 'text-pink-400', border: 'border-pink-400', bg: 'bg-pink-400' },
+			green: { text: 'text-green-400', border: 'border-green-400', bg: 'bg-green-400' },
+			yellow: { text: 'text-white', border: 'border-yellow-400', bg: 'bg-yellow-400' },
+			blue: { text: 'text-blue-400', border: 'border-blue-400', bg: 'bg-blue-400' },
+			red: { text: 'text-red-400', border: 'border-red-400', bg: 'bg-red-400' },
+			orange: { text: 'text-orange-400', border: 'border-orange-400', bg: 'bg-orange-400' },
+			lime: { text: 'text-lime-400', border: 'border-lime-400', bg: 'bg-lime-400' }
+		};
 
-		return colorMap[color as keyof typeof colorMap] || colorMap.blue; // Default to blue if color not found
+		return colorMap[color]?.[type] || colorMap.blue[type];
 	};
 
 	return (
@@ -193,7 +196,7 @@ export default function CyberpunkToolsGrid() {
 					</button>
 					<button
 						onClick={() => setActiveCategory("EXPERIMENTAL")}
-						className={`px-3 py-1 font-mono text-xs border ${activeCategory === "EXPERIMENTAL" ? "bg-pink-900 bg-opacity-30 text-pink-500 border-pink-500" : "border-gray-700 text-gray-400 hover:border-pink-500 hover:text-pink-500"}`}
+						className={`px-3 py-1 font-mono text-xs border ${activeCategory === "EXPERIMENTAL" ? "bg-pink-900 bg-opacity-30 text-pink-400 border-pink-400" : "border-gray-700 text-gray-400 hover:border-pink-400 hover:text-pink-400"}`}
 						style={{ clipPath: "polygon(0 0, 100% 0, 95% 100%, 0 100%)" }}
 					>
 								EXPERIMENTAL

@@ -188,15 +188,18 @@ export default function CyberpunkOnlineCourses() {
 
 	// Get course color class
 	const getColorClass = (color: string, type: 'text' | 'border' | 'bg') => {
-		const colorMap = {
-			blue: type === 'text' ? 'text-blue-400' : type === 'border' ? 'border-blue-400' : 'bg-blue-400',
-			cyan: type === 'text' ? 'text-cyan-400' : type === 'border' ? 'border-cyan-400' : 'bg-cyan-400',
-			pink: type === 'text' ? 'text-pink-500' : type === 'border' ? 'border-pink-500' : 'bg-pink-500',
-			purple: type === 'text' ? 'text-purple-500' : type === 'border' ? 'border-purple-500' : 'bg-purple-500',
-			green: type === 'text' ? 'text-green-400' : type === 'border' ? 'border-green-400' : 'bg-green-400',
-			lime: type === 'text' ? 'text-lime-400' : type === 'border' ? 'border-lime-400' : 'bg-lime-400',
-		} as const;
-		return colorMap[color as keyof typeof colorMap] || colorMap.cyan;
+		const colorMap: Record<string, Record<string, string>> = {
+			cyan: { text: 'text-cyan-400', border: 'border-cyan-400', bg: 'bg-cyan-400' },
+			purple: { text: 'text-purple-400', border: 'border-purple-400', bg: 'bg-purple-400' },
+			pink: { text: 'text-pink-400', border: 'border-pink-400', bg: 'bg-pink-400' },
+			green: { text: 'text-green-400', border: 'border-green-400', bg: 'bg-green-400' },
+			yellow: { text: 'text-white', border: 'border-yellow-400', bg: 'bg-yellow-400' },
+			blue: { text: 'text-blue-400', border: 'border-blue-400', bg: 'bg-blue-400' },
+			red: { text: 'text-red-400', border: 'border-red-400', bg: 'bg-red-400' },
+			orange: { text: 'text-orange-400', border: 'border-orange-400', bg: 'bg-orange-400' },
+			lime: { text: 'text-lime-400', border: 'border-lime-400', bg: 'bg-lime-400' }
+		};
+		return colorMap[color]?.[type] || colorMap.cyan[type];
 	};
 
 	return (
