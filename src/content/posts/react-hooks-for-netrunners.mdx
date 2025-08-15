@@ -1,0 +1,280 @@
+---
+title: "Street Code: React Hooks for Netrunners"
+classification: "PUBLIC_ACCESS"
+author: "void.dev"
+date: "2077-12-05"
+securityLevel: "LOW"
+description: "Modern JS Patterns Explained Through Street Wisdom - React Hooks as neural implants for your components"
+tags: ["react", "javascript", "hooks", "programming", "frontend", "street-code"]
+---
+
+# Street Code: React Hooks for Netrunners
+## Modern JS Patterns Explained Through Street Wisdom
+
+**[CLASSIFICATION: PUBLIC_ACCESS]**  
+**[SKILL_LEVEL: INTERMEDIATE]**  
+**[DATE: 2077.12.05]**
+
+---
+
+### >> JACK_IN
+
+Listen up, console cowboys. You've been slingin' JavaScript like a street samurai with a rusty katana. Time to upgrade your neural patterns and learn how the real netrunners handle state management in the sprawl of modern web applications.
+
+React Hooks aren't just another corpo framework update - they're a complete paradigm shift in how we think about component consciousness and data flow. Think of them as neural implants for your components.
+
+### >> useState: Your Most Reliable Choom
+
+In Night City, you need friends you can trust. `useState` is that reliable choom who's got your back when the ICE gets heavy.
+
+```javascript
+import React, { useState } from 'react';
+
+// Old way - Class components (like bulky corpo cyberware)
+class CorpoHacker extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hackProgress: 0,
+      isJackedIn: false,
+      neuralStrain: 'minimal'
+    };
+  }
+  
+  // Lots of boilerplate cruft...
+}
+
+// New way - Hooks (streamlined street chrome)
+function StreetNetrunner() {
+  const [hackProgress, setHackProgress] = useState(0);
+  const [isJackedIn, setIsJackedIn] = useState(false);
+  const [neuralStrain, setNeuralStrain] = useState('minimal');
+  
+  // Clean, minimal, efficient
+  return (
+    <div className="neural-interface">
+      <div>Hack Progress: {hackProgress}%</div>
+      <div>Status: {isJackedIn ? 'JACKED IN' : 'OFFLINE'}</div>
+      <div>Neural Strain: {neuralStrain}</div>
+    </div>
+  );
+}
+```
+
+**Street Wisdom**: `useState` gives you a state variable and a function to update it. No classes, no constructors, no `this` binding headaches. Just pure, clean state management.
+
+### >> useEffect: The Back-Alley Deal
+
+`useEffect` is like making a deal in a back alley - it's powerful, but you better know what you're getting into. This hook handles side effects: API calls, subscriptions, timers, and all the dirty work your components need to do.
+
+```javascript
+import { useState, useEffect } from 'react';
+
+function CorporateInfiltration({ targetCorp }) {
+  const [securityData, setSecurityData] = useState(null);
+  const [infiltrationStatus, setInfiltrationStatus] = useState('preparing');
+  
+  // Effect runs after component mounts and when targetCorp changes
+  useEffect(() => {
+    async function infiltrateNetwork() {
+      setInfiltrationStatus('scanning');
+      
+      try {
+        // Simulate network intrusion
+        const data = await hackCorporateDatabase(targetCorp);
+        setSecurityData(data);
+        setInfiltrationStatus('success');
+      } catch (error) {
+        console.error('ICE detected! Abort!', error);
+        setInfiltrationStatus('busted');
+      }
+    }
+    
+    if (targetCorp) {
+      infiltrateNetwork();
+    }
+    
+    // Cleanup function - always cover your tracks
+    return () => {
+      clearNeuralBuffer();
+      destroyEvidence();
+    };
+  }, [targetCorp]); // Dependency array - effect runs when targetCorp changes
+  
+  return (
+    <div className="infiltration-console">
+      <h2>Target: {targetCorp}</h2>
+      <p>Status: {infiltrationStatus}</p>
+      {securityData && <SecurityDisplay data={securityData} />}
+    </div>
+  );
+}
+```
+
+**Street Rules for useEffect**:
+1. **Always use the dependency array** - Don't let your effects run wild
+2. **Clean up after yourself** - Return a cleanup function to prevent memory leaks
+3. **Handle errors** - Corporate ICE is real, and it will crash your component
+
+### >> useContext: The Neural Network
+
+In the sprawl, information flows through underground networks. `useContext` lets your components tap into the shared neural network without having to pass props down through every level of the hierarchy.
+
+```javascript
+import React, { createContext, useContext, useState } from 'react';
+
+// Create the neural network
+const NetrunnerContext = createContext();
+
+// Provider component - the mainframe
+function NetrunnerProvider({ children }) {
+  const [currentUser, setCurrentUser] = useState('void.dev');
+  const [securityLevel, setSecurityLevel] = useState('black');
+  const [activeConnections, setActiveConnections] = useState(7);
+  
+  const neuralNetwork = {
+    currentUser,
+    securityLevel,
+    activeConnections,
+    updateUser: setCurrentUser,
+    updateSecurity: setSecurityLevel,
+    updateConnections: setActiveConnections
+  };
+  
+  return (
+    <NetrunnerContext.Provider value={neuralNetwork}>
+      {children}
+    </NetrunnerContext.Provider>
+  );
+}
+
+// Component that needs access to the neural network
+function SecurityDisplay() {
+  const { currentUser, securityLevel, activeConnections } = useContext(NetrunnerContext);
+  
+  return (
+    <div className="security-hud">
+      <div>User: {currentUser}</div>
+      <div>Security Level: {securityLevel}</div>
+      <div>Active Connections: {activeConnections}</div>
+    </div>
+  );
+}
+
+// Usage
+function App() {
+  return (
+    <NetrunnerProvider>
+      <div className="night-city-interface">
+        <SecurityDisplay />
+        <HackingConsole />
+        <NetworkMap />
+      </div>
+    </NetrunnerProvider>
+  );
+}
+```
+
+### >> Custom Hooks: Your Personal Hacking Tools
+
+Real netrunners don't just use off-the-shelf software - they build custom tools for specific jobs. Custom hooks let you package reusable logic into clean, shareable functions.
+
+```javascript
+// Custom hook for managing network intrusions
+function useNetworkIntrusion(target) {
+  const [isConnected, setIsConnected] = useState(false);
+  const [intrusionProgress, setIntrusionProgress] = useState(0);
+  const [detectionRisk, setDetectionRisk] = useState('low');
+  
+  const initiateIntrusion = useCallback(async () => {
+    setIsConnected(true);
+    setIntrusionProgress(0);
+    setDetectionRisk('low');
+    
+    // Simulate gradual intrusion
+    const interval = setInterval(() => {
+      setIntrusionProgress(prev => {
+        const newProgress = prev + Math.random() * 10;
+        
+        // Increase detection risk as we progress
+        if (newProgress > 70) setDetectionRisk('high');
+        else if (newProgress > 40) setDetectionRisk('medium');
+        
+        if (newProgress >= 100) {
+          clearInterval(interval);
+          setIsConnected(false);
+          return 100;
+        }
+        
+        return newProgress;
+      });
+    }, 500);
+    
+    return () => clearInterval(interval);
+  }, []);
+  
+  const abortIntrusion = useCallback(() => {
+    setIsConnected(false);
+    setIntrusionProgress(0);
+    setDetectionRisk('low');
+  }, []);
+  
+  return {
+    isConnected,
+    intrusionProgress,
+    detectionRisk,
+    initiateIntrusion,
+    abortIntrusion
+  };
+}
+
+// Using the custom hook
+function HackingInterface({ target }) {
+  const {
+    isConnected,
+    intrusionProgress,
+    detectionRisk,
+    initiateIntrusion,
+    abortIntrusion
+  } = useNetworkIntrusion(target);
+  
+  return (
+    <div className="hacking-interface">
+      <h3>Target: {target}</h3>
+      <div>Status: {isConnected ? 'CONNECTED' : 'OFFLINE'}</div>
+      <div>Progress: {intrusionProgress.toFixed(1)}%</div>
+      <div>Detection Risk: {detectionRisk.toUpperCase()}</div>
+      
+      <button onClick={initiateIntrusion} disabled={isConnected}>
+        JACK IN
+      </button>
+      <button onClick={abortIntrusion} disabled={!isConnected}>
+        EMERGENCY DISCONNECT
+      </button>
+    </div>
+  );
+}
+```
+
+### >> Best Practices for Street Netrunners
+
+1. **Keep hooks at the top level** - Don't call hooks inside loops, conditions, or nested functions
+2. **Use the dependency array religiously** - Missing dependencies cause bugs that'll crash your hack
+3. **Custom hooks for reusable logic** - Don't repeat yourself; build tools you can reuse
+4. **Clean up side effects** - Always return cleanup functions from useEffect
+5. **Profile your performance** - Use React DevTools to identify bottlenecks
+
+### >> JACK_OUT
+
+That's the download, choomba. React Hooks are your neural interface to modern component architecture. Master these patterns, and you'll be coding like a true netrunner instead of some corpo script kiddie.
+
+Remember: In the digital sprawl of modern web development, clean code is survival. Hooks give you the tools to write components that are fast, maintainable, and ready for whatever the net throws at you.
+
+**[TRANSMISSION_COMPLETE]**
+
+---
+
+*Next up: Advanced patterns with useRef and building your own hook library for maximum street cred.*
+
+**[NEURAL_SIGNATURE: void.dev.authenticated]**  
+**[SKILL_BOOST: +15 JavaScript Proficiency]**

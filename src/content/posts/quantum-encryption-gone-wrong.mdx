@@ -1,0 +1,161 @@
+---
+title: "Quantum Encryption Gone Wrong"
+classification: "PUBLIC_ACCESS"
+author: "void.dev"
+date: "2077-12-12"
+securityLevel: "BLACK"
+description: "When Corpo Security Gets Too Clever For Its Own Good - How over-engineered protection systems create exploitable vulnerabilities"
+tags: ["quantum-encryption", "security", "vulnerabilities", "corpo-tech", "cybersecurity"]
+---
+
+# Quantum Encryption Gone Wrong
+## When Corpo Security Gets Too Clever For Its Own Good
+
+**[CLASSIFICATION: PUBLIC_ACCESS]**  
+**[SKILL_LEVEL: ADVANCED]**  
+**[DATE: 2077.12.12]**
+
+---
+
+### >> JACK_IN
+
+Listen up, console cowboys. Corps love shiny toys—especially the kind that promise *unbreakable* crypto. Quantum boxes, lattice locks, post-quantum signatures with brand names and legal teams. But stack too much chrome on your lock and you don't get safer—you get brittle. Today's lesson: **over-engineered protection systems** and the very human cracks that form in the metal.
+
+We're going to dissect a real pattern: a "quantum-safe" stack that flatlined because it forgot **key hygiene, entropy realism, timing discipline,** and **operational simplicity**.
+
+---
+
+### >> The Setup: Corpo "Unbreakable" Architecture
+
+**Marketing deck version:**
+- PQ-KEM (Post-Quantum Key Encapsulation) for key agreement  
+- Lattice-based signatures for auth  
+- Quantum RNG (QRNG) with "cosmic entropy"  
+- Double-wrapped AES-256-GCM inside a proprietary stream mode  
+- Hardware Secure Modules (HSMs) with remote attestation  
+- Multi-tenant microservice mesh with mTLS and mutual attestation  
+- Auto-rotate keys every 37 seconds "for zero attack surface"
+
+**Street translation:** too many moving parts, too many timing edges, too many humans trying to stitch it together while sprinting.
+
+---
+
+### >> How It Broke (Four Exploitable Cracks)
+
+#### 1) **Entropy Mirage**
+The QRNG feed wasn't actually the source of truth—ops quietly fell back to a pseudo-RNG during maintenance windows. Entropy starved → predictable nonces → catastrophic failures in AEAD modes.
+
+**Symptom:** occasional GCM nonce reuse under load.  
+**Exploit:** recover plaintext and forge tags with nonce collisions.
+
+#### 2) **Key Rotation Roulette**
+Keys rotated on a quirky 37s timer with async propagation. Some nodes encrypted with **K[t]** while others tried decrypting with **K[t-1]**. Retry logic leaked timing and error codes.
+
+**Symptom:** "version mismatch" vs "MAC fail" returned distinct latencies.  
+**Exploit:** oracle reveals key epoch; coupled with replay windows, you get selective bypass.
+
+#### 3) **Side-Channel Ballet**
+Remote attestation produced different CPU/cache profiles when HSM policy checks failed vs passed. Attackers sprayed attestations and learned which policy branches fired—essentially a **policy map** of the enclave.
+
+**Symptom:** microsecond-level jitter correlates with policy path.  
+**Exploit:** tune payloads to traverse the "lenient" code path, then escalate.
+
+#### 4) **Proprietary Stream Mode**
+They double-wrapped AES-GCM output inside a rolling XOR stream "to thwart future quantum adversaries." The stream state reset on certain error codes—**state desync + partial keystream disclosure**.
+
+**Symptom:** identical prefixes under error recovery.  
+**Exploit:** extract keystream fragments → plaintext recovery.
+
+---
+
+### >> Demo: "Quantum Box" Failure Mode (Simulated)
+
+> This is an illustrative snippet (JS) that shows how **nonce reuse** and **version desync** become a practical oracle. Don't copy this into production unless you want to get iced.
+
+```javascript
+// ⚠️ Demo only: illustrates how over-engineering + sloppy ops create oracles
+import crypto from 'node:crypto';
+
+const QRNG = {
+  async getBytes(n) {
+    // Fallback simulating a maintenance window "oops"
+    if (Math.random() < 0.05) return Buffer.alloc(n, 0x00); // bad entropy
+    return crypto.randomBytes(n);
+  }
+};
+
+class EpochKeyring {
+  constructor() {
+    this.epoch = 0;
+    this.keys = new Map([[0, crypto.randomBytes(32)]]);
+  }
+  rotate() {
+    this.epoch++;
+    this.keys.set(this.epoch, crypto.randomBytes(32));
+    if (this.keys.size > 5) this.keys.delete(this.epoch - 6);
+  }
+  getKey(epoch = this.epoch) {
+    return this.keys.get(epoch);
+  }
+}
+
+const keyring = new EpochKeyring();
+
+// AEAD with potential nonce reuse if QRNG glitches
+async function seal(plain) {
+  const key = keyring.getKey(); // current epoch
+  const iv = await QRNG.getBytes(12); // uh oh if zeros
+  const cipher = crypto.createCipheriv('aes-256-gcm', key, iv);
+  const enc = Buffer.concat([cipher.update(plain), cipher.final()]);
+  const tag = cipher.getAuthTag();
+  return { epoch: keyring.epoch, iv, enc, tag };
+}
+
+// Oracle-like decrypt (leaks via timing / error paths)
+function open({ epoch, iv, enc, tag }) {
+  const start = process.hrtime.bigint();
+  const key = keyring.getKey(epoch);
+  if (!key) {
+    // Version mismatch path — faster return
+    return { ok: false, code: 'EPOCH_MISS', dt: Number(process.hrtime.bigint() - start) };
+  }
+  try {
+    const decipher = crypto.createDecipheriv('aes-256-gcm', key, iv);
+    decipher.setAuthTag(tag);
+    const dec = Buffer.concat([decipher.update(enc), decipher.final()]);
+    return { ok: true, dt: Number(process.hrtime.bigint() - start), dec };
+  } catch {
+    // MAC fail path — slower
+    return { ok: false, code: 'MAC_FAIL', dt: Number(process.hrtime.bigint() - start) };
+  }
+}
+
+// Exploit demonstration - nonce collision detection
+setInterval(() => keyring.rotate(), 37000);
+```
+
+---
+
+### >> Lessons Learned (AKA: How Not to Get Iced)
+
+1. **Avoid Over-Engineering**: More crypto primitives = more attack surface. Stick to proven constructions.
+
+2. **Test Failure Modes**: Your error handling IS your attack surface. Test every failure path.
+
+3. **Timing is Everything**: If different code paths take different amounts of time, you've built an oracle.
+
+4. **Entropy is Sacred**: Never fall back to weak randomness, even during "maintenance windows."
+
+5. **Key Management Kills**: Rotation sounds good on paper, but async systems make it a nightmare. Design for graceful degradation.
+
+### >> Final Transmission
+
+The corpo quantum encryption was impressive on paper, but practical deployment killed it. No amount of fancy crypto can save you from operational mistakes.
+
+**Next time:** We'll dive into how I reverse-engineered Arasaka's neural interface protocols and found a way to inject false memories directly into corporate executives' minds.
+
+Stay frosty, netrunners.
+
+**[TRANSMISSION_ENDED]**
+**[NEURAL_SIGNATURE: void.dev.authenticated]**  
+**[SECURITY_LEVEL: BLACK]**

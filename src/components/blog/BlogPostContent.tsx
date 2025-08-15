@@ -1,9 +1,11 @@
 "use client"
 
 import React, { JSX, useEffect } from 'react';
+import { MDXRemote, type MDXRemoteSerializeResult } from 'next-mdx-remote';
 import CyberpunkSectionDecor from '../visuals/CyberpunkSectionDecor';
+import MDXContent from './MDXContent';
 
-// Import Prism for syntax highlighting
+// Import Prism for syntax highlighting (for legacy content)
 import Prism from 'prismjs';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-typescript';
@@ -20,11 +22,14 @@ import '../../styles/prism-cyberpunk.css';
 import CopyButton from './CopyButton';
 
 interface BlogPostContentProps {
-  content: string;
+  slug?: string;
+  post?: any; // Accept any post type (MDX or legacy)
+  source?: MDXRemoteSerializeResult;
+  content?: string; // Legacy support
   category: string;
 }
 
-export default function BlogPostContent({ content, category }: BlogPostContentProps) {
+export default function BlogPostContent({ slug, post, source, content, category }: BlogPostContentProps) {
   const getCategoryColor = (category: string) => {
     const colors = {
       'neural-tech': 'cyan',
@@ -38,6 +43,73 @@ export default function BlogPostContent({ content, category }: BlogPostContentPr
   };
 
   const accentColor = getCategoryColor(category);
+  
+  // If we have MDX content, use the new MDX component
+  if (source && post) {
+    return (
+      <section className="relative py-16 bg-gray-900 overflow-hidden">
+        {/* Background effects */}
+        <div className="absolute inset-0 z-0">
+          <CyberpunkSectionDecor variant="minimal" intensity="low" />
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-6 md:px-12">
+          {/* Content area */}
+          <article className="prose prose-invert max-w-none">
+            <div className="bg-gray-800/20 backdrop-blur-sm border border-gray-700/30 p-8 md:p-12"
+              style={{ clipPath: 'polygon(0 0, 99% 0, 100% 100%, 0 100%)' }}>
+              
+              {/* Terminal header */}
+              <div className="flex items-center gap-3 mb-8 pb-4 border-b border-gray-600">
+                <div className="flex gap-2">
+                  <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                  <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                </div>
+                <div className={`text-${accentColor}-400 font-mono text-sm uppercase tracking-wider`}>
+                  [NEURAL_TRANSMISSION_ACTIVE]
+                </div>
+                <div className="flex-1"></div>
+                <div className={`w-2 h-2 bg-${accentColor}-400 rounded-full animate-pulse`}></div>
+              </div>
+
+              {/* MDX Content */}
+              <div className="cyberpunk-content">
+                <MDXContent source={source} accentColor={accentColor} />
+              </div>
+
+              {/* Terminal footer */}
+              <div className="mt-12 pt-6 border-t border-gray-600">
+                <div className="flex items-center justify-between text-sm font-mono text-gray-400">
+                  <div>[TRANSMISSION_COMPLETE]</div>
+                  <div className="flex items-center gap-2">
+                    <span>NEURAL_STATUS:</span>
+                    <span className="text-green-400">SYNCHRONIZED</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        {/* Floating data points */}
+        <div className={`absolute top-1/4 right-1/4 w-1 h-1 bg-${accentColor}-400 rounded-full animate-ping opacity-40`}></div>
+        <div className={`absolute bottom-1/4 left-1/3 w-1 h-1 bg-${accentColor}-400 rounded-full animate-ping opacity-40 animation-delay-1000`}></div>
+
+        {/* CSS for animation delay */}
+        <style jsx>{`
+          .animation-delay-1000 {
+            animation-delay: 1s;
+          }
+        `}</style>
+      </section>
+    );
+  }
+  
+  // Fallback to legacy content parsing for old posts
+  if (!content) {
+    return <div>No content available</div>;
+  }
 
   // Simple markdown-like parser for our content
   const parseContent = (content: string) => {

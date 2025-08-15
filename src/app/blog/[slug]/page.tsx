@@ -1,24 +1,41 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
+import { serialize } from 'next-mdx-remote/serialize';
 import Navigation from '@/components/layout/Navigation';
 import BlogPostHeader from '@/components/blog/BlogPostHeader';
 import BlogPostContent from '@/components/blog/BlogPostContent';
 import BlogPostNavigation from '@/components/blog/BlogPostNavigation';
 import RelatedPosts from '@/components/blog/RelatedPosts';
 import Footer from '@/components/home/Footer';
-import { blogPosts, getPostBySlug } from '@/data/blogPosts';
-import { getPostContent } from '@/data/blogContent';
+import { getPost, getAllPosts } from '@/lib/mdx';
+import { BlogPost as LegacyBlogPost } from '@/data/blogPosts';
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
 }
 
+// Helper function to convert MDX post to legacy BlogPost format
+const convertMDXPostToLegacy = (mdxPost: any): LegacyBlogPost => {
+  return {
+    id: mdxPost.slug, // Use slug as ID
+    title: mdxPost.title,
+    excerpt: mdxPost.description, // Map description to excerpt
+    date: mdxPost.date,
+    author: mdxPost.author,
+    category: mdxPost.classification || 'neural-tech', // Map classification to category
+    tags: mdxPost.tags,
+    readTime: mdxPost.readingTime, // Already in correct format from reading-time
+    slug: mdxPost.slug,
+    featured: false // Default to false
+  };
+};
+
 // Helper function to get previous and next posts
-const getAdjacentPosts = (currentSlug: string) => {
-  const currentIndex = blogPosts.findIndex(post => post.slug === currentSlug);
+const getAdjacentPosts = (currentSlug: string, allPosts: any[]) => {
+  const currentIndex = allPosts.findIndex(post => post.slug === currentSlug);
   
-  const previousPost = currentIndex > 0 ? blogPosts[currentIndex - 1] : null;
-  const nextPost = currentIndex < blogPosts.length - 1 ? blogPosts[currentIndex + 1] : null;
+  const previousPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
+  const nextPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
   
   return { previousPost, nextPost };
 };
@@ -27,22 +44,21 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const resolvedParams = await params;
   const { slug } = resolvedParams;
   
-  // Find the blog post
-  const post = getPostBySlug(slug);
+  // Get the MDX post
+  const post = getPost(slug);
   
   if (!post) {
     notFound();
   }
   
-  // Get the full content
-  const content = getPostContent(slug);
+  // Get all posts for navigation
+  const allPosts = getAllPosts();
+  const { previousPost, nextPost } = getAdjacentPosts(slug, allPosts);
   
-  if (!content) {
-    notFound();
-  }
-  
-  // Get previous and next posts
-  const { previousPost, nextPost } = getAdjacentPosts(slug);
+  // Convert MDX post to legacy format for existing components
+  const legacyPost = convertMDXPostToLegacy(post);
+  const legacyPreviousPost = previousPost ? convertMDXPostToLegacy(previousPost) : null;
+  const legacyNextPost = nextPost ? convertMDXPostToLegacy(nextPost) : null;
   
   return (
     <main className="min-h-screen bg-gray-900">
@@ -50,19 +66,24 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <Navigation />
       
       {/* Blog Post Header */}
-      <BlogPostHeader post={post} />
+      <BlogPostHeader post={legacyPost} />
       
       {/* Blog Post Content */}
-      <BlogPostContent content={content} category={post.category} />
+      <BlogPostContent 
+        slug={slug}
+        post={post}
+        content={post.content}
+        category={legacyPost.category}
+      />
       
-      {/* Related Posts */}
-      <RelatedPosts currentPost={post} />
+      {/* Related Posts - temporarily disabled during MDX migration */}
+      {/* <RelatedPosts currentPost={legacyPost} /> */}
       
       {/* Navigation to Previous/Next Posts */}
       <BlogPostNavigation 
-        currentPost={post}
-        previousPost={previousPost}
-        nextPost={nextPost}
+        currentPost={legacyPost}
+        previousPost={legacyPreviousPost}
+        nextPost={legacyNextPost}
       />
       
       {/* Footer */}
@@ -75,7 +96,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
 // Generate static params for all blog posts (optional, for better performance)
 export async function generateStaticParams() {
-  return blogPosts.map((post) => ({
+  const posts = getAllPosts();
+  return posts.map((post) => ({
     slug: post.slug,
   }));
 }
@@ -84,7 +106,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: BlogPostPageProps) {
   const resolvedParams = await params;
   const { slug } = resolvedParams;
-  const post = getPostBySlug(slug);
+  const post = getPost(slug);
   
   if (!post) {
     return {
@@ -95,11 +117,11 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
   
   return {
     title: `${post.title} | void.dev`,
-    description: post.excerpt,
+    description: post.description,
     keywords: post.tags.join(', '),
     openGraph: {
       title: post.title,
-      description: post.excerpt,
+      description: post.description,
       type: 'article',
       publishedTime: post.date,
       authors: [post.author],
@@ -108,7 +130,7 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
     twitter: {
       card: 'summary_large_image',
       title: post.title,
-      description: post.excerpt,
+      description: post.description,
     },
   };
 }
