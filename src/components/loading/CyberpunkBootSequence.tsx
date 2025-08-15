@@ -164,7 +164,8 @@ export default function CyberpunkBootSequence({ onBootComplete }: BootSequencePr
   }
 
   return (
-    <div className="fixed inset-0 bg-black z-50 flex flex-col">
+    <div className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center">
+      <div className="w-full max-w-6xl h-full flex flex-col">
       {/* Background effects */}
       <div className="absolute inset-0">
         {/* Grid pattern */}
@@ -189,61 +190,65 @@ export default function CyberpunkBootSequence({ onBootComplete }: BootSequencePr
       </div>
 
       {/* Header */}
-      <div className="relative z-10 p-8">
-        <div className="flex items-center justify-between border-b border-cyan-900 pb-4 mb-6">
+      <div className="relative z-10 p-4 sm:p-8">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-cyan-900 pb-4 mb-6 gap-4">
           <div>
-            <h1 className="text-cyan-400 font-mono text-xl font-bold">ARASAKA NEURAL OS v2077.3.14</h1>
-            <p className="text-cyan-600 font-mono text-sm">Netrunner Interface Protocol</p>
+            <h1 className="text-cyan-400 font-mono text-lg sm:text-xl font-bold">ARASAKA NEURAL OS v2077.3.14</h1>
+            <p className="text-cyan-600 font-mono text-xs sm:text-sm">Netrunner Interface Protocol</p>
           </div>
-          <div className="text-right">
-            <div className="text-cyan-400 font-mono text-sm">NODE: NC_CITY_01</div>
+          <div className="text-left sm:text-right">
+            <div className="text-cyan-400 font-mono text-xs sm:text-sm">NODE: NC_CITY_01</div>
             <div className="text-cyan-600 font-mono text-xs">SECURE_CHANNEL: ACTIVE</div>
           </div>
         </div>
       </div>
 
       {/* Terminal content */}
-      <div className="flex-1 px-8 pb-8 relative z-10">
-        <div className="bg-gray-900 bg-opacity-80 border border-cyan-900 h-full p-6 font-mono text-sm overflow-hidden">
+      <div className="flex-1 px-4 sm:px-8 pb-4 sm:pb-8 relative z-10 min-h-0">
+        <div className="bg-gray-900 bg-opacity-80 border border-cyan-900 h-full flex flex-col font-mono text-xs sm:text-sm">
           {/* Terminal header */}
-          <div className="flex items-center justify-between border-b border-gray-800 pb-2 mb-4">
-            <div className="flex items-center">
-              <div className="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
-              <div className="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
-              <div className="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
-              <span className="text-gray-400 ml-4">NEURAL_BOOT_SEQUENCE.exe</span>
+          <div className="flex items-center justify-between border-b border-gray-800 p-3 sm:p-4 flex-shrink-0">
+            <div className="flex items-center min-w-0 flex-1">
+              <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-red-500 mr-1 sm:mr-2"></div>
+              <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-yellow-500 mr-1 sm:mr-2"></div>
+              <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-500 mr-2 sm:mr-4"></div>
+              <span className="text-gray-400 text-xs sm:text-sm truncate">NEURAL_BOOT_SEQUENCE.exe</span>
             </div>
-            <div className="text-gray-500 text-xs">PID: 2077</div>
+            <div className="text-gray-500 text-xs flex-shrink-0 ml-2">PID: 2077</div>
           </div>
 
-          {/* Boot text content */}
-          <div className="space-y-0">
-            {displayText.map((line, index) => (
-              <div key={index} className={`${getCurrentColor()} whitespace-pre-line`}>
-                {line}
+          {/* Boot text content - with proper overflow handling */}
+          <div className="flex-1 p-3 sm:p-6 overflow-hidden relative min-h-0">
+            <div className="h-full overflow-y-auto scrollbar-thin scrollbar-track-gray-800 scrollbar-thumb-cyan-600 pr-2">
+              <div className="space-y-0 pb-20">
+                {displayText.map((line, index) => (
+                  <div key={index} className={`${getCurrentColor()} whitespace-pre-line break-all`}>
+                    {line}
+                  </div>
+                ))}
+                {/* Cursor */}
+                <span className={`${getCurrentColor()} ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity`}>
+                  █
+                </span>
               </div>
-            ))}
-            {/* Cursor */}
-            <span className={`${getCurrentColor()} ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity`}>
-              █
-            </span>
-          </div>
-
-          {/* Progress bar */}
-          <div className="absolute bottom-6 left-6 right-6">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-cyan-400 text-xs">BOOT_PROGRESS</span>
-              <span className="text-cyan-400 text-xs">
-                {Math.min(100, Math.round(((currentStep + 1) / bootSteps.length) * 100))}%
-              </span>
             </div>
-            <div className="w-full bg-gray-800 h-2 border border-cyan-900">
-              <div 
-                className="h-full bg-gradient-to-r from-cyan-400 to-purple-400 transition-all duration-500"
-                style={{ 
-                  width: `${Math.min(100, Math.round(((currentStep + 1) / bootSteps.length) * 100))}%` 
-                }}
-              ></div>
+
+            {/* Progress bar - Fixed position within terminal */}
+            <div className="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6 bg-gray-900 bg-opacity-90 p-2 border-t border-gray-700">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-cyan-400 text-xs">PROGRESS</span>
+                <span className="text-cyan-400 text-xs">
+                  {Math.min(100, Math.round(((currentStep + 1) / bootSteps.length) * 100))}%
+                </span>
+              </div>
+              <div className="w-full bg-gray-800 h-1.5 sm:h-2 border border-cyan-900">
+                <div 
+                  className="h-full bg-gradient-to-r from-cyan-400 to-purple-400 transition-all duration-500"
+                  style={{ 
+                    width: `${Math.min(100, Math.round(((currentStep + 1) / bootSteps.length) * 100))}%` 
+                  }}
+                ></div>
+              </div>
             </div>
           </div>
         </div>
@@ -260,6 +265,7 @@ export default function CyberpunkBootSequence({ onBootComplete }: BootSequencePr
         <div className="absolute inset-0 mix-blend-multiply opacity-10">
           <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-transparent via-cyan-400 to-transparent transform -skew-x-12"></div>
         </div>
+      </div>
       </div>
     </div>
   );
