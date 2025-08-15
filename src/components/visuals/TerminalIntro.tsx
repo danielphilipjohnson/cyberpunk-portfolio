@@ -50,7 +50,7 @@ export default function TerminalIntro() {
 
   return (
     <div
-      className="bg-gray-900/90 border border-teal-400/50 p-4 mb-6 h-64 overflow-hidden backdrop-blur-sm"
+      className="bg-gray-900/90 border border-teal-400/50 p-3 sm:p-4 mb-6 min-h-64 max-h-80 overflow-hidden backdrop-blur-sm"
       style={{ 
         borderRadius: "4px",
         clipPath: 'polygon(0 0, 100% 0, 100% 92%, 92% 100%, 0 100%)'
@@ -68,7 +68,7 @@ export default function TerminalIntro() {
         </div>
       </div>
 
-      <div className="font-mono text-gray-300 text-sm h-full overflow-y-auto terminal-content">
+      <div className="font-mono text-gray-300 text-xs sm:text-sm h-full overflow-y-auto terminal-content">
         {introLines.slice(0, currentLineIndex).map((line, index) => (
           <div
             key={index}
@@ -86,9 +86,9 @@ export default function TerminalIntro() {
         )}
 
         {!isTyping && (
-          <div className="mt-6 pb-2">
-            <div className="text-pink-500 font-mono text-sm">{'// MISSION STATEMENT:'}</div>
-            <div className="text-cyan-400 font-mono text-lg mt-2">
+          <div className="mt-4 pb-2">
+            <div className="text-pink-500 font-mono text-xs sm:text-sm">{'// MISSION STATEMENT:'}</div>
+            <div className="text-cyan-400 font-mono text-sm sm:text-base lg:text-lg mt-2 leading-relaxed">
               Full-Stack Engineer on mission to senior level
             </div>
           </div>
