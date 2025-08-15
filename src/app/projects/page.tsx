@@ -36,7 +36,7 @@ export default function ProjectsPage() {
   };
 
   return (
-    <div className={`transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
+    <div className={`min-h-screen transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
       {/* Navigation */}
       <Navigation />
 
