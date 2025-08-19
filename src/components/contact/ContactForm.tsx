@@ -1,6 +1,15 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
+import { 
+  CyberpunkCard, 
+  CyberpunkInput, 
+  CyberpunkTextArea, 
+  CyberpunkButton,
+  CyberpunkBadge,
+  ScanningEffect,
+  CornerDecorations
+} from '@/lib/ui';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -123,20 +132,12 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="relative bg-gray-900 border border-gray-800 overflow-hidden">
-      {/* Neural scan effect */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div 
-          className={`absolute w-full h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-30 transition-all duration-1000`}
-          style={{ 
-            top: `${25 * scanLine}%`,
-            animation: 'scanMove 2s ease-in-out infinite'
-          }}
-        />
-      </div>
-
-      {/* Header */}
-      <div className="bg-gray-800 border-b border-gray-700 p-4">
+    <CyberpunkCard
+      colorScheme="cyan"
+      scanningEffect
+      withAccent
+      clipPath="straight"
+      header={
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <div className="w-8 h-8 bg-cyan-900 border border-cyan-400 flex items-center justify-center mr-3"
@@ -150,101 +151,92 @@ export default function ContactForm() {
           </div>
           
           <div className="flex items-center space-x-4 text-xs font-mono">
-            <div className="text-gray-400">
-              STATUS: <span className={`font-bold ${getStatusColor()}`}>{formStatus}</span>
-            </div>
+            <CyberpunkBadge 
+              status={formStatus === 'TRANSMITTED' ? 'success' : formStatus === 'ERROR' ? 'error' : formStatus === 'TRANSMITTING' ? 'processing' : 'default'}
+              size="sm"
+              dot
+            >
+              {formStatus}
+            </CyberpunkBadge>
             <div className="text-gray-400">
               ENCRYPTION: <span className="text-cyan-400">{encryptionLevel}%</span>
             </div>
           </div>
         </div>
-      </div>
-
+      }
+    >
+      <ScanningEffect 
+        color="cyan" 
+        active={true} 
+        duration={2000} 
+        opacity={0.3}
+      />
+      
       {/* Form */}
-      <form onSubmit={handleSubmit} className="p-6 space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6">
         {/* Name Field */}
-        <div className="space-y-2">
-          <label className="block text-cyan-400 font-mono text-sm uppercase tracking-wider">
-            NEURAL_ID <span className="text-red-400">*</span>
-          </label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleInputChange}
-            className={getFieldClass('name')}
-            placeholder="Enter your neural identifier..."
-            style={{ clipPath: 'polygon(0 0, 100% 0, 98% 100%, 0 100%)' }}
-          />
-          {errors.name && (
-            <div className="text-red-400 font-mono text-xs flex items-center">
-              <span className="mr-1">⚠</span> {errors.name}
-            </div>
-          )}
-        </div>
+        <CyberpunkInput
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleInputChange}
+          neuralLabel="NEURAL_ID"
+          placeholder="Enter your neural identifier..."
+          colorScheme="cyan"
+          clipPath="angled-corner"
+          scanningEffect
+          glowEffect
+          required
+          error={errors.name}
+        />
 
         {/* Email Field */}
-        <div className="space-y-2">
-          <label className="block text-cyan-400 font-mono text-sm uppercase tracking-wider">
-            NEURAL_LINK_ADDRESS <span className="text-red-400">*</span>
-          </label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-            className={getFieldClass('email')}
-            placeholder="neural.link@cybernet.void"
-            style={{ clipPath: 'polygon(0 0, 100% 0, 98% 100%, 0 100%)' }}
-          />
-          {errors.email && (
-            <div className="text-red-400 font-mono text-xs flex items-center">
-              <span className="mr-1">⚠</span> {errors.email}
-            </div>
-          )}
-        </div>
+        <CyberpunkInput
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleInputChange}
+          neuralLabel="NEURAL_LINK_ADDRESS"
+          placeholder="neural.link@cybernet.void"
+          colorScheme="cyan"
+          clipPath="angled-corner"
+          scanningEffect
+          glowEffect
+          required
+          error={errors.email}
+        />
 
         {/* Subject Field */}
-        <div className="space-y-2">
-          <label className="block text-cyan-400 font-mono text-sm uppercase tracking-wider">
-            TRANSMISSION_HEADER <span className="text-red-400">*</span>
-          </label>
-          <input
-            type="text"
-            name="subject"
-            value={formData.subject}
-            onChange={handleInputChange}
-            className={getFieldClass('subject')}
-            placeholder="Neural interface collaboration request..."
-            style={{ clipPath: 'polygon(0 0, 100% 0, 98% 100%, 0 100%)' }}
-          />
-          {errors.subject && (
-            <div className="text-red-400 font-mono text-xs flex items-center">
-              <span className="mr-1">⚠</span> {errors.subject}
-            </div>
-          )}
-        </div>
+        <CyberpunkInput
+          type="text"
+          name="subject"
+          value={formData.subject}
+          onChange={handleInputChange}
+          neuralLabel="TRANSMISSION_HEADER"
+          placeholder="Neural interface collaboration request..."
+          colorScheme="cyan"
+          clipPath="angled-corner"
+          scanningEffect
+          glowEffect
+          required
+          error={errors.subject}
+        />
 
         {/* Message Field */}
-        <div className="space-y-2">
-          <label className="block text-cyan-400 font-mono text-sm uppercase tracking-wider">
-            DATA_PAYLOAD <span className="text-red-400">*</span>
-          </label>
-          <textarea
-            name="message"
-            value={formData.message}
-            onChange={handleInputChange}
-            rows={6}
-            className={getFieldClass('message')}
-            placeholder="Initiate neural data exchange protocols. Describe your project requirements, collaboration proposals, or neural enhancement inquiries..."
-            style={{ clipPath: 'polygon(0 0, 100% 0, 98% 100%, 0 100%)' }}
-          />
-          {errors.message && (
-            <div className="text-red-400 font-mono text-xs flex items-center">
-              <span className="mr-1">⚠</span> {errors.message}
-            </div>
-          )}
-        </div>
+        <CyberpunkTextArea
+          name="message"
+          value={formData.message}
+          onChange={handleInputChange}
+          neuralLabel="DATA_PAYLOAD"
+          placeholder="Initiate neural data exchange protocols. Describe your project requirements, collaboration proposals, or neural enhancement inquiries..."
+          rows={6}
+          colorScheme="cyan"
+          clipPath="angled-corner"
+          scanningEffect
+          glowEffect
+          required
+          error={errors.message}
+        />
 
         {/* Submit Button */}
         <div className="flex items-center justify-between pt-4">
@@ -258,43 +250,20 @@ export default function ContactForm() {
             )}
           </div>
           
-          <button
+          <CyberpunkButton
             type="submit"
             disabled={isSubmitting || formStatus === 'TRANSMITTED'}
-            className={`px-8 py-3 font-mono font-bold text-sm uppercase tracking-wider transition-all duration-300 ${
-              isSubmitting || formStatus === 'TRANSMITTED'
-                ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-                : 'bg-cyan-400 text-gray-900 hover:bg-cyan-300 hover:shadow-lg hover:shadow-cyan-400/25'
-            }`}
-            style={{ clipPath: 'polygon(0 0, 100% 0, 95% 100%, 5% 100%)' }}
+            loading={isSubmitting}
+            colorScheme="cyan"
+            clipPath="double-cut"
+            neuralText
+            scanningEffect
+            glowEffect
           >
-            {isSubmitting ? (
-              <span className="flex items-center">
-                <div className="w-4 h-4 border-2 border-gray-400 border-t-gray-600 rounded-full animate-spin mr-2"></div>
-                TRANSMITTING...
-              </span>
-            ) : formStatus === 'TRANSMITTED' ? (
-              'TRANSMITTED'
-            ) : (
-              'INITIATE_TRANSMISSION'
-            )}
-          </button>
+            {formStatus === 'TRANSMITTED' ? 'TRANSMITTED' : 'INITIATE_TRANSMISSION'}
+          </CyberpunkButton>
         </div>
       </form>
-
-      {/* Tech decorations */}
-      <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-cyan-400 opacity-30"></div>
-      <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-cyan-400 opacity-30"></div>
-      <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-cyan-400 opacity-30"></div>
-      <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-cyan-400 opacity-30"></div>
-
-      <style jsx>{`
-        @keyframes scanMove {
-          0% { opacity: 0.3; }
-          50% { opacity: 1; }
-          100% { opacity: 0.3; }
-        }
-      `}</style>
-    </div>
+    </CyberpunkCard>
   );
 }
