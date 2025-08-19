@@ -2,6 +2,11 @@
 
 import React, { useState } from 'react';
 import { Project, ProjectTechnology } from '@/data/projects';
+import { 
+  CyberpunkCard, 
+  CyberpunkButton, 
+  CyberpunkBadge
+} from '@/lib/ui';
 
 interface ProjectCardProps {
   project: Project;
@@ -79,11 +84,16 @@ export default function ProjectCard({ project, onViewDetails }: ProjectCardProps
   };
 
   return (
-    <div 
-      className="group relative bg-gray-900 border border-gray-700 overflow-hidden transition-all duration-500 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-400/25"
-      style={{ clipPath: 'polygon(0 0, 100% 0, 98% 100%, 2% 100%)' }}
+    <CyberpunkCard
+      variant="primary"
+      colorScheme="cyan"
+      clipPath="angled-corner"
+      scanningEffect={isHovered}
+      cornerDecorations
+      glowEffect
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      className="group relative overflow-hidden transition-all duration-500"
     >
       {/* Scanning effect overlay */}
       {isHovered && (
@@ -139,18 +149,25 @@ export default function ProjectCard({ project, onViewDetails }: ProjectCardProps
           <div className="text-purple-400 font-mono text-xs font-bold">NEURAL_STACK:</div>
           <div className="flex flex-wrap gap-1.5 sm:gap-2">
             {project.technologies.slice(0, 4).map((tech, index) => (
-              <span
+              <CyberpunkBadge
                 key={index}
-                className={`px-2 py-1 ${getColorClass(tech.color, 'bg')} bg-opacity-20 ${getColorClass(tech.color, 'border')} border ${getColorClass(tech.color, 'text')} font-mono text-xs`}
-                style={{ clipPath: 'polygon(0 0, 100% 0, 95% 100%, 5% 100%)' }}
+                variant="secondary"
+                colorScheme={tech.color as any}
+                size="sm"
+                clipPath="angled-corner"
               >
                 {tech.name}
-              </span>
+              </CyberpunkBadge>
             ))}
             {project.technologies.length > 4 && (
-              <span className="text-gray-400 font-mono text-xs px-2 py-1">
-                +{project.technologies.length - 4} more
-              </span>
+              <CyberpunkBadge
+                variant="ghost"
+                colorScheme="cyan"
+                size="sm"
+                count={project.technologies.length - 4}
+              >
+                MORE
+              </CyberpunkBadge>
             )}
           </div>
         </div>
@@ -247,13 +264,18 @@ export default function ProjectCard({ project, onViewDetails }: ProjectCardProps
           </div>
 
           {/* View Details Button */}
-          <button
+          <CyberpunkButton
+            variant="secondary"
+            colorScheme="cyan"
+            size="sm"
+            clipPath="angled-corner"
+            glow
+            scanning={isHovered}
             onClick={() => onViewDetails?.(project)}
-            className="w-full sm:w-auto px-3 py-2 sm:px-4 bg-cyan-400 bg-opacity-20 border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-gray-900 transition-all duration-300 font-mono text-xs font-bold"
-            style={{ clipPath: 'polygon(0 0, 100% 0, 95% 100%, 5% 100%)' }}
+            className="w-full sm:w-auto"
           >
             SCAN_PROJECT
-          </button>
+          </CyberpunkButton>
         </div>
 
         {/* Neural scan progress */}
@@ -273,16 +295,6 @@ export default function ProjectCard({ project, onViewDetails }: ProjectCardProps
         )}
       </div>
 
-      {/* Corner decorations */}
-      <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-cyan-400 opacity-30" />
-      <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-cyan-400 opacity-30" />
-      
-      {/* Hover glow effect */}
-      <div className={`absolute inset-0 pointer-events-none transition-opacity duration-500 ${
-        isHovered ? 'opacity-100' : 'opacity-0'
-      }`}>
-        <div className="absolute inset-0 bg-cyan-400 opacity-5" />
-      </div>
-    </div>
+    </CyberpunkCard>
   );
 }
